@@ -1,31 +1,19 @@
 import siteSettings from './siteSettings'
-import templeInfo from './templeInfo'
-import deity from './deity'
-import history from './history'
+import homepage from './homepage'
 import pooja from './pooja'
 import vazhipadu from './vazhipadu'
-import festival from './festival'
-import festivalSchedule from './festivalSchedule'
-import event from './event'
 import announcement from './announcement'
-import news from './news'
 import gallery from './gallery'
 import galleryCategory from './galleryCategory'
-import homepage from './homepage'
+import festival from './festival'
 
 export const schemaTypes = [
   siteSettings,
-  templeInfo,
-  deity,
-  history,
+  homepage,
   pooja,
   vazhipadu,
-  festival,
-  festivalSchedule,
-  event,
   announcement,
-  news,
   gallery,
   galleryCategory,
-  homepage,
+  festival,
 ]

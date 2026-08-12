@@ -1,0 +1,413 @@
+[
+  {
+    "fields": [
+      {
+        "initialValue": "ആനവേലി ക്ഷേത്രം",
+        "name": "title",
+        "type": "string",
+        "title": "Site Title (സൈറ്റ് നാമം)"
+      },
+      {
+        "initialValue": "ആനവേലി ഗ്രാമത്തിന്റെ ആത്മീയ പൈതൃകം",
+        "name": "description",
+        "type": "text",
+        "title": "Site Description (വിവരണം)"
+      },
+      {
+        "initialValue": "+91 9447000000",
+        "name": "phone",
+        "type": "string",
+        "title": "Phone Number (ഫോൺ നമ്പർ)"
+      },
+      {
+        "initialValue": "919447000000",
+        "description": "Format with country code: e.g. 919447000000",
+        "name": "whatsapp",
+        "type": "string",
+        "title": "WhatsApp Number (വാട്സ്ആപ്പ്)"
+      },
+      {
+        "initialValue": "info@anavelitemple.org",
+        "name": "email",
+        "type": "string",
+        "title": "Email Address (ഇമെയിൽ)"
+      },
+      {
+        "initialValue": "ആനവേലി ശ്രീ മഹാദേവ ക്ഷേത്രം, ആനവേലി പി.ഒ, പത്തനംതിട്ട, കേരളം - 689645",
+        "name": "address",
+        "type": "text",
+        "title": "Address (മേൽവിലാസം)"
+      },
+      {
+        "initialValue": "https://maps.google.com",
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "mapsLink",
+        "type": "url",
+        "title": "Google Maps Link (ഗൂഗിൾ മാപ്പ് ലിങ്ക്)"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document",
+    "title": "Site Settings (സൈറ്റ് ക്രമീകരണങ്ങൾ)"
+  },
+  {
+    "fields": [
+      {
+        "initialValue": "ആനവേലി ക്ഷേത്രം",
+        "name": "heroTitle",
+        "type": "string",
+        "title": "Hero Title (ഹീറോ തലക്കെട്ട്)"
+      },
+      {
+        "initialValue": "നമ്മുടെ ഗ്രാമത്തിന്റെ ആത്മീയ പൈതൃകം",
+        "name": "heroSubtitle",
+        "type": "string",
+        "title": "Hero Subtitle (ഹീറോ ഉപതലക്കെട്ട്)"
+      },
+      {
+        "initialValue": "ആനവേലി ശ്രീ മഹാദേവ ക്ഷേത്രത്തിന്റെ വെബ്സൈറ്റിലേക്ക് ഹൃദയം നിറഞ്ഞ സ്വാഗതം. ഭഗവാന്റെ കാരുണ്യവും അനുഗ്രഹവും എന്നും നിങ്ങളോടൊപ്പം ഉണ്ടാകട്ടെ.",
+        "name": "heroDescription",
+        "type": "text",
+        "title": "Hero Description (ഹീറോ വിവരണം)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "heroImage",
+        "type": "image",
+        "title": "Hero Image (ചിത്രം)"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "description": "Direct link to an MP4 background video. If provided, video will play in background with image fallback.",
+        "name": "heroVideoUrl",
+        "type": "url",
+        "title": "Hero Background Video URL (വീഡിയോ ലിങ്ക് / MP4)"
+      },
+      {
+        "initialValue": "ക്ഷേത്രത്തെ അറിയാം",
+        "name": "primaryCTA",
+        "type": "string",
+        "title": "Primary CTA Text (പ്രധാന ബട്ടൺ പേര്)"
+      },
+      {
+        "initialValue": "പരിപാടികൾ കാണാം",
+        "name": "secondaryCTA",
+        "type": "string",
+        "title": "Secondary CTA Text (രണ്ടാമത്തെ ബട്ടൺ)"
+      },
+      {
+        "to": [
+          {
+            "type": "festival"
+          }
+        ],
+        "name": "festivalRef",
+        "type": "reference",
+        "title": "Active Festival Countdown (പെരുന്നാൾ കൗണ്ട്ഡൗൺ)"
+      }
+    ],
+    "name": "homepage",
+    "type": "document",
+    "title": "Homepage Content (ഹോംപേജ് വിവരങ്ങൾ)"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string",
+        "title": "English Name (ഇംഗ്ലീഷ് പേര്)"
+      },
+      {
+        "name": "malayalamName",
+        "type": "string",
+        "title": "Malayalam Name (മലയാളം പേര്)"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "title": "Description (വിവരണം)"
+      },
+      {
+        "name": "time",
+        "type": "string",
+        "title": "Timing (സമയം)"
+      },
+      {
+        "name": "price",
+        "type": "number",
+        "title": "Price in INR (വില)"
+      },
+      {
+        "initialValue": true,
+        "name": "active",
+        "type": "boolean",
+        "title": "Is Active Today? (ഇന്നുണ്ടോ?)"
+      }
+    ],
+    "name": "pooja",
+    "type": "document",
+    "title": "Poojas (പൂജകൾ)"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string",
+        "title": "English Name (ഇംഗ്ലീഷ് പേര്)"
+      },
+      {
+        "name": "malayalamName",
+        "type": "string",
+        "title": "Malayalam Name (മലയാളം പേര്)"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "title": "Description (വിവരണം)"
+      },
+      {
+        "name": "price",
+        "type": "number",
+        "title": "Price in INR (വില)"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "ശിവൻ (Shiva)",
+              "value": "shiva"
+            },
+            {
+              "title": "ഗണപതി (Ganapathy)",
+              "value": "ganapathy"
+            },
+            {
+              "title": "ദേവി (Devi)",
+              "value": "devi"
+            },
+            {
+              "title": "മറ്റുള്ളവ (Others)",
+              "value": "others"
+            }
+          ]
+        },
+        "name": "category",
+        "type": "string",
+        "title": "Category (വിഭാഗം)"
+      }
+    ],
+    "name": "vazhipadu",
+    "type": "document",
+    "title": "Vazhipadus (വഴിപാടുകൾ)"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Title (തലക്കെട്ട്)"
+      },
+      {
+        "name": "malayalamTitle",
+        "type": "string",
+        "title": "Malayalam Title (മലയാളം തലക്കെട്ട്)"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "title": "Description (വിവരണം)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Image (ചിത്രം)"
+      },
+      {
+        "name": "date",
+        "type": "date",
+        "title": "Date (തീയതി)"
+      },
+      {
+        "initialValue": true,
+        "name": "published",
+        "type": "boolean",
+        "title": "Published (പ്രസിദ്ധീകരിച്ചിട്ടുണ്ട്)"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean",
+        "title": "Featured on Homepage (ഹോംപേജിൽ കാണിക്കുക)"
+      }
+    ],
+    "name": "announcement",
+    "type": "document",
+    "title": "Announcements (പ്രധാന അറിയിപ്പുകൾ)"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Title (തലക്കെട്ട്)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Image (ചിത്രം)"
+      },
+      {
+        "to": [
+          {
+            "type": "galleryCategory"
+          }
+        ],
+        "name": "category",
+        "type": "reference",
+        "title": "Category (വിഭാഗം)"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "title": "Description (വിവരണം)"
+      },
+      {
+        "name": "date",
+        "type": "date",
+        "title": "Date (തീയതി)"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean",
+        "title": "Featured on Homepage (ഹോംപേജിൽ കാണിക്കുക)"
+      }
+    ],
+    "name": "gallery",
+    "type": "document",
+    "title": "Gallery (ഫോട്ടോ ഗാലറി)"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string",
+        "title": "Category Name in English (വിഭാഗത്തിന്റെ പേര്)"
+      },
+      {
+        "name": "malayalamName",
+        "type": "string",
+        "title": "Category Name in Malayalam (മലയാളം പേര്)"
+      }
+    ],
+    "name": "galleryCategory",
+    "type": "document",
+    "title": "Gallery Categories (ഗാലറി വിഭാഗങ്ങൾ)"
+  },
+  {
+    "fields": [
+      {
+        "initialValue": "ആനവേലി ക്ഷേത്ര പെരുന്നാൾ",
+        "name": "name",
+        "type": "string",
+        "title": "Festival Name (ഉത്സവത്തിന്റെ പേര്)"
+      },
+      {
+        "name": "startDate",
+        "type": "datetime",
+        "title": "Start Date (തുടങ്ങുന്ന തീയതി)"
+      },
+      {
+        "name": "endDate",
+        "type": "datetime",
+        "title": "End Date (അവസാനിക്കുന്ന തീയതി)"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "title": "Description (വിവരണം)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Banner Image (ചിത്രം)"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "വരാനിരിക്കുന്നത് (Upcoming)",
+              "value": "upcoming"
+            },
+            {
+              "title": "നടന്നുകൊണ്ടിരിക്കുന്നത് (Ongoing)",
+              "value": "ongoing"
+            },
+            {
+              "title": "കഴിഞ്ഞത് (Completed)",
+              "value": "completed"
+            }
+          ]
+        },
+        "initialValue": "upcoming",
+        "name": "status",
+        "type": "string",
+        "title": "Status (നില)"
+      }
+    ],
+    "name": "festival",
+    "type": "document",
+    "title": "Festival (പെരുന്നാൾ / ഉത്സവം)"
+  }
+]
