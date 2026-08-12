@@ -108,22 +108,25 @@ export default function DailyUpdatesCarousel({ slides: customSlides }: DailyUpda
           transition={{ duration: 0.4 }}
           className="flex-grow flex flex-col justify-between pb-4 px-3"
         >
-          {/* Header */}
+          {/* Header & Title */}
           <div>
-            <div className="flex items-center justify-between border-b border-gold/20 pb-2">
-              <span className="text-[10px] uppercase tracking-wider text-gold font-bold bg-maroon px-2 py-0.5 rounded border border-gold/15">
-                {currentSlide.type || 'അറിയിപ്പ്'}
-              </span>
+            <div className="flex items-center justify-between border-b border-gold/20 pb-1.5">
+              <h3 className="text-gold font-bold text-lg tracking-wide text-left">
+                {currentSlide.title || 'വിശേഷങ്ങൾ'}
+              </h3>
               <span className="text-xl">{currentSlide.icon || '🪔'}</span>
             </div>
-            
-            <h3 className="text-gold font-bold text-base mt-2 tracking-wide text-left">
-              {currentSlide.title || 'വിശേഷങ്ങൾ'}
-            </h3>
+
+            {/* Badge Type below Title */}
+            <div className="mt-2 text-left">
+              <span className="inline-block text-xs tracking-wide text-gold font-bold bg-black/60 px-2.5 py-1 rounded border border-gold/30">
+                {currentSlide.type || 'അറിയിപ്പ്'}
+              </span>
+            </div>
           </div>
 
-          {/* Content */}
-          <div className="flex-grow flex flex-col justify-center text-sm text-cream/90 leading-relaxed font-semibold">
+          {/* Description Content at Bottom */}
+          <div className="mt-2 text-xs sm:text-sm text-cream/90 leading-relaxed font-semibold text-left">
             {currentSlide.content ? currentSlide.content : (
               <p>{currentSlide.description}</p>
             )}
