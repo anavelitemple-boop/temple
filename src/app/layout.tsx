@@ -39,15 +39,6 @@ export default function RootLayout({
         {/* Floating Mobile Sticky CTAs */}
         <div className="fixed bottom-4 right-4 z-40 flex flex-col gap-2 lg:hidden">
           <a 
-            href="https://wa.me/919447000000" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="w-12 h-12 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shadow-lg transition-transform hover:scale-110"
-            aria-label="WhatsApp Us"
-          >
-            <span className="text-xl">💬</span>
-          </a>
-          <a 
             href="tel:+919447000000" 
             className="w-12 h-12 rounded-full bg-maroon text-gold flex items-center justify-center shadow-lg border border-gold/40 transition-transform hover:scale-110"
             aria-label="Call Temple"
