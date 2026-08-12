@@ -1,0 +1,29 @@
+export const siteSettingsQuery = `*[_type == "siteSettings"][0]`;
+
+export const homepageQuery = `*[_type == "homepage"][0]{
+  ...,
+  festivalRef->
+}`;
+
+export const poojasQuery = `*[_type == "pooja"] | order(time asc)`;
+
+export const vazhipadusQuery = `*[_type == "vazhipadu"] | order(price asc)`;
+
+export const announcementsQuery = `*[_type == "announcement" && published == true] | order(date desc)`;
+
+export const festivalsQuery = `*[_type == "festival"] | order(startDate asc)`;
+
+export const festivalScheduleQuery = `*[_type == "festivalSchedule"] | order(date asc)`;
+
+export const eventsQuery = `*[_type == "event"] | order(date asc)`;
+
+export const newsQuery = `*[_type == "news"] | order(date desc)`;
+
+export const newsBySlugQuery = `*[_type == "news" && slug.current == $slug][0]`;
+
+export const galleryQuery = `*[_type == "gallery"]{
+  ...,
+  category->
+}`;
+
+export const historyQuery = `*[_type == "history"] | order(year asc)`;

@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-maroon-dark: #000000; /* Black */
+  --color-maroon: #111111; /* Dark Grey/Black */
+  --color-maroon-light: #222222; /* Medium Grey/Black */
+  --color-cream: #FFFFFF; /* Pure White */
+  --color-cream-dark: #F5F5F5; /* Off-White / Soft Grey */
+  --color-gold: #1E5E3A; /* Leaf Green */
+  --color-gold-dark: #123C24; /* Deep Forest Green */
+  --color-brass: #1E5E3A;
+  --color-charcoal: #111111;
+}
+
+:root {
+  --background: #FFFFFF; /* Pure White Base */
+  --foreground: #111111; /* Black Text */
+  --primary-font: 'Noto Sans Malayalam', sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--primary-font);
+  overflow-x: hidden;
+}
+
+/* Custom Traditional Decorative Borders & Styles */
+.traditional-border {
+  border: 4px double #1E5E3A;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #1E5E3A 0%, #FFFFFF 50%, #123C24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lamp-glow {
+  box-shadow: 0 0 35px 12px rgba(30, 94, 58, 0.4);
+}
+
+.gold-glow {
+  box-shadow: 0 0 15px 3px rgba(30, 94, 58, 0.3);
+}
+
+/* Shimmer & Animations */
+@keyframes flame-flicker {
+  0%, 100% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+  50% { transform: scale(1.1) rotate(3deg) translateY(-2px); opacity: 1; filter: drop-shadow(0 0 8px rgba(30, 94, 58, 0.8)); }
+}
+
+.animate-flame {
+  animation: flame-flicker 1.5s ease-in-out infinite;
+}
+
+@keyframes float-smoke {
+  0% { transform: translateY(0) scale(0.8); opacity: 0.5; }
+  50% { transform: translateY(-10px) scale(1.1); opacity: 0.8; }
+  100% { transform: translateY(-25px) scale(1.4); opacity: 0; }
+}
+
+.animate-smoke {
+  animation: float-smoke 3s ease-out infinite;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
