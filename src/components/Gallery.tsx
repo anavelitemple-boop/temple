@@ -54,7 +54,10 @@ export default function Gallery({ items, isHomePreview = false }: GalleryProps) 
         >
           <AnimatePresence mode="popLayout">
             {displayItems.map((item, idx) => {
-              const imgUrl = urlFor(item.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=400';
+              let imgUrl = typeof item.image === 'string' ? item.image : urlFor(item.image);
+              if (!imgUrl || imgUrl === '') {
+                imgUrl = '/temple-photo.jpg';
+              }
               return (
                 <motion.div
                   key={idx}
@@ -126,13 +129,20 @@ export default function Gallery({ items, isHomePreview = false }: GalleryProps) 
             {/* Center Image Content */}
             <div className="max-w-4xl max-h-[85vh] w-full flex flex-col items-center justify-center relative z-40" onClick={e => e.stopPropagation()}>
               <div className="relative w-full h-[65vh]">
-                <Image
-                  src={urlFor(displayItems[lightboxIndex].image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=1200'}
-                  alt={displayItems[lightboxIndex].title}
-                  fill
-                  priority
-                  className="object-contain"
-                />
+                {(() => {
+                  const currentItem = displayItems[lightboxIndex];
+                  let activeUrl = typeof currentItem.image === 'string' ? currentItem.image : urlFor(currentItem.image);
+                  if (!activeUrl || activeUrl === '') activeUrl = '/temple-photo.jpg';
+                  return (
+                    <Image
+                      src={activeUrl}
+                      alt={currentItem.title}
+                      fill
+                      priority
+                      className="object-contain"
+                    />
+                  );
+                })()}
               </div>
             </div>
 
