@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, MessageCircle } from 'lucide-react';
 import DailyUpdatesCarousel from './DailyUpdatesCarousel';
 
 interface HeroProps {
@@ -13,6 +12,8 @@ interface HeroProps {
   secondaryCTA?: string;
   festivalDate?: string;
   festivalName?: string;
+  heroImageUrl?: string;
+  heroVideoUrl?: string;
 }
 
 export default function Hero({
@@ -21,16 +22,32 @@ export default function Hero({
   heroDescription = 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഡിജിറ്റൽ സന്നിധിയിലേക്ക് സ്വാഗതം. ശതവർഷങ്ങളുടെ പാരമ്പര്യവും ഗ്രാമത്തിന്റെ തനിമയും വിളിച്ചോതുന്ന പുണ്യ സങ്കേതം.',
   primaryCTA = 'ക്ഷേത്രത്തെ അറിയാം',
   secondaryCTA = 'വഴിപാടുകൾ',
+  heroImageUrl = '/temple-photo.jpg',
+  heroVideoUrl,
 }: HeroProps) {
   return (
     <section className="relative min-h-[65vh] md:h-[75vh] w-full flex flex-col justify-center overflow-hidden bg-charcoal py-8">
-      {/* Background Image of the Actual Temple */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center z-0 scale-105 transition-transform duration-10000 ease-out"
-        style={{ 
-          backgroundImage: `url('/temple-photo.jpg')`,
-        }}
-      />
+      {/* Background Video (if provided) */}
+      {heroVideoUrl ? (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={heroImageUrl}
+          className="absolute inset-0 w-full h-full object-cover z-0 scale-105 transition-transform duration-1000"
+        >
+          <source src={heroVideoUrl} type="video/mp4" />
+        </video>
+      ) : (
+        /* Background Image Fallback */
+        <div 
+          className="absolute inset-0 bg-cover bg-center z-0 scale-105 transition-transform duration-10000 ease-out"
+          style={{ 
+            backgroundImage: `url('${heroImageUrl}')`,
+          }}
+        />
+      )}
 
       {/* Dark Cinematic Gradient Overlays */}
       <div className="absolute inset-0 bg-gradient-to-t from-maroon-dark/95 via-charcoal/50 to-charcoal/30 z-1" />
@@ -69,7 +86,6 @@ export default function Hero({
           <DailyUpdatesCarousel />
         </motion.div>
       </div>
-
     </section>
   );
 }

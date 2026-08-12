@@ -30,6 +30,12 @@ export default defineType({
       options: {hotspot: true},
     }),
     defineField({
+      name: 'heroVideoUrl',
+      title: 'Hero Background Video URL (വീഡിയോ ലിങ്ക് / MP4)',
+      type: 'url',
+      description: 'Direct link to an MP4 background video. If provided, video will play in background with image fallback.',
+    }),
+    defineField({
       name: 'primaryCTA',
       title: 'Primary CTA Text (പ്രധാന ബട്ടൺ പേര്)',
       type: 'string',

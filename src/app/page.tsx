@@ -4,7 +4,7 @@ import QuickLinks from '@/components/QuickLinks';
 import PoojaSection from '@/components/PoojaSection';
 import AnnouncementSection from '@/components/AnnouncementSection';
 import Gallery from '@/components/Gallery';
-import { safeFetch, mockData } from '@/lib/sanity';
+import { safeFetch, mockData, urlFor } from '@/lib/sanity';
 import { homepageQuery, poojasQuery, announcementsQuery, galleryQuery } from '@/lib/queries';
 
 export const revalidate = 60; // Revalidate cache every 60 seconds
@@ -44,6 +44,8 @@ export default async function Home() {
         secondaryCTA={homepageContent.secondaryCTA}
         festivalDate={targetCountdownDate}
         festivalName={targetCountdownName}
+        heroImageUrl={homepageContent.heroImage ? urlFor(homepageContent.heroImage) : '/temple-photo.jpg'}
+        heroVideoUrl={homepageContent.heroVideoUrl}
       />
 
       {/* Quick Action Navigation Grid */}
