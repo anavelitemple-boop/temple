@@ -44,8 +44,8 @@ export default async function Home() {
         secondaryCTA={homepageContent.secondaryCTA}
         festivalDate={targetCountdownDate}
         festivalName={targetCountdownName}
-        heroImageUrl={homepageContent.heroImage ? urlFor(homepageContent.heroImage) : '/temple-photo.jpg'}
-        heroVideoUrl={homepageContent.heroVideoUrl}
+        heroImageUrl={'/temple-photo.jpg'}
+        heroVideoUrl={homepageContent.heroVideoFileUrl || homepageContent.heroVideoUrl}
       />
 
       {/* Quick Action Navigation Grid */}

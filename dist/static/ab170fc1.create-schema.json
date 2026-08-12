@@ -92,11 +92,12 @@
       },
       {
         "options": {
-          "hotspot": true
+          "accept": "video/mp4,video/webm,video/*"
         },
-        "name": "heroImage",
-        "type": "image",
-        "title": "Hero Image (ചിത്രം)"
+        "description": "Upload an MP4/WebM video file directly from your computer for the Hero section background.",
+        "name": "heroVideoFile",
+        "type": "file",
+        "title": "Hero Background Video File (വീഡിയോ ഫയൽ അപ്‌ലോഡ് - MP4/WebM)"
       },
       {
         "validation": [
@@ -120,10 +121,10 @@
             ]
           }
         ],
-        "description": "Direct link to an MP4 background video. If provided, video will play in background with image fallback.",
+        "description": "Optional direct MP4 link if not uploading a file.",
         "name": "heroVideoUrl",
         "type": "url",
-        "title": "Hero Background Video URL (വീഡിയോ ലിങ്ക് / MP4)"
+        "title": "Hero Background Video URL (വീഡിയോ ലിങ്ക് - Alternative)"
       },
       {
         "initialValue": "ക്ഷേത്രത്തെ അറിയാം",

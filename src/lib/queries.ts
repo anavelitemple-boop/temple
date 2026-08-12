@@ -2,6 +2,7 @@ export const siteSettingsQuery = `*[_type == "siteSettings"][0]`;
 
 export const homepageQuery = `*[_type == "homepage"][0]{
   ...,
+  "heroVideoFileUrl": heroVideoFile.asset->url,
   festivalRef->
 }`;
 

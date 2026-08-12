@@ -24,16 +24,19 @@ export default defineType({
       initialValue: 'ആനവേലി ശ്രീ മഹാദേവ ക്ഷേത്രത്തിന്റെ വെബ്സൈറ്റിലേക്ക് ഹൃദയം നിറഞ്ഞ സ്വാഗതം. ഭഗവാന്റെ കാരുണ്യവും അനുഗ്രഹവും എന്നും നിങ്ങളോടൊപ്പം ഉണ്ടാകട്ടെ.',
     }),
     defineField({
-      name: 'heroImage',
-      title: 'Hero Image (ചിത്രം)',
-      type: 'image',
-      options: {hotspot: true},
+      name: 'heroVideoFile',
+      title: 'Hero Background Video File (വീഡിയോ ഫയൽ അപ്‌ലോഡ് - MP4/WebM)',
+      type: 'file',
+      options: {
+        accept: 'video/mp4,video/webm,video/*',
+      },
+      description: 'Upload an MP4/WebM video file directly from your computer for the Hero section background.',
     }),
     defineField({
       name: 'heroVideoUrl',
-      title: 'Hero Background Video URL (വീഡിയോ ലിങ്ക് / MP4)',
+      title: 'Hero Background Video URL (വീഡിയോ ലിങ്ക് - Alternative)',
       type: 'url',
-      description: 'Direct link to an MP4 background video. If provided, video will play in background with image fallback.',
+      description: 'Optional direct MP4 link if not uploading a file.',
     }),
     defineField({
       name: 'primaryCTA',

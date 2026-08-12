@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-08-12T16:30:14.963Z",
+  "createdAt": "2026-08-12T16:50:03.026Z",
   "studioVersion": "6.9.2",
   "version": 3,
   "workspaces": [
@@ -13,7 +13,7 @@
       },
       "name": "default",
       "projectId": "7uzr3mel",
-      "schema": "aa2786b3.create-schema.json",
+      "schema": "ab170fc1.create-schema.json",
       "title": "ആനവേലി ക്ഷേത്രം (Anaveli Temple Admin)",
       "tools": "a1fd46b5.create-tools.json"
     }
