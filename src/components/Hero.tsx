@@ -30,15 +30,15 @@ export default function Hero({
       {/* Background Video (if provided) */}
       {heroVideoUrl ? (
         <video
+          key={heroVideoUrl}
+          src={heroVideoUrl}
           autoPlay
           loop
           muted
           playsInline
           poster={heroImageUrl}
           className="absolute inset-0 w-full h-full object-cover z-0 scale-105 transition-transform duration-1000"
-        >
-          <source src={heroVideoUrl} type="video/mp4" />
-        </video>
+        />
       ) : (
         /* Background Image Fallback */
         <div 

@@ -72,8 +72,8 @@ export default function Header() {
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center">
           <a
-            href="tel:+919447000000"
-            className="bg-maroon hover:bg-maroon-light text-cream flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold transition-all"
+            href="tel:+919895873935"
+            className="bg-[#25D366] hover:bg-[#1ea34e] text-white flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm"
           >
             <Phone size={12} />
             <span>വിളിക്കുക</span>

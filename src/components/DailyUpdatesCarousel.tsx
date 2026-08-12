@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface UpdateSlide {
   title: string;
@@ -68,20 +69,53 @@ export default function DailyUpdatesCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [currentIndex]);
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : slides.length - 1));
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % slides.length);
+  };
 
   return (
-    <div className="bg-transparent border border-white/20 p-6 rounded-2xl max-w-md w-full h-[220px] flex flex-col justify-between text-cream relative overflow-hidden">
+    <div 
+      onClick={handleNext}
+      className="bg-transparent border border-white/20 p-6 rounded-2xl max-w-md w-full h-[220px] flex flex-col justify-between text-cream relative overflow-hidden cursor-pointer group"
+    >
+      {/* Navigation Arrows */}
+      <button
+        onClick={handlePrev}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-1.5 rounded-full bg-black/40 hover:bg-gold/80 text-cream hover:text-black transition-all opacity-70 group-hover:opacity-100 cursor-pointer"
+        aria-label="Previous Slide"
+      >
+        <ChevronLeft size={18} />
+      </button>
+
+      <button
+        onClick={handleNext}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-1.5 rounded-full bg-black/40 hover:bg-gold/80 text-cream hover:text-black transition-all opacity-70 group-hover:opacity-100 cursor-pointer"
+        aria-label="Next Slide"
+      >
+        <ChevronRight size={18} />
+      </button>
+
       {/* Indicator Dots */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
+      <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
         {slides.map((_, idx) => (
           <button
             key={idx}
-            onClick={() => setCurrentIndex(idx)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              idx === currentIndex ? 'bg-gold w-4' : 'bg-gold/30'
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentIndex(idx);
+            }}
+            className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+              idx === currentIndex ? 'bg-gold w-6' : 'bg-white/40 hover:bg-white/70 w-2'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />
@@ -94,8 +128,8 @@ export default function DailyUpdatesCarousel() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
-          transition={{ duration: 0.5 }}
-          className="flex-grow flex flex-col justify-between pb-4"
+          transition={{ duration: 0.4 }}
+          className="flex-grow flex flex-col justify-between pb-4 px-3"
         >
           {/* Header */}
           <div>

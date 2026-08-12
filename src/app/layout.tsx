@@ -39,8 +39,8 @@ export default function RootLayout({
         {/* Floating Mobile Sticky CTAs */}
         <div className="fixed bottom-4 right-4 z-40 flex flex-col gap-2 lg:hidden">
           <a 
-            href="tel:+919447000000" 
-            className="w-12 h-12 rounded-full bg-maroon text-gold flex items-center justify-center shadow-lg border border-gold/40 transition-transform hover:scale-110"
+            href="tel:+919895873935" 
+            className="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg border border-white/40 transition-transform hover:scale-110 active:scale-95"
             aria-label="Call Temple"
           >
             <span className="text-xl">📞</span>

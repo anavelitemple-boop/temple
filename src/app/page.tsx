@@ -7,7 +7,7 @@ import Gallery from '@/components/Gallery';
 import { safeFetch, mockData, urlFor } from '@/lib/sanity';
 import { homepageQuery, poojasQuery, announcementsQuery, galleryQuery } from '@/lib/queries';
 
-export const revalidate = 60; // Revalidate cache every 60 seconds
+export const revalidate = 0; // Disable caching to reflect Sanity CMS edits instantly
 
 export default async function Home() {
   // Fetch homepage configurations
