@@ -4,11 +4,14 @@ import imageUrlBuilder from '@sanity/image-url';
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '7uzr3mel';
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 
+const token = process.env.SANITY_API_TOKEN;
+
 export const client = createClient({
   projectId,
   dataset,
+  token,
   apiVersion: '2026-08-11',
-  useCdn: true,
+  useCdn: !token,
 });
 
 const builder = imageUrlBuilder(client);
