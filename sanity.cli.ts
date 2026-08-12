@@ -9,4 +9,7 @@ export default defineCliConfig({
     dataset,
   },
   studioHost: 'anavelitemple',
+  deployment: {
+    appId: 'xg2lom99k809t7m936ntotu6',
+  },
 });
