@@ -6,9 +6,9 @@
   --color-maroon-light: #222222; /* Medium Grey/Black */
   --color-cream: #FFFFFF; /* Pure White */
   --color-cream-dark: #F5F5F5; /* Off-White / Soft Grey */
-  --color-gold: #1E5E3A; /* Leaf Green */
-  --color-gold-dark: #123C24; /* Deep Forest Green */
-  --color-brass: #1E5E3A;
+  --color-gold: #25D366; /* Light Green #25D366 */
+  --color-gold-dark: #1ea34e; /* Vibrant Green */
+  --color-brass: #25D366;
   --color-charcoal: #111111;
 }
 
@@ -27,22 +27,22 @@ body {
 
 /* Custom Traditional Decorative Borders & Styles */
 .traditional-border {
-  border: 4px double #1E5E3A;
+  border: 4px double #25D366;
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #1E5E3A 0%, #FFFFFF 50%, #123C24 100%);
+  background: linear-gradient(135deg, #25D366 0%, #FFFFFF 50%, #1ea34e 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .lamp-glow {
-  box-shadow: 0 0 35px 12px rgba(30, 94, 58, 0.4);
+  box-shadow: 0 0 35px 12px rgba(37, 211, 102, 0.4);
 }
 
 .gold-glow {
-  box-shadow: 0 0 15px 3px rgba(30, 94, 58, 0.3);
+  box-shadow: 0 0 15px 3px rgba(37, 211, 102, 0.3);
 }
 
 /* Shimmer & Animations */
