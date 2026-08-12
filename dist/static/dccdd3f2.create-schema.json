@@ -147,6 +147,42 @@
         "name": "festivalRef",
         "type": "reference",
         "title": "Active Festival Countdown (പെരുന്നാൾ കൗണ്ട്ഡൗൺ)"
+      },
+      {
+        "description": "Add, edit, or remove slides in the Hero Live Updates Carousel.",
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "title",
+                "type": "string",
+                "title": "Slide Title (തലക്കെട്ട്)"
+              },
+              {
+                "description": "e.g. നട തുറക്കുന്ന സമയം, ഇന്നത്തെ വിശേഷാൽ പൂജ, പ്രധാന അറിയിപ്പ്",
+                "name": "type",
+                "type": "string",
+                "title": "Badge Type (വിഭാഗം / ടാഗ്)"
+              },
+              {
+                "description": "e.g. 🪔, 👤, 📢",
+                "name": "icon",
+                "type": "string",
+                "title": "Emoji Icon (ഐക്കൺ)"
+              },
+              {
+                "name": "description",
+                "type": "text",
+                "title": "Description Content (വിവരണം)"
+              }
+            ],
+            "type": "object",
+            "title": "Carousel Slide"
+          }
+        ],
+        "name": "carouselSlides",
+        "type": "array",
+        "title": "Hero Carousel Slides (ഹീറോ സ്ലൈഡറുകൾ / അറിയിപ്പ് കാർഡുകൾ)"
       }
     ],
     "name": "homepage",

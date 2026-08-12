@@ -44,6 +44,7 @@ export default async function Home() {
         secondaryCTA={homepageContent.secondaryCTA}
         festivalDate={targetCountdownDate}
         heroVideoUrl={homepageContent.heroVideoFileUrl || homepageContent.heroVideoUrl}
+        carouselSlides={homepageContent.carouselSlides}
       />
 
       {/* Quick Action Navigation Grid */}

@@ -14,6 +14,7 @@ interface HeroProps {
   festivalName?: string;
   heroImageUrl?: string;
   heroVideoUrl?: string;
+  carouselSlides?: any[];
 }
 
 export default function Hero({
@@ -23,6 +24,7 @@ export default function Hero({
   primaryCTA = 'ക്ഷേത്രത്തെ അറിയാം',
   heroImageUrl,
   heroVideoUrl,
+  carouselSlides,
 }: HeroProps) {
   return (
     <section className="relative min-h-[65vh] md:h-[75vh] w-full flex flex-col justify-center overflow-hidden bg-charcoal py-8">
@@ -86,7 +88,7 @@ export default function Hero({
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <DailyUpdatesCarousel />
+          <DailyUpdatesCarousel slides={carouselSlides} />
         </motion.div>
       </div>
     </section>

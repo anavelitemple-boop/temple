@@ -56,5 +56,41 @@ export default defineType({
       type: 'reference',
       to: [{type: 'festival'}],
     }),
+    defineField({
+      name: 'carouselSlides',
+      title: 'Hero Carousel Slides (ഹീറോ സ്ലൈഡറുകൾ / അറിയിപ്പ് കാർഡുകൾ)',
+      type: 'array',
+      description: 'Add, edit, or remove slides in the Hero Live Updates Carousel.',
+      of: [
+        {
+          type: 'object',
+          title: 'Carousel Slide',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Slide Title (തലക്കെട്ട്)',
+              type: 'string',
+            }),
+            defineField({
+              name: 'type',
+              title: 'Badge Type (വിഭാഗം / ടാഗ്)',
+              type: 'string',
+              description: 'e.g. നട തുറക്കുന്ന സമയം, ഇന്നത്തെ വിശേഷാൽ പൂജ, പ്രധാന അറിയിപ്പ്',
+            }),
+            defineField({
+              name: 'icon',
+              title: 'Emoji Icon (ഐക്കൺ)',
+              type: 'string',
+              description: 'e.g. 🪔, 👤, 📢',
+            }),
+            defineField({
+              name: 'description',
+              title: 'Description Content (വിവരണം)',
+              type: 'text',
+            }),
+          ],
+        },
+      ],
+    }),
   ],
 })

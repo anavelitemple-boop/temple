@@ -4,84 +4,61 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface UpdateSlide {
-  title: string;
-  type: string;
-  icon: string;
-  content: React.ReactNode;
+interface CustomSlide {
+  title?: string;
+  type?: string;
+  icon?: string;
+  description?: string;
+  content?: React.ReactNode;
 }
 
-const slides: UpdateSlide[] = [
+interface DailyUpdatesCarouselProps {
+  slides?: CustomSlide[];
+}
+
+const defaultSlides: CustomSlide[] = [
   {
     title: 'ദർശന സമയം',
     type: 'നട തുറക്കുന്ന സമയം',
     icon: '🪔',
-    content: (
-      <div className="space-y-2 mt-2">
-        <div className="flex justify-between items-center bg-transparent px-4 py-2 rounded-lg border border-white/15">
-          <span className="text-sm text-cream/70 font-semibold">രാവിലെ:</span>
-          <span className="text-sm font-bold text-cream">05:00 AM - 11:30 AM</span>
-        </div>
-        <div className="flex justify-between items-center bg-transparent px-4 py-2 rounded-lg border border-white/15">
-          <span className="text-sm text-cream/70 font-semibold">വൈകുന്നേരം:</span>
-          <span className="text-sm font-bold text-cream">05:00 PM - 08:00 PM</span>
-        </div>
-      </div>
-    )
+    description: 'രാവിലെ: 05:00 AM - 11:30 AM | വൈകുന്നേരം: 05:00 PM - 08:00 PM',
   },
-
   {
     title: 'വഴിപാട് കർത്താവ്',
     type: 'ഇന്നത്തെ വിശേഷാൽ പൂജ',
     icon: '👤',
-    content: (
-      <div className="space-y-1.5 text-left text-xs font-semibold mt-2">
-        <div className="flex justify-between border-b border-white/10 pb-1">
-          <span className="text-cream/70">പേര്:</span>
-          <span className="text-cream">ശ്രീധരൻ നായരും കുടുംബവും</span>
-        </div>
-        <div className="flex justify-between border-b border-white/10 pb-1">
-          <span className="text-cream/70">നക്ഷത്രം:</span>
-          <span className="text-cream font-bold">രോഹിണി</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="text-cream/70">വഴിപാട്:</span>
-          <span className="text-amber-300 font-bold">വിശേഷാൽ ഭഗവതി സേവ</span>
-        </div>
-      </div>
-    )
+    description: 'പേര്: ശ്രീധരൻ നായരും കുടുംബവും | നക്ഷത്രം: രോഹിണി | വഴിപാട്: വിശേഷാൽ ഭഗവതി സേവ',
   },
   {
     title: 'പ്രധാന അറിയിപ്പ്',
     type: 'വിശേഷങ്ങൾ',
     icon: '📢',
-    content: (
-      <div className="mt-2 text-sm text-cream/80 leading-relaxed font-semibold">
-        ക്ഷേത്ര വികസന നവീകരണ പ്രവർത്തനങ്ങൾ പുരോഗമിക്കുന്നു. ഭക്തജനങ്ങളുടെ സഹകരണം പ്രതീക്ഷിക്കുന്നു. വഴിപാടുകൾ ഇപ്പോൾ ഓൺലൈനായി ബുക്ക് ചെയ്യാവുന്നതാണ്.
-      </div>
-    )
+    description: 'ക്ഷേത്ര വികസന നവീകരണ പ്രവർത്തനങ്ങൾ പുരോഗമിക്കുന്നു. ഭക്തജനങ്ങളുടെ സഹകരണം പ്രതീക്ഷിക്കുന്നു. വഴിപാടുകൾ ഇപ്പോൾ ഓൺലൈനായി ബുക്ക് ചെയ്യാവുന്നതാണ്.',
   }
 ];
 
-export default function DailyUpdatesCarousel() {
+export default function DailyUpdatesCarousel({ slides: customSlides }: DailyUpdatesCarouselProps) {
+  const activeSlides = (customSlides && customSlides.length > 0) ? customSlides : defaultSlides;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % slides.length);
+      setCurrentIndex((prev) => (prev + 1) % activeSlides.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, activeSlides.length]);
 
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : slides.length - 1));
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : activeSlides.length - 1));
   };
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrentIndex((prev) => (prev + 1) % slides.length);
+    setCurrentIndex((prev) => (prev + 1) % activeSlides.length);
   };
+
+  const currentSlide = activeSlides[currentIndex] || activeSlides[0];
 
   return (
     <div 
@@ -107,7 +84,7 @@ export default function DailyUpdatesCarousel() {
 
       {/* Indicator Dots */}
       <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
-        {slides.map((_, idx) => (
+        {activeSlides.map((_, idx) => (
           <button
             key={idx}
             onClick={(e) => {
@@ -135,19 +112,21 @@ export default function DailyUpdatesCarousel() {
           <div>
             <div className="flex items-center justify-between border-b border-gold/20 pb-2">
               <span className="text-[10px] uppercase tracking-wider text-gold font-bold bg-maroon px-2 py-0.5 rounded border border-gold/15">
-                {slides[currentIndex].type}
+                {currentSlide.type || 'അറിയിപ്പ്'}
               </span>
-              <span className="text-xl">{slides[currentIndex].icon}</span>
+              <span className="text-xl">{currentSlide.icon || '🪔'}</span>
             </div>
             
             <h3 className="text-gold font-bold text-base mt-2 tracking-wide text-left">
-              {slides[currentIndex].title}
+              {currentSlide.title || 'വിശേഷങ്ങൾ'}
             </h3>
           </div>
 
           {/* Content */}
-          <div className="flex-grow flex flex-col justify-center">
-            {slides[currentIndex].content}
+          <div className="flex-grow flex flex-col justify-center text-sm text-cream/90 leading-relaxed font-semibold">
+            {currentSlide.content ? currentSlide.content : (
+              <p>{currentSlide.description}</p>
+            )}
           </div>
         </motion.div>
       </AnimatePresence>
