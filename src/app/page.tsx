@@ -54,11 +54,11 @@ export default async function Home() {
       {/* Today's Poojas */}
       <PoojaSection poojas={poojas} />
 
-      {/* Announcements */}
-      <AnnouncementSection announcements={announcements} />
-
-      {/* Photo Gallery preview */}
+      {/* Photo Gallery preview (ക്ഷേത്ര ദർശനം) */}
       <Gallery items={galleryItems} isHomePreview={true} />
+
+      {/* Announcements (പ്രധാന അറിയിപ്പുകൾ) */}
+      <AnnouncementSection announcements={announcements} />
     </div>
   );
 }
