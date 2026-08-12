@@ -43,8 +43,6 @@ export default async function Home() {
         primaryCTA={homepageContent.primaryCTA}
         secondaryCTA={homepageContent.secondaryCTA}
         festivalDate={targetCountdownDate}
-        festivalName={targetCountdownName}
-        heroImageUrl={'/temple-photo.jpg'}
         heroVideoUrl={homepageContent.heroVideoFileUrl || homepageContent.heroVideoUrl}
       />
 

@@ -21,8 +21,7 @@ export default function Hero({
   heroSubtitle = 'നമ്മുടെ ഗ്രാമത്തിന്റെ ആത്മീയ പൈതൃകം',
   heroDescription = 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഡിജിറ്റൽ സന്നിധിയിലേക്ക് സ്വാഗതം. ശതവർഷങ്ങളുടെ പാരമ്പര്യവും ഗ്രാമത്തിന്റെ തനിമയും വിളിച്ചോതുന്ന പുണ്യ സങ്കേതം.',
   primaryCTA = 'ക്ഷേത്രത്തെ അറിയാം',
-  secondaryCTA = 'വഴിപാടുകൾ',
-  heroImageUrl = '/temple-photo.jpg',
+  heroImageUrl,
   heroVideoUrl,
 }: HeroProps) {
   return (
