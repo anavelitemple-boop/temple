@@ -35,9 +35,13 @@ export default function Hero({
           loop
           muted
           playsInline
-          poster={heroImageUrl}
+          controlsList="nodownload"
           className="absolute inset-0 w-full h-full object-cover z-0 scale-105 transition-transform duration-1000"
-        />
+        >
+          <source src={heroVideoUrl} type="video/mp4" />
+          <source src={heroVideoUrl} type="video/webm" />
+          <source src={heroVideoUrl} />
+        </video>
       ) : (
         /* Background Image Fallback */
         <div 
