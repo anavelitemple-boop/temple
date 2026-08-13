@@ -80,6 +80,9 @@ export default async function NewsDetailPage({ params }: Props) {
 
           {/* Body Content */}
           <div className="prose max-w-none text-maroon-light font-semibold text-sm md:text-base leading-relaxed space-y-4">
+            {article.description && (
+              <p className="whitespace-pre-line text-base">{article.description}</p>
+            )}
             {Array.isArray(article.content) ? (
               article.content.map((block: any, idx: number) => {
                 if (block._type === 'block') {
@@ -92,7 +95,10 @@ export default async function NewsDetailPage({ params }: Props) {
                 return null;
               })
             ) : (
-              <p>{article.content || article.summary}</p>
+              typeof article.content === 'string' && <p>{article.content}</p>
+            )}
+            {article.summary && !article.description && (
+              <p>{article.summary}</p>
             )}
           </div>
 
