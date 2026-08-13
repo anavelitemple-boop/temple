@@ -23,7 +23,15 @@ export default async function NewsDetailPage({ params }: Props) {
     article = mockData.news.find(n => n.slug === slug) || mockData.news[0];
   }
 
-  const imageUrl = urlFor(article.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=1200';
+  let rawImg = article?.imageUrl || urlFor(article?.image);
+  if (!rawImg || rawImg.startsWith('/images/')) {
+    rawImg = 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=1200';
+  }
+  const imageUrl = rawImg;
+  const displayTitle = article?.malayalamTitle || article?.title || 'അറിയിപ്പ്';
+  const displayDate = article?.date 
+    ? new Date(article.date).toLocaleDateString('ml-IN', { dateStyle: 'long' }) 
+    : '';
 
   return (
     <div className="py-16 bg-cream min-h-screen">
@@ -40,20 +48,22 @@ export default async function NewsDetailPage({ params }: Props) {
 
         <article className="bg-cream border border-gold/30 rounded-2xl overflow-hidden shadow-sm p-6 md:p-10">
           
-          <div className="flex items-center gap-1.5 text-gold-dark text-xs font-bold mb-4">
-            <Calendar size={14} />
-            <span>{new Date(article.date).toLocaleDateString('ml-IN', { dateStyle: 'long' })}</span>
-          </div>
+          {displayDate && (
+            <div className="flex items-center gap-1.5 text-gold-dark text-xs font-bold mb-4">
+              <Calendar size={14} />
+              <span>{displayDate}</span>
+            </div>
+          )}
 
           <h1 className="text-2xl md:text-3xl font-extrabold text-maroon mb-6 leading-tight">
-            {article.malayalamTitle || article.title}
+            {displayTitle}
           </h1>
 
           {/* Large image */}
           <div className="relative w-full h-[40vh] md:h-[50vh] rounded-xl overflow-hidden bg-maroon-dark/10 mb-8 border border-gold/20">
             <Image
               src={imageUrl}
-              alt={article.malayalamTitle || article.title}
+              alt={displayTitle}
               fill
               priority
               className="object-cover"

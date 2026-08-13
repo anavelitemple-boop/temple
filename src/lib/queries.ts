@@ -30,7 +30,11 @@ export const newsQuery = `*[_type in ["announcement", "news"] && published != fa
   "pdfUrl": pdfFile.asset->url
 } | order(date desc, _createdAt desc)`;
 
-export const newsBySlugQuery = `*[_type == "news" && slug.current == $slug][0]`;
+export const newsBySlugQuery = `*[_type in ["announcement", "news"] && (slug.current == $slug || _id == $slug)][0]{
+  ...,
+  "imageUrl": image.asset->url,
+  "pdfUrl": pdfFile.asset->url
+}`;
 
 export const galleryQuery = `*[_type == "gallery"]{
   ...,
