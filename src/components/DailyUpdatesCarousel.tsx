@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -41,13 +41,6 @@ const defaultSlides: CustomSlide[] = [
 export default function DailyUpdatesCarousel({ slides: customSlides }: DailyUpdatesCarouselProps) {
   const activeSlides = (customSlides && customSlides.length > 0) ? customSlides : defaultSlides;
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % activeSlides.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [currentIndex, activeSlides.length]);
 
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
