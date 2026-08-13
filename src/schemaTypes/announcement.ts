@@ -16,6 +16,15 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug (ലിങ്ക് / URL Identifier)',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    }),
+    defineField({
       name: 'description',
       title: 'Description (വിവരണം)',
       type: 'text',

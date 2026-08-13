@@ -6,6 +6,8 @@ import { urlFor } from '@/lib/sanity';
 import { Calendar } from 'lucide-react';
 
 interface Announcement {
+  _id?: string;
+  slug?: any;
   title?: string;
   malayalamTitle?: string;
   description?: string;
@@ -91,7 +93,7 @@ export default function AnnouncementSection({ announcements }: AnnouncementSecti
                         <span>📄 PDF കാണാം / ഡൗൺലോഡ് ചെയ്യാം</span>
                       </a>
                     )}
-                    <Button href="/news" variant="secondary" className="w-full text-xs py-2 px-4">
+                    <Button href={`/news/${item.slug?.current || item.slug || item._id}`} variant="secondary" className="w-full text-xs py-2 px-4">
                       കൂടുതൽ വായിക്കാം
                     </Button>
                   </div>

@@ -18,9 +18,17 @@ export default async function NewsDetailPage({ params }: Props) {
   // Fetch article
   let article = await safeFetch<any>(newsBySlugQuery, { slug }, null);
 
-  // Fallback to mock data if not found
+  // Fallback if not found by exact slug
   if (!article) {
-    article = mockData.news.find(n => n.slug === slug) || mockData.news[0];
+    article = await safeFetch<any>(
+      `*[_type in ["announcement", "news"] && published != false][0]{
+        ...,
+        "imageUrl": image.asset->url,
+        "pdfUrl": pdfFile.asset->url
+      }`,
+      {},
+      mockData.news[0]
+    );
   }
 
   let rawImg = article?.imageUrl || urlFor(article?.image);
