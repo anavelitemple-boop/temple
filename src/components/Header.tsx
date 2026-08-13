@@ -36,7 +36,7 @@ export default function Header() {
   useEffect(() => {
     async function loadSiteSettings() {
       try {
-        const settings = await client.fetch(siteSettingsQuery);
+        const settings = await client.fetch(siteSettingsQuery, {}, { useCdn: false });
         if (settings?.priestPhone) setPriestPhone(settings.priestPhone);
         if (settings?.priestButtonText) setPriestButtonText(settings.priestButtonText);
       } catch (e) {
@@ -45,6 +45,15 @@ export default function Header() {
     }
     loadSiteSettings();
   }, []);
+
+  const formattedPriestLabel = React.useMemo(() => {
+    if (!priestPhone) return priestButtonText;
+    const cleanNumber = priestPhone.trim();
+    if (priestButtonText.includes(cleanNumber) || /\d{5}/.test(priestButtonText)) {
+      return priestButtonText;
+    }
+    return `${priestButtonText} - ${cleanNumber}`;
+  }, [priestButtonText, priestPhone]);
 
   // Determine if we should display the transparent navbar theme
   const isHomepage = pathname === '/';
@@ -138,7 +147,7 @@ export default function Header() {
                 className="flex items-center justify-center gap-2.5 bg-black hover:bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold w-full transition-colors shadow-sm"
               >
                 <Phone size={16} />
-                <span>{priestButtonText}</span>
+                <span>{formattedPriestLabel}</span>
               </a>
             </div>
           </div>
