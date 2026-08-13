@@ -54,9 +54,31 @@ const INITIAL_BOOKINGS: StoredBooking[] = [
 
 interface PoojaBookingClientProps {
   whatsappNum?: string;
+  cmsPoojaName?: string;
+  cmsPoojaPrice?: number;
+  cmsPoojaDescription?: string;
 }
 
-export default function PoojaBookingClient({ whatsappNum = '919895873935' }: PoojaBookingClientProps) {
+export default function PoojaBookingClient({ 
+  whatsappNum = '919895873935',
+  cmsPoojaName,
+  cmsPoojaPrice,
+  cmsPoojaDescription
+}: PoojaBookingClientProps) {
+  const activePoojaName = cmsPoojaName || DEFAULT_POOJAS[0].malayalamName;
+  const activePoojaPrice = cmsPoojaPrice || DEFAULT_POOJAS[0].price;
+
+  const currentPoojasList: PoojaItem[] = [
+    {
+      id: 'd1',
+      name: 'Devi Pooja',
+      malayalamName: activePoojaName,
+      price: activePoojaPrice,
+      time: '',
+      category: 'daily',
+      description: cmsPoojaDescription || DEFAULT_POOJAS[0].description
+    }
+  ];
   const [selectedPooja, setSelectedPooja] = useState<PoojaItem | null>(null);
   const [bookingDate, setBookingDate] = useState<string>('');
   const [devotees, setDevotees] = useState<Devotee[]>([{ name: '', nakshathram: '' }]);
@@ -207,12 +229,12 @@ ${devoteesText}
         {/* Highlighted Pooja info badge */}
         <div className="mt-5 inline-flex items-center gap-3 bg-black/30 border border-gold/30 px-4 py-2 rounded-2xl">
           <span className="text-sm">🪔</span>
-          <span className="text-xs sm:text-sm font-bold text-gold">ദേവി പൂജ - ₹500</span>
+          <span className="text-xs sm:text-sm font-bold text-gold">{activePoojaName} - ₹{activePoojaPrice}</span>
         </div>
 
         <div className="mt-6 pt-4 border-t border-gold/30 flex justify-center">
           <button
-            onClick={() => openModal(DEFAULT_POOJAS[0])}
+            onClick={() => openModal(currentPoojasList[0])}
             className="px-7 py-3 rounded-full bg-gold hover:bg-gold-light text-maroon-dark font-extrabold text-sm sm:text-base shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
           >
             <Calendar size={18} />

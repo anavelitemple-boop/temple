@@ -1,5 +1,7 @@
 export const siteSettingsQuery = `*[_type == "siteSettings"][0]`;
 
+export const poojaBookingQuery = `*[_type == "poojaBooking"][0]`;
+
 export const homepageQuery = `*[_type == "homepage" && (_id == "homepage" || _id == "drafts.homepage")][0]{
   ...,
   "heroVideoFileUrl": heroVideoFile.asset->url,

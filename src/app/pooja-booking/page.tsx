@@ -2,18 +2,22 @@ import React from 'react';
 import SectionHeading from '@/components/SectionHeading';
 import PoojaBookingClient from '@/components/PoojaBookingClient';
 import { safeFetch, mockData } from '@/lib/sanity';
-import { siteSettingsQuery } from '@/lib/queries';
+import { siteSettingsQuery, poojaBookingQuery } from '@/lib/queries';
 
 export const metadata = {
   title: 'പൂജ ബുക്കിംഗ് | ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
   description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെ നിത്യപൂജകളും വെള്ളിയാഴ്ച വിശേഷാൽ പൂജകളും ഓൺലൈനായി ബുക്ക് ചെയ്യാം.'
 };
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export default async function PoojaBookingPage() {
   const settings = await safeFetch<any>(siteSettingsQuery, {}, mockData.siteSettings);
-  const whatsappNum = settings.whatsapp || '919895873935';
+  const cmsBooking = await safeFetch<any>(poojaBookingQuery, {}, null);
+
+  const whatsappNum = cmsBooking?.whatsappNumber || settings.whatsapp || '919895873935';
+  const pageTitle = cmsBooking?.title || 'ക്ഷേത്ര പൂജകൾ & ബുക്കിംഗ്';
+  const pageSubtitle = cmsBooking?.subtitle || 'ഭദ്രകാളി ദേവിക്ക് പൂജകൾ ലളിതമായി ബുക്ക് ചെയ്യാം';
 
   return (
     <div className="py-16 bg-cream min-h-screen">
@@ -21,13 +25,18 @@ export default async function PoojaBookingPage() {
         
         {/* Main Section Heading */}
         <SectionHeading
-          title="ക്ഷേത്ര പൂജകൾ & ബുക്കിംഗ്"
-          subtitle="ഭദ്രകാളി ദേവിക്ക് പൂജകൾ ലളിതമായി ബുക്ക് ചെയ്യാം"
+          title={pageTitle}
+          subtitle={pageSubtitle}
         />
 
         {/* Client side interactive booking component */}
         <div className="mt-6">
-          <PoojaBookingClient whatsappNum={whatsappNum} />
+          <PoojaBookingClient 
+            whatsappNum={whatsappNum} 
+            cmsPoojaName={cmsBooking?.defaultPoojaName}
+            cmsPoojaPrice={cmsBooking?.defaultPoojaPrice}
+            cmsPoojaDescription={cmsBooking?.poojaDescription}
+          />
         </div>
 
         {/* User-Friendly Quick Steps Guide */}
