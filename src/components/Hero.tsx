@@ -14,6 +14,7 @@ interface HeroProps {
   festivalName?: string;
   heroImageUrl?: string;
   heroVideoUrl?: string;
+  heroVideoFileUrl?: string;
   carouselSlides?: any[];
 }
 
@@ -24,15 +25,18 @@ export default function Hero({
   primaryCTA = 'ക്ഷേത്രത്തെ അറിയാം',
   heroImageUrl,
   heroVideoUrl,
+  heroVideoFileUrl,
   carouselSlides,
 }: HeroProps) {
+  const activeVideoUrl = heroVideoUrl || heroVideoFileUrl;
+
   return (
     <section className="relative min-h-[65vh] md:h-[75vh] w-full flex flex-col justify-center overflow-hidden bg-charcoal py-8">
       {/* Background Video (if provided) */}
-      {heroVideoUrl ? (
+      {activeVideoUrl ? (
         <video
-          key={heroVideoUrl}
-          src={heroVideoUrl}
+          key={activeVideoUrl}
+          src={activeVideoUrl}
           autoPlay
           loop
           muted
@@ -40,9 +44,9 @@ export default function Hero({
           controlsList="nodownload"
           className="absolute inset-0 w-full h-full object-cover z-0 scale-105 transition-transform duration-1000"
         >
-          <source src={heroVideoUrl} type="video/mp4" />
-          <source src={heroVideoUrl} type="video/webm" />
-          <source src={heroVideoUrl} />
+          <source src={activeVideoUrl} type="video/mp4" />
+          <source src={activeVideoUrl} type="video/webm" />
+          <source src={activeVideoUrl} />
         </video>
       ) : (
         /* Background Image Fallback */
