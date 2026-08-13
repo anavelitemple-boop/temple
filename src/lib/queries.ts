@@ -14,6 +14,7 @@ export const vazhipadusQuery = `*[_type == "vazhipadu"] | order(price asc)`;
 
 export const announcementsQuery = `*[_type in ["announcement", "news"] && published != false]{
   ...,
+  "imageUrl": image.asset->url,
   "pdfUrl": pdfFile.asset->url
 } | order(date desc, _createdAt desc)`;
 
@@ -25,6 +26,7 @@ export const eventsQuery = `*[_type == "event"] | order(date asc)`;
 
 export const newsQuery = `*[_type in ["announcement", "news"] && published != false]{
   ...,
+  "imageUrl": image.asset->url,
   "pdfUrl": pdfFile.asset->url
 } | order(date desc, _createdAt desc)`;
 

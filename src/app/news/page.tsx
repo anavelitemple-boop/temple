@@ -28,7 +28,7 @@ export default async function NewsPage() {
           ) : (
             newsList.map((item, idx) => {
               const slug = item.slug?.current || item.slug;
-              const imgUrl = urlFor(item.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=600';
+              const imgUrl = item.imageUrl || urlFor(item.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=600';
               const displayTitle = item.malayalamTitle || item.title || 'പ്രധാന അറിയിപ്പ്';
               const displaySummary = item.summary || item.description || '';
               const displayDate = item.date 

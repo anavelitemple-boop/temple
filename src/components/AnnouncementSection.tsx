@@ -11,6 +11,7 @@ interface Announcement {
   description?: string;
   summary?: string;
   image?: any;
+  imageUrl?: string;
   date?: string;
   pdfUrl?: string;
 }
@@ -37,7 +38,7 @@ export default function AnnouncementSection({ announcements }: AnnouncementSecti
 
         <div className="grid md:grid-cols-3 gap-8 mt-8">
           {featuredAnnouncements.map((item, index) => {
-            const imageUrl = urlFor(item.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=600';
+            const imageUrl = item.imageUrl || urlFor(item.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=600';
             const displayTitle = item.malayalamTitle || item.title || 'പ്രധാന അറിയിപ്പ്';
             const displayDescription = item.description || item.summary || '';
             const displayDate = item.date 
