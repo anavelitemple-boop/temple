@@ -8,6 +8,7 @@ interface CustomSlide {
   title?: string;
   type?: string;
   icon?: string;
+  date?: string;
   description?: string;
   content?: React.ReactNode;
 }
@@ -117,11 +118,16 @@ export default function DailyUpdatesCarousel({ slides: customSlides }: DailyUpda
               <span className="text-xl">{currentSlide.icon || '🪔'}</span>
             </div>
 
-            {/* Badge Type below Title */}
-            <div className="mt-2 text-left">
+            {/* Badge Type & Optional Date below Title */}
+            <div className="mt-2 text-left flex items-center justify-between gap-2">
               <span className="inline-block text-xs tracking-wide text-gold font-bold bg-black/60 px-2.5 py-1 rounded border border-gold/30">
                 {currentSlide.type || 'അറിയിപ്പ്'}
               </span>
+              {currentSlide.date && (
+                <span className="text-[11px] text-gold/90 font-semibold bg-black/40 px-2 py-0.5 rounded border border-gold/20">
+                  📅 {currentSlide.date}
+                </span>
+              )}
             </div>
           </div>
 

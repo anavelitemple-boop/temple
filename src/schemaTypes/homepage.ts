@@ -84,6 +84,12 @@ export default defineType({
               description: 'e.g. 🪔, 👤, 📢',
             }),
             defineField({
+              name: 'date',
+              title: 'Optional Date / Time (തീയതി / സമയം - Optional)',
+              type: 'string',
+              description: 'e.g. 2026-08-14 or 05:00 AM',
+            }),
+            defineField({
               name: 'description',
               title: 'Description Content (വിവരണം)',
               type: 'text',
