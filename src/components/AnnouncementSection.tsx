@@ -23,7 +23,7 @@ export default function AnnouncementSection({ announcements }: AnnouncementSecti
   const featuredAnnouncements = announcements.slice(0, 3);
 
   return (
-    <section className="py-[50px] bg-cream-dark/25 border-y border-gold/15">
+    <section className="py-[20px] bg-cream-dark/25 border-y border-gold/15">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading 
           title="പ്രധാന അറിയിപ്പുകൾ" 

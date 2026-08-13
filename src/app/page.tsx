@@ -34,7 +34,7 @@ export default async function Home() {
   const targetCountdownName = homepageContent.festivalRef?.name || 'ആനവേലി ക്ഷേത്ര പെരുന്നാൾ';
 
   return (
-    <div className="flex flex-col gap-[50px]">
+    <div className="flex flex-col gap-[20px]">
       {/* Hero Section */}
       <Hero 
         heroTitle={homepageContent.heroTitle}

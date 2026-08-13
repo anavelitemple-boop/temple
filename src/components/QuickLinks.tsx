@@ -16,7 +16,7 @@ const quickActions = [
 
 export default function QuickLinks() {
   return (
-    <section className="py-[50px] bg-cream-dark/30 border-y border-gold/20">
+    <section className="py-[20px] bg-cream-dark/30 border-y border-gold/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {quickActions.map((item, idx) => {
