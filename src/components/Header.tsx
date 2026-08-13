@@ -21,7 +21,7 @@ export const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [priestPhone, setPriestPhone] = useState('');
+  const [priestPhone, setPriestPhone] = useState('7356462150');
   const [priestButtonText, setPriestButtonText] = useState('ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം');
   const pathname = usePathname();
 
@@ -36,9 +36,9 @@ export default function Header() {
   useEffect(() => {
     async function loadSiteSettings() {
       try {
-        const settings = await client.fetch(siteSettingsQuery, {}, { useCdn: false });
+        const settings = await safeFetch<any>(siteSettingsQuery, {}, null);
         if (settings) {
-          if (settings.priestPhone !== undefined) setPriestPhone(settings.priestPhone || '');
+          if (settings.priestPhone) setPriestPhone(settings.priestPhone);
           if (settings.priestButtonText) setPriestButtonText(settings.priestButtonText);
         }
       } catch (e) {
@@ -57,9 +57,9 @@ export default function Header() {
     return `${priestButtonText} - ${cleanNumber}`;
   }, [priestButtonText, priestPhone]);
 
-  const getTelHref = (phone: string) => {
-    if (!phone) return '#';
-    const trimmed = phone.trim();
+  const getTelHref = (phone?: string) => {
+    const raw = phone || priestPhone || '7356462150';
+    const trimmed = raw.trim();
     if (trimmed.startsWith('+')) {
       return `tel:${trimmed.replace(/[^\d+]/g, '')}`;
     }
@@ -67,7 +67,7 @@ export default function Header() {
     if (digits.length === 10) {
       return `tel:+91${digits}`;
     }
-    return `tel:${digits}`;
+    return `tel:${digits || '+917356462150'}`;
   };
 
   // Determine if we should display the transparent navbar theme
@@ -159,6 +159,7 @@ export default function Header() {
             <div className="pt-3 mt-2 border-t border-slate-200/80 flex justify-center">
               <a
                 href={getTelHref(priestPhone)}
+                onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center gap-2.5 bg-black hover:bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold w-full transition-colors shadow-sm"
               >
                 <Phone size={16} />
