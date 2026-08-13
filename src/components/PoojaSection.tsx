@@ -20,7 +20,7 @@ export default function PoojaSection({ poojas }: PoojaSectionProps) {
   const activePoojas = poojas.filter(p => p.active !== false).slice(0, 4);
 
   return (
-    <section className="py-16 bg-cream">
+    <section className="py-[50px] bg-cream">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading 
           title="ഇന്നത്തെ പൂജകൾ" 
