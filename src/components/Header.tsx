@@ -21,7 +21,7 @@ export const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [priestPhone, setPriestPhone] = useState('');
+  const [priestPhone, setPriestPhone] = useState('96561 13825');
   const [priestButtonText, setPriestButtonText] = useState('ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം');
   const pathname = usePathname();
 
@@ -36,7 +36,7 @@ export default function Header() {
   useEffect(() => {
     async function loadSiteSettings() {
       try {
-        const settings = await client.fetch(siteSettingsQuery, {}, { useCdn: false });
+        const settings = await safeFetch<any>(siteSettingsQuery, {}, null);
         if (settings) {
           if (settings.priestPhone) setPriestPhone(settings.priestPhone);
           if (settings.priestButtonText) setPriestButtonText(settings.priestButtonText);
@@ -58,8 +58,7 @@ export default function Header() {
   }, [priestButtonText, priestPhone]);
 
   const getTelHref = (phone?: string) => {
-    const raw = phone || priestPhone;
-    if (!raw) return '#';
+    const raw = phone || priestPhone || '96561 13825';
     const trimmed = raw.trim();
     if (trimmed.startsWith('+')) {
       return `tel:${trimmed.replace(/[^\d+]/g, '')}`;
@@ -68,7 +67,7 @@ export default function Header() {
     if (digits.length === 10) {
       return `tel:+91${digits}`;
     }
-    return `tel:${digits}`;
+    return `tel:${digits || '+919656113825'}`;
   };
 
   // Determine if we should display the transparent navbar theme
