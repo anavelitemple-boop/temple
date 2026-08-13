@@ -10,7 +10,10 @@ export const poojasQuery = `*[_type == "pooja"] | order(time asc)`;
 
 export const vazhipadusQuery = `*[_type == "vazhipadu"] | order(price asc)`;
 
-export const announcementsQuery = `*[_type == "announcement" && published == true] | order(date desc)`;
+export const announcementsQuery = `*[_type == "announcement" && published == true]{
+  ...,
+  "pdfUrl": pdfFile.asset->url
+} | order(date desc)`;
 
 export const festivalsQuery = `*[_type == "festival"] | order(startDate asc)`;
 
@@ -18,7 +21,10 @@ export const festivalScheduleQuery = `*[_type == "festivalSchedule"] | order(dat
 
 export const eventsQuery = `*[_type == "event"] | order(date asc)`;
 
-export const newsQuery = `*[_type == "news"] | order(date desc)`;
+export const newsQuery = `*[_type == "news"]{
+  ...,
+  "pdfUrl": pdfFile.asset->url
+} | order(date desc)`;
 
 export const newsBySlugQuery = `*[_type == "news" && slug.current == $slug][0]`;
 

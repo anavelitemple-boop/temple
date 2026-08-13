@@ -71,7 +71,7 @@ export default function Gallery({ items, isHomePreview = false }: GalleryProps) 
                 >
                   <Image
                     src={imgUrl}
-                    alt={item.title}
+                    alt={item.title || 'ക്ഷേത്ര ദൃശ്യം'}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"

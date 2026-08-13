@@ -11,6 +11,7 @@ interface Announcement {
   description: string;
   image?: any;
   date: string;
+  pdfUrl?: string;
 }
 
 interface AnnouncementSectionProps {
@@ -63,7 +64,17 @@ export default function AnnouncementSection({ announcements }: AnnouncementSecti
                     {item.description}
                   </p>
 
-                  <div className="mt-auto">
+                  <div className="mt-auto space-y-2">
+                    {item.pdfUrl && (
+                      <a
+                        href={item.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-2 px-3 rounded-xl bg-red-700 hover:bg-red-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors shadow-sm"
+                      >
+                        <span>📄 PDF കാണാം / ഡൗൺലോഡ് ചെയ്യാം</span>
+                      </a>
+                    )}
                     <Button href="/news" variant="secondary" className="w-full text-xs py-2 px-4">
                       കൂടുതൽ വായിക്കാം
                     </Button>

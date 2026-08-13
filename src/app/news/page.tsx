@@ -58,7 +58,17 @@ export default async function NewsPage() {
                     </p>
                   </div>
 
-                  <div>
+                  <div className="flex flex-wrap items-center gap-3 mt-4">
+                    {item.pdfUrl && (
+                      <a
+                        href={item.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold text-xs transition-colors shadow-sm"
+                      >
+                        <span>📄 PDF ഡൗൺലോഡ്</span>
+                      </a>
+                    )}
                     <Link 
                       href={`/news/${slug}`}
                       className="inline-flex items-center gap-1.5 text-maroon hover:text-gold font-bold text-sm transition-colors"

@@ -6,11 +6,11 @@ import { Compass, Scroll, Gift, Calendar, Image, FileText, MapPin } from 'lucide
 import { motion } from 'framer-motion';
 
 const quickActions = [
-  { title: 'പൂജകൾ', desc: 'പ്രധാന നിത്യപൂജകൾ', href: '/poojakal', icon: Scroll, color: 'from-maroon to-maroon-dark' },
+  { title: 'പൂജ ബുക്കിംഗ്', desc: 'പൂജകൾ ബുക്ക് ചെയ്യാം', href: '/pooja-booking', icon: Calendar, color: 'from-maroon to-maroon-dark' },
+  { title: 'ക്ഷേത്ര പൂജകൾ', desc: 'പ്രധാന നിത്യപൂജകൾ', href: '/poojakal', icon: Scroll, color: 'from-maroon to-maroon-dark' },
   { title: 'വഴിപാടുകൾ', desc: 'വഴിപാട് വിവരങ്ങൾ', href: '/poojakal#vazhipadu', icon: Gift, color: 'from-maroon to-maroon-dark' },
   { title: 'ഗാലറി', desc: 'ക്ഷേത്ര ദൃശ്യങ്ങൾ', href: '/gallery', icon: Image, color: 'from-maroon to-maroon-dark' },
   { title: 'അറിയിപ്പുകൾ', desc: 'പ്രധാന അറിയിപ്പുകൾ', href: '/news', icon: FileText, color: 'from-maroon to-maroon-dark' },
-  { title: 'പ്രത്യേക പൂജകൾ', desc: 'പ്രത്യേക പൂജകളും ചടങ്ങുകളും', href: '/special-poojas', icon: Calendar, color: 'from-maroon to-maroon-dark' },
   { title: 'വഴി കണ്ടെത്തുക', desc: 'ക്ഷേത്ര ലൊക്കേഷൻ', href: '/contact', icon: MapPin, color: 'from-gold-dark to-gold' },
 ];
 
