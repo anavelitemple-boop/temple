@@ -42,8 +42,11 @@ export default async function Home() {
         heroDescription={homepageContent.heroDescription}
         primaryCTA={homepageContent.primaryCTA}
         secondaryCTA={homepageContent.secondaryCTA}
+        heroImageUrl={urlFor(homepageContent.heroImage)}
+        heroVideoUrl={homepageContent.heroVideoUrl}
+        heroVideoFileUrl={homepageContent.heroVideoFileUrl}
         festivalDate={targetCountdownDate}
-        heroVideoUrl={homepageContent.heroVideoFileUrl || homepageContent.heroVideoUrl}
+        festivalName={targetCountdownName}
         carouselSlides={homepageContent.carouselSlides}
       />
 
