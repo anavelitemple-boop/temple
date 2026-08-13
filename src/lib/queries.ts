@@ -12,10 +12,10 @@ export const poojasQuery = `*[_type == "pooja"] | order(time asc)`;
 
 export const vazhipadusQuery = `*[_type == "vazhipadu"] | order(price asc)`;
 
-export const announcementsQuery = `*[_type == "announcement" && published == true]{
+export const announcementsQuery = `*[_type in ["announcement", "news"] && published != false]{
   ...,
   "pdfUrl": pdfFile.asset->url
-} | order(date desc)`;
+} | order(date desc, _createdAt desc)`;
 
 export const festivalsQuery = `*[_type == "festival"] | order(startDate asc)`;
 
@@ -23,10 +23,10 @@ export const festivalScheduleQuery = `*[_type == "festivalSchedule"] | order(dat
 
 export const eventsQuery = `*[_type == "event"] | order(date asc)`;
 
-export const newsQuery = `*[_type == "news"]{
+export const newsQuery = `*[_type in ["announcement", "news"] && published != false]{
   ...,
   "pdfUrl": pdfFile.asset->url
-} | order(date desc)`;
+} | order(date desc, _createdAt desc)`;
 
 export const newsBySlugQuery = `*[_type == "news" && slug.current == $slug][0]`;
 
