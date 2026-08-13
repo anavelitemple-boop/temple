@@ -318,27 +318,6 @@ ${devoteesText}
                     required
                     className="w-full px-3.5 py-2.5 rounded-xl border border-gold/30 bg-white text-maroon font-bold text-xs focus:outline-none focus:border-gold"
                   />
-                  
-                  {/* Warning if already booked on selected date */}
-                  {(() => {
-                    const existingBooking = bookedList.find(
-                      b => b.date === bookingDate && b.poojaName === selectedPooja.malayalamName
-                    );
-                    if (existingBooking) {
-                      return (
-                        <div className="mt-2.5 p-3 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-900 text-xs font-bold flex items-start gap-2">
-                          <span className="text-base">⚠️</span>
-                          <div>
-                            <span className="font-extrabold text-maroon-dark block">ഈ തീയതിയിൽ മുൻപ് ബുക്കിംഗ് നടന്നിട്ടുണ്ട്!</span>
-                            <span className="text-[11px] font-semibold text-maroon/90">
-                              {existingBooking.devotees[0]?.name} ({existingBooking.devotees[0]?.nakshathram}) ഈ തീയതിയിൽ ({bookingDate}) ഈ പൂജ ബുക്ക് ചെയ്തിട്ടുണ്ട്.
-                            </span>
-                          </div>
-                        </div>
-                      );
-                    }
-                    return null;
-                  })()}
                 </div>
 
                 {/* Devotees List */}
