@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Phone } from 'lucide-react';
 
-import { safeFetch, mockData, client } from '@/lib/sanity';
-import { siteSettingsQuery } from '@/lib/queries';
 
 export const navLinks = [
   { name: 'ഹോം', href: '/' },
@@ -21,8 +19,6 @@ export const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [priestPhone, setPriestPhone] = useState('96561 13825');
-  const [priestButtonText, setPriestButtonText] = useState('ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം');
   const pathname = usePathname();
 
   useEffect(() => {
@@ -32,43 +28,6 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    async function loadSiteSettings() {
-      try {
-        const settings = await safeFetch<any>(siteSettingsQuery, {}, null);
-        if (settings) {
-          if (settings.priestPhone) setPriestPhone(settings.priestPhone);
-          if (settings.priestButtonText) setPriestButtonText(settings.priestButtonText);
-        }
-      } catch (e) {
-        // Fallback
-      }
-    }
-    loadSiteSettings();
-  }, []);
-
-  const formattedPriestLabel = React.useMemo(() => {
-    if (!priestPhone) return priestButtonText;
-    const cleanNumber = priestPhone.trim();
-    if (priestButtonText.includes(cleanNumber) || /\d{5}/.test(priestButtonText)) {
-      return priestButtonText;
-    }
-    return `${priestButtonText} - ${cleanNumber}`;
-  }, [priestButtonText, priestPhone]);
-
-  const getTelHref = (phone?: string) => {
-    const raw = phone || priestPhone || '96561 13825';
-    const trimmed = raw.trim();
-    if (trimmed.startsWith('+')) {
-      return `tel:${trimmed.replace(/[^\d+]/g, '')}`;
-    }
-    const digits = trimmed.replace(/\D/g, '');
-    if (digits.length === 10) {
-      return `tel:+91${digits}`;
-    }
-    return `tel:${digits || '+919656113825'}`;
-  };
 
   // Determine if we should display the transparent navbar theme
   const isHomepage = pathname === '/';
@@ -115,7 +74,7 @@ export default function Header() {
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center">
           <a
-            href={getTelHref(priestPhone || '+91 9895873935')}
+            href="tel:+919656113825"
             className="bg-[#25D366] hover:bg-[#1ea34e] text-white flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm"
           >
             <Phone size={12} />
@@ -158,12 +117,12 @@ export default function Header() {
             })}
             <div className="pt-3 mt-2 border-t border-slate-200/80 flex justify-center">
               <a
-                href={getTelHref(priestPhone)}
+                href="tel:+919656113825"
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center gap-2.5 bg-black hover:bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold w-full transition-colors shadow-sm"
               >
                 <Phone size={16} />
-                <span>{formattedPriestLabel}</span>
+                <span>ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം - 96561 13825</span>
               </a>
             </div>
           </div>

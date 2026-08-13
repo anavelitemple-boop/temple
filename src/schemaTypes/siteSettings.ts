@@ -43,18 +43,6 @@ export default defineType({
       initialValue: 'കൊപ്പര ആനവേലിൽ ശ്രീ ദേവി ക്ഷേത്രം, അമ്പലപ്പുഴ, ആലപ്പുഴ, കേരളം - 688005',
     }),
     defineField({
-      name: 'priestPhone',
-      title: 'Priest Phone Number (പൂജാരിയുടെ ഫോൺ നമ്പർ)',
-      type: 'string',
-      description: 'Phone number for calling temple priest (ക്ഷേത്ര പൂജാരിയെ വിളിക്കാൻ)',
-    }),
-    defineField({
-      name: 'priestButtonText',
-      title: 'Priest Button Text (പൂജാരി ബട്ടൺ ടെക്സ്റ്റ്)',
-      type: 'string',
-      initialValue: 'ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം',
-    }),
-    defineField({
       name: 'mapsLink',
       title: 'Google Maps Link (ഗൂഗിൾ മാപ്പ് ലിങ്ക്)',
       type: 'url',
