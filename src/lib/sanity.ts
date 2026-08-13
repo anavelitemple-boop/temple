@@ -58,35 +58,7 @@ export const mockData = {
     { name: 'Muttu Vazhipadu', malayalamName: 'മുട്ടറുക്കൽ', description: 'വിഘ്നങ്ങൾ നീങ്ങാൻ തേങ്ങ മുട്ടറുക്കൽ.', price: 30, category: 'ganapathy' },
     { name: 'Bhagavathy Seva', malayalamName: 'ഭഗവതി സേവ', description: 'ഐശ്വര്യത്തിനും ദുരിത നിവാരണത്തിനുമായി ദേവിക്ക് സമർപ്പിക്കുന്നു.', price: 500, category: 'devi' },
   ],
-  announcements: [
-    {
-      title: 'Anaveli Temple Festival 2026',
-      malayalamTitle: 'ആനവേലി ക്ഷേത്ര പെരുന്നാൾ 2026',
-      description: 'ഈ വർഷത്തെ പെരുന്നാൾ ഫെബ്രുവരി 15 മുതൽ 22 വരെ വളരെ ഭംഗിയായി നടത്തുവാൻ തീരുമാനിച്ചിരിക്കുന്നു. ഭക്തജനങ്ങളുടെ സഹകരണം പ്രതീക്ഷിക്കുന്നു.',
-      image: '/images/festival.jpg',
-      date: '2026-02-15',
-      published: true,
-      featured: true
-    },
-    {
-      title: 'Special Pooja Booking Started',
-      malayalamTitle: 'പ്രത്യേകം പൂജ ബുക്കിംഗ് ആരംഭിച്ചു',
-      description: 'മണ്ഡലകാല പൂജകളുടെ ഓൺലൈൻ / വാട്സ്ആപ്പ് വഴിപാടുകൾ ഇപ്പോൾ ബുക്ക് ചെയ്യാവുന്നതാണ്.',
-      image: '/images/pooja.jpg',
-      date: '2026-08-11',
-      published: true,
-      featured: true
-    },
-    {
-      title: 'Temple Renovation Work Updates',
-      malayalamTitle: 'ക്ഷേത്ര നവീകരണ പ്രവർത്തനങ്ങൾ',
-      description: 'ക്ഷേത്ര ചുറ്റമ്പലം നവീകരിക്കുന്നതിനുള്ള പ്രവർത്തനങ്ങൾ ആരംഭിച്ചു. നിങ്ങളുടെ സഹായസഹകരണങ്ങൾ നൽകുക.',
-      image: '/images/renovation.jpg',
-      date: '2026-07-20',
-      published: true,
-      featured: true
-    }
-  ],
+  announcements: [],
   festivals: [
     {
       name: 'ആനവേലി ക്ഷേത്ര പെരുന്നാൾ 2026',

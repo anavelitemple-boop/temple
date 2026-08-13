@@ -17,7 +17,7 @@ export default async function Home() {
   const poojas = await safeFetch<any[]>(poojasQuery, {}, mockData.poojas);
   
   // Fetch announcements
-  const announcements = await safeFetch<any[]>(announcementsQuery, {}, mockData.announcements);
+  const announcements = await safeFetch<any[]>(announcementsQuery, {}, []);
   
   // Fetch gallery images
   const galleryRaw = await safeFetch<any[]>(galleryQuery, {}, []);

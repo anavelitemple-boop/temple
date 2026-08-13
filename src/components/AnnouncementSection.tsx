@@ -19,6 +19,10 @@ interface AnnouncementSectionProps {
 }
 
 export default function AnnouncementSection({ announcements }: AnnouncementSectionProps) {
+  if (!announcements || announcements.length === 0) {
+    return null;
+  }
+
   // Show top 3 announcements
   const featuredAnnouncements = announcements.slice(0, 3);
 
