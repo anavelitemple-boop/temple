@@ -57,6 +57,19 @@ export default function Header() {
     return `${priestButtonText} - ${cleanNumber}`;
   }, [priestButtonText, priestPhone]);
 
+  const getTelHref = (phone: string) => {
+    if (!phone) return '#';
+    const trimmed = phone.trim();
+    if (trimmed.startsWith('+')) {
+      return `tel:${trimmed.replace(/[^\d+]/g, '')}`;
+    }
+    const digits = trimmed.replace(/\D/g, '');
+    if (digits.length === 10) {
+      return `tel:+91${digits}`;
+    }
+    return `tel:${digits}`;
+  };
+
   // Determine if we should display the transparent navbar theme
   const isHomepage = pathname === '/';
   const showTransparentTheme = isHomepage && !isScrolled;
@@ -102,7 +115,7 @@ export default function Header() {
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center">
           <a
-            href="tel:+919895873935"
+            href={getTelHref(priestPhone || '+91 9895873935')}
             className="bg-[#25D366] hover:bg-[#1ea34e] text-white flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm"
           >
             <Phone size={12} />
@@ -145,7 +158,7 @@ export default function Header() {
             })}
             <div className="pt-3 mt-2 border-t border-slate-200/80 flex justify-center">
               <a
-                href={`tel:${priestPhone.replace(/\s+/g, '')}`}
+                href={getTelHref(priestPhone)}
                 className="flex items-center justify-center gap-2.5 bg-black hover:bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold w-full transition-colors shadow-sm"
               >
                 <Phone size={16} />
