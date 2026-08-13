@@ -31,6 +31,8 @@ export const mockData = {
     title: 'ആനവേലി ക്ഷേത്രം',
     description: 'നമ്മുടെ ഗ്രാമത്തിന്റെ ആത്മീയ പൈതൃകം',
     phone: '+91 9895873935',
+    priestPhone: '+91 96561 13825',
+    priestButtonText: 'ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം',
     whatsapp: '919895873935',
     email: 'info@anavelitemple.org',
     address: 'കൊപ്പര ആനവേലിൽ ശ്രീ ദേവി ക്ഷേത്രം, അമ്പലപ്പുഴ, ആലപ്പുഴ, കേരളം - 688005',

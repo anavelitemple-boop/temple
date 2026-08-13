@@ -5,6 +5,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Phone } from 'lucide-react';
 
+import { safeFetch, mockData, client } from '@/lib/sanity';
+import { siteSettingsQuery } from '@/lib/queries';
+
 export const navLinks = [
   { name: 'ഹോം', href: '/' },
   { name: 'പൂജ ബുക്കിംഗ്', href: '/pooja-booking' },
@@ -18,6 +21,8 @@ export const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [priestPhone, setPriestPhone] = useState(mockData.siteSettings.priestPhone || '+91 96561 13825');
+  const [priestButtonText, setPriestButtonText] = useState(mockData.siteSettings.priestButtonText || 'ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം');
   const pathname = usePathname();
 
   useEffect(() => {
@@ -26,6 +31,19 @@ export default function Header() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    async function loadSiteSettings() {
+      try {
+        const settings = await client.fetch(siteSettingsQuery);
+        if (settings?.priestPhone) setPriestPhone(settings.priestPhone);
+        if (settings?.priestButtonText) setPriestButtonText(settings.priestButtonText);
+      } catch (e) {
+        // Fallback to default
+      }
+    }
+    loadSiteSettings();
   }, []);
 
   // Determine if we should display the transparent navbar theme
@@ -114,13 +132,13 @@ export default function Header() {
                 </Link>
               );
             })}
-            <div className="pt-2 mt-2 border-t border-gold/20 flex justify-center">
+            <div className="pt-3 mt-2 border-t border-slate-200/80 flex justify-center">
               <a
-                href="tel:+919447000000"
-                className="flex items-center justify-center gap-2 bg-maroon text-cream px-6 py-2 rounded-xl text-xs font-bold w-full"
+                href={`tel:${priestPhone.replace(/\s+/g, '')}`}
+                className="flex items-center justify-center gap-2.5 bg-black hover:bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold w-full transition-colors shadow-sm"
               >
-                <Phone size={14} />
-                <span>ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം</span>
+                <Phone size={16} />
+                <span>{priestButtonText}</span>
               </a>
             </div>
           </div>
