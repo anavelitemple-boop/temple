@@ -40,7 +40,7 @@ export default defineType({
       name: 'address',
       title: 'Address (മേൽവിലാസം)',
       type: 'text',
-      initialValue: 'ആനവേലി ശ്രീ മഹാദേവ ക്ഷേത്രം, ആനവേലി പി.ഒ, പത്തനംതിട്ട, കേരളം - 689645',
+      initialValue: 'കൊപ്പര ആനവേലിൽ ശ്രീ ദേവി ക്ഷേത്രം, അമ്പലപ്പുഴ, ആലപ്പുഴ, കേരളം - 688005',
     }),
     defineField({
       name: 'mapsLink',

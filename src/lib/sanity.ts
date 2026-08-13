@@ -33,8 +33,8 @@ export const mockData = {
     phone: '+91 9895873935',
     whatsapp: '919895873935',
     email: 'info@anavelitemple.org',
-    address: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം, ആനവേലി പി.ഒ, പത്തനംതിട്ട, കേരളം - 689645',
-    mapsLink: 'https://maps.google.com',
+    address: 'കൊപ്പര ആനവേലിൽ ശ്രീ ദേവി ക്ഷേത്രം, അമ്പലപ്പുഴ, ആലപ്പുഴ, കേരളം - 688005',
+    mapsLink: 'https://maps.app.goo.gl/WY18Ci7aZHFzmEUD8',
   },
   homepage: {
     heroTitle: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',

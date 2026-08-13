@@ -91,13 +91,13 @@ export default async function ContactPage() {
           {/* Interactive Map Block */}
           <div className="bg-cream border border-gold/30 rounded-2xl overflow-hidden shadow-sm h-[400px] md:h-auto relative">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126084.77258380486!2d76.71182276536965!3d9.274384954497678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b060d40bf6fb667%3A0xb35fdf05a0d3df8e!2sPathanamthitta%2C%20Kerala!5e0!3m2!1sen!2sin!4v1723380000000!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.3113941457193!2d76.360155!3d9.379469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b089c78a362a5bd%3A0xb28c27e59232eb78!2sKoppara%20Anavelil%20Sree%20Devi%20Temple!5e0!3m2!1sen!2sin!4v1723500000000!5m2!1sen!2sin" 
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 
               allowFullScreen={true}
               loading="lazy" 
-              title="Anaveli Temple Location Map"
+              title="Koppara Anavelil Sree Devi Temple Location Map"
               className="absolute inset-0"
             />
           </div>
