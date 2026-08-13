@@ -9,6 +9,9 @@ export const revalidate = 60;
 
 export default async function ContactPage() {
   const settings = await safeFetch<any>(siteSettingsQuery, {}, mockData.siteSettings);
+  const mapsUrl = (settings?.mapsLink && settings.mapsLink !== 'https://maps.google.com' && settings.mapsLink.trim() !== '') 
+    ? settings.mapsLink 
+    : 'https://maps.app.goo.gl/WY18Ci7aZHFzmEUD8';
 
   return (
     <div className="py-16 bg-cream min-h-screen">
@@ -69,7 +72,8 @@ export default async function ContactPage() {
             {/* Quick Actions */}
             <div className="mt-8 pt-6 border-t border-gold/20 flex flex-col gap-3">
               <Button 
-                href={settings.mapsLink}
+                href={mapsUrl}
+                target="_blank"
                 variant="gold"
                 className="w-full text-center py-3 flex items-center justify-center gap-2"
               >
