@@ -47,7 +47,6 @@ export default defineType({
       title: 'Priest Phone Number (പൂജാരിയുടെ ഫോൺ നമ്പർ)',
       type: 'string',
       description: 'Phone number for calling temple priest (ക്ഷേത്ര പൂജാരിയെ വിളിക്കാൻ)',
-      initialValue: '+91 96561 13825',
     }),
     defineField({
       name: 'priestButtonText',

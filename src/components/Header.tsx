@@ -21,8 +21,8 @@ export const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [priestPhone, setPriestPhone] = useState(mockData.siteSettings.priestPhone || '+91 96561 13825');
-  const [priestButtonText, setPriestButtonText] = useState(mockData.siteSettings.priestButtonText || 'ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം');
+  const [priestPhone, setPriestPhone] = useState('');
+  const [priestButtonText, setPriestButtonText] = useState('ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം');
   const pathname = usePathname();
 
   useEffect(() => {
@@ -37,10 +37,12 @@ export default function Header() {
     async function loadSiteSettings() {
       try {
         const settings = await client.fetch(siteSettingsQuery, {}, { useCdn: false });
-        if (settings?.priestPhone) setPriestPhone(settings.priestPhone);
-        if (settings?.priestButtonText) setPriestButtonText(settings.priestButtonText);
+        if (settings) {
+          if (settings.priestPhone !== undefined) setPriestPhone(settings.priestPhone || '');
+          if (settings.priestButtonText) setPriestButtonText(settings.priestButtonText);
+        }
       } catch (e) {
-        // Fallback to default
+        // Fallback
       }
     }
     loadSiteSettings();
