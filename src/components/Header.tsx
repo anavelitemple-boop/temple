@@ -122,7 +122,7 @@ export default function Header() {
                 className="flex items-center justify-center gap-2.5 bg-black hover:bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold w-full transition-colors shadow-sm"
               >
                 <Phone size={16} />
-                <span>ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം - 96561 13825</span>
+                <span>ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം</span>
               </a>
             </div>
           </div>
