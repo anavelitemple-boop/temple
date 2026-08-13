@@ -19,16 +19,19 @@ interface HeroProps {
 }
 
 export default function Hero({
-  heroTitle = 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
-  heroSubtitle = 'നമ്മുടെ ഗ്രാമത്തിന്റെ ആത്മീയ പൈതൃകം',
-  heroDescription = 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഡിജിറ്റൽ സന്നിധിയിലേക്ക് സ്വാഗതം. ശതവർഷങ്ങളുടെ പാരമ്പര്യവും ഗ്രാമത്തിന്റെ തനിമയും വിളിച്ചോതുന്ന പുണ്യ സങ്കേതം.',
-  primaryCTA = 'ക്ഷേത്രത്തെ അറിയാം',
+  heroTitle,
+  heroSubtitle,
+  heroDescription,
+  primaryCTA,
   heroImageUrl,
   heroVideoUrl,
   heroVideoFileUrl,
   carouselSlides,
 }: HeroProps) {
   const activeVideoUrl = heroVideoUrl || heroVideoFileUrl;
+  const title = heroTitle || 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം';
+  const subtitle = heroSubtitle || 'നമ്മുടെ ഗ്രാമത്തിന്റെ ആത്മീയ പൈതൃകം';
+  const description = heroDescription || 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഡിജിറ്റൽ സന്നിധിയിലേക്ക് സ്വാഗതം. ശതവർഷങ്ങളുടെ പാരമ്പര്യവും ഗ്രാമത്തിന്റെ തനിമയും വിളിച്ചോതുന്ന പുണ്യ സങ്കേതം.';
 
   return (
     <section className="relative min-h-[65vh] md:h-[75vh] w-full flex flex-col justify-center overflow-hidden bg-charcoal py-8">
@@ -75,13 +78,13 @@ export default function Hero({
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gold leading-tight drop-shadow-lg">
-            {heroTitle}
+            {title}
           </h1>
           <h2 className="text-lg sm:text-xl font-bold text-cream mt-2 tracking-wide">
-            {heroSubtitle}
+            {subtitle}
           </h2>
           <p className="mt-3 text-cream/80 text-xs sm:text-sm md:text-base leading-relaxed hidden sm:block">
-            {heroDescription}
+            {description}
           </p>
         </motion.div>
 
