@@ -20,6 +20,12 @@ export default async function PoojaBookingPage() {
   const pageTitle = cmsBooking?.title || 'ക്ഷേത്ര പൂജകൾ & ബുക്കിംഗ്';
   const pageSubtitle = cmsBooking?.subtitle || 'ഭദ്രകാളി ദേവിക്ക് പൂജകൾ ലളിതമായി ബുക്ക് ചെയ്യാം';
 
+  // Combine dropdown list configured in Pooja Booking Page Settings and general Poojas list
+  const combinedPoojasList = [
+    ...(cmsBooking?.poojaList || []),
+    ...poojas
+  ];
+
   return (
     <div className="py-16 bg-cream min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,7 +43,7 @@ export default async function PoojaBookingPage() {
             cmsPoojaName={cmsBooking?.defaultPoojaName}
             cmsPoojaPrice={cmsBooking?.defaultPoojaPrice}
             cmsPoojaDescription={cmsBooking?.poojaDescription}
-            cmsPoojasList={poojas}
+            cmsPoojasList={combinedPoojasList}
           />
         </div>
 
