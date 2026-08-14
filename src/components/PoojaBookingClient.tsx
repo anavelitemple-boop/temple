@@ -57,28 +57,49 @@ interface PoojaBookingClientProps {
   cmsPoojaName?: string;
   cmsPoojaPrice?: number;
   cmsPoojaDescription?: string;
+  cmsPoojasList?: Array<{
+    _id?: string;
+    name?: string;
+    malayalamName?: string;
+    price?: number;
+    description?: string;
+    time?: string;
+  }>;
 }
 
 export default function PoojaBookingClient({ 
   whatsappNum = '919895873935',
   cmsPoojaName,
   cmsPoojaPrice,
-  cmsPoojaDescription
+  cmsPoojaDescription,
+  cmsPoojasList
 }: PoojaBookingClientProps) {
   const activePoojaName = cmsPoojaName || DEFAULT_POOJAS[0].malayalamName;
   const activePoojaPrice = cmsPoojaPrice || DEFAULT_POOJAS[0].price;
 
-  const currentPoojasList: PoojaItem[] = [
-    {
-      id: 'd1',
-      name: 'Devi Pooja',
-      malayalamName: activePoojaName,
-      price: activePoojaPrice,
-      time: '',
-      category: 'daily',
-      description: cmsPoojaDescription || DEFAULT_POOJAS[0].description
-    }
-  ];
+  // Build full pooja options list from CMS poojas or default fallback
+  const availablePoojas: PoojaItem[] = (cmsPoojasList && cmsPoojasList.length > 0)
+    ? cmsPoojasList.map((p, idx) => ({
+        id: p._id || `pooja-${idx}`,
+        name: p.name || p.malayalamName || 'Pooja',
+        malayalamName: p.malayalamName || p.name || 'പൂജ',
+        price: p.price || 0,
+        time: p.time || '',
+        category: 'daily',
+        description: p.description || ''
+      }))
+    : [
+        {
+          id: 'd1',
+          name: 'Devi Pooja',
+          malayalamName: activePoojaName,
+          price: activePoojaPrice,
+          time: '',
+          category: 'daily',
+          description: cmsPoojaDescription || DEFAULT_POOJAS[0].description
+        }
+      ];
+
   const [selectedPooja, setSelectedPooja] = useState<PoojaItem | null>(null);
   const [bookingDate, setBookingDate] = useState<string>('');
   const [devotees, setDevotees] = useState<Devotee[]>([{ name: '', nakshathram: '' }]);
@@ -234,7 +255,7 @@ ${devoteesText}
 
         <div className="mt-6 pt-4 border-t border-gold/30 flex justify-center">
           <button
-            onClick={() => openModal(currentPoojasList[0])}
+            onClick={() => openModal(availablePoojas[0])}
             className="px-7 py-3 rounded-full bg-gold hover:bg-gold-light text-maroon-dark font-extrabold text-sm sm:text-base shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
           >
             <Calendar size={18} />
@@ -279,12 +300,12 @@ ${devoteesText}
                 <select
                   value={selectedPooja.id}
                   onChange={(e) => {
-                    const found = DEFAULT_POOJAS.find(p => p.id === e.target.value);
+                    const found = availablePoojas.find(p => p.id === e.target.value);
                     if (found) setSelectedPooja(found);
                   }}
                   className="w-full px-3 py-2.5 rounded-xl border border-gold/40 bg-white text-maroon font-bold text-sm focus:outline-none focus:border-gold shadow-sm"
                 >
-                  {DEFAULT_POOJAS.map(p => (
+                  {availablePoojas.map(p => (
                     <option key={p.id} value={p.id}>
                       {p.malayalamName} (₹{p.price})
                     </option>

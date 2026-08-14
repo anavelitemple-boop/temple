@@ -2,7 +2,7 @@ import React from 'react';
 import SectionHeading from '@/components/SectionHeading';
 import PoojaBookingClient from '@/components/PoojaBookingClient';
 import { safeFetch, mockData } from '@/lib/sanity';
-import { siteSettingsQuery, poojaBookingQuery } from '@/lib/queries';
+import { siteSettingsQuery, poojaBookingQuery, poojasQuery } from '@/lib/queries';
 
 export const metadata = {
   title: 'പൂജ ബുക്കിംഗ് | ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
@@ -14,6 +14,7 @@ export const revalidate = 0;
 export default async function PoojaBookingPage() {
   const settings = await safeFetch<any>(siteSettingsQuery, {}, mockData.siteSettings);
   const cmsBooking = await safeFetch<any>(poojaBookingQuery, {}, null);
+  const poojas = await safeFetch<any[]>(poojasQuery, {}, mockData.poojas);
 
   const whatsappNum = cmsBooking?.whatsappNumber || settings.whatsapp || '919895873935';
   const pageTitle = cmsBooking?.title || 'ക്ഷേത്ര പൂജകൾ & ബുക്കിംഗ്';
@@ -36,6 +37,7 @@ export default async function PoojaBookingPage() {
             cmsPoojaName={cmsBooking?.defaultPoojaName}
             cmsPoojaPrice={cmsBooking?.defaultPoojaPrice}
             cmsPoojaDescription={cmsBooking?.poojaDescription}
+            cmsPoojasList={poojas}
           />
         </div>
 
