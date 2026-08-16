@@ -43,7 +43,7 @@ export default async function PoojakalPage() {
                   <h3 className="text-sm sm:text-lg font-bold text-maroon">{pooja.malayalamName}</h3>
                   <p className="text-[10px] sm:text-xs text-maroon-light/60 font-bold mt-0.5">{pooja.name}</p>
                 </div>
-                <span className="bg-maroon text-amber-300 text-[10px] sm:text-xs font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full whitespace-nowrap">
+                <span className="bg-maroon text-[#25D366] text-[10px] sm:text-xs font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full whitespace-nowrap">
                   {pooja.time}
                 </span>
               </div>

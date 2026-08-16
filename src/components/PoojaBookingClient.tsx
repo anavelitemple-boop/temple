@@ -412,9 +412,9 @@ ${devoteesText}
                 {/* Submit WhatsApp Booking */}
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-2xl bg-maroon hover:bg-black text-gold font-extrabold text-sm flex items-center justify-center gap-2 cursor-pointer shadow-lg transition-transform active:scale-[0.99] border border-gold/30"
+                  className="w-full py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#1ea34e] text-white font-extrabold text-sm flex items-center justify-center gap-2 cursor-pointer shadow-lg transition-transform active:scale-[0.99]"
                 >
-                  <MessageCircle size={18} className="text-[#25D366] fill-[#25D366]/20" />
+                  <MessageCircle size={18} className="text-white" />
                   <span>WhatsApp വഴി ബുക്കിംഗ് നൽകുക</span>
                 </button>
               </form>

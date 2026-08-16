@@ -85,9 +85,9 @@ export default async function ContactPage() {
                 href={`https://wa.me/${settings.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 rounded-lg font-extrabold bg-maroon hover:bg-black text-gold transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm border border-gold/30"
+                className="w-full py-3 rounded-lg font-extrabold bg-[#25D366] hover:bg-[#1ea34e] text-white transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm"
               >
-                <MessageCircle size={20} className="text-[#25D366] fill-[#25D366]/20" />
+                <MessageCircle size={20} className="text-white" />
                 <span>വാട്സ്ആപ്പിൽ ബന്ധപ്പെടുക</span>
               </a>
             </div>

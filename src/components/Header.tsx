@@ -83,7 +83,7 @@ export default function Header({ callerPhone = '+91 7356462150', priestPhone }: 
         <div className="hidden lg:flex items-center">
           <a
             href={`tel:${cleanPhone}`}
-            className="bg-gold hover:bg-gold-dark text-black flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-extrabold transition-all shadow-sm"
+            className="bg-[#25D366] hover:bg-[#1ea34e] text-white flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm"
           >
             <Phone size={12} />
             <span>വിളിക്കുക</span>
