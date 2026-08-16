@@ -2,7 +2,7 @@ import React from 'react';
 import SectionHeading from '@/components/SectionHeading';
 import { safeFetch, mockData } from '@/lib/sanity';
 import { siteSettingsQuery } from '@/lib/queries';
-import { Phone, Mail, MapPin, Compass } from 'lucide-react';
+import { Phone, Mail, MapPin, Compass, MessageCircle } from 'lucide-react';
 import Button from '@/components/Button';
 
 export const revalidate = 60;
