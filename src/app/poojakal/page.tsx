@@ -11,7 +11,7 @@ export default async function PoojakalPage() {
   const vazhipadus = await safeFetch<any[]>(vazhipadusQuery, {}, mockData.vazhipadus);
   const settings = await safeFetch<any>(siteSettingsQuery, {}, mockData.siteSettings);
 
-  const whatsappNum = settings.whatsapp || '919895873935';
+  const whatsappNum = settings.poojaBookingPhone || settings.whatsapp || '917356462150';
 
   return (
     <div className="py-16 bg-cream min-h-screen">

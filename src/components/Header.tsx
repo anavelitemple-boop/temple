@@ -16,10 +16,16 @@ export const navLinks = [
   { name: 'ബന്ധപ്പെടുക', href: '/contact' },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  callerPhone?: string;
+}
+
+export default function Header({ callerPhone = '+91 7356462150' }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  const cleanPhone = callerPhone.replace(/\s+/g, '');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,7 +80,7 @@ export default function Header() {
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center">
           <a
-            href="tel:+919656113825"
+            href={`tel:${cleanPhone}`}
             className="bg-[#25D366] hover:bg-[#1ea34e] text-white flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm"
           >
             <Phone size={12} />
@@ -117,7 +123,7 @@ export default function Header() {
             })}
             <div className="pt-3 mt-2 border-t border-slate-200/80 flex justify-center">
               <a
-                href="tel:+919656113825"
+                href={`tel:${cleanPhone}`}
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center gap-2.5 bg-black hover:bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold w-full transition-colors shadow-sm"
               >

@@ -48,5 +48,19 @@ export default defineType({
       type: 'url',
       initialValue: 'https://maps.google.com',
     }),
+    defineField({
+      name: 'poojaBookingPhone',
+      title: 'Pooja Booking WhatsApp Number (പൂജ ബുക്കിംഗ് വാട്സ്ആപ്പ് നമ്പർ)',
+      type: 'string',
+      description: 'Format with country code: e.g. 917356462150',
+      initialValue: '917356462150',
+    }),
+    defineField({
+      name: 'bottomCallerPhone',
+      title: 'Bottom & Header Caller Button Phone (കോളിംഗ് ബട്ടൺ ഫോൺ നമ്പർ)',
+      type: 'string',
+      description: 'Phone number for header call & bottom floating phone button (e.g. +91 7356462150)',
+      initialValue: '+91 7356462150',
+    }),
   ],
 })

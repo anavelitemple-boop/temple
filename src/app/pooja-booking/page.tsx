@@ -16,7 +16,7 @@ export default async function PoojaBookingPage() {
   const cmsBooking = await safeFetch<any>(poojaBookingQuery, {}, null);
   const poojas = await safeFetch<any[]>(poojasQuery, {}, mockData.poojas);
 
-  const whatsappNum = cmsBooking?.whatsappNumber || settings.whatsapp || '919895873935';
+  const whatsappNum = cmsBooking?.whatsappNumber || settings?.poojaBookingPhone || settings?.whatsapp || '917356462150';
   const pageTitle = cmsBooking?.title || 'ക്ഷേത്ര പൂജകൾ & ബുക്കിംഗ്';
   const pageSubtitle = cmsBooking?.subtitle || 'ഭദ്രകാളി ദേവിക്ക് പൂജകൾ ലളിതമായി ബുക്ക് ചെയ്യാം';
 
