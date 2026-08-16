@@ -67,7 +67,7 @@ export default function Header({ callerPhone = '+91 7356462150' }: HeaderProps) 
                 href={link.href}
                 className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300 ${
                   isActive
-                    ? 'bg-emerald-600/20 text-emerald-800'
+                    ? 'bg-gold/20 text-gold-dark font-extrabold border border-gold/40'
                     : 'text-black hover:bg-gold/10 hover:text-gold-dark'
                 }`}
               >
@@ -81,7 +81,7 @@ export default function Header({ callerPhone = '+91 7356462150' }: HeaderProps) 
         <div className="hidden lg:flex items-center">
           <a
             href={`tel:${cleanPhone}`}
-            className="bg-[#25D366] hover:bg-[#1ea34e] text-white flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm"
+            className="bg-gold hover:bg-gold-dark text-black flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-extrabold transition-all shadow-sm"
           >
             <Phone size={12} />
             <span>വിളിക്കുക</span>
@@ -113,7 +113,7 @@ export default function Header({ callerPhone = '+91 7356462150' }: HeaderProps) 
                   onClick={() => setIsOpen(false)}
                   className={`py-2 px-4 rounded-xl text-sm font-extrabold transition-all ${
                     isActive
-                      ? 'bg-emerald-600/15 text-emerald-800'
+                      ? 'bg-gold/20 text-gold-dark border border-gold/30'
                       : 'text-maroon hover:bg-gold/5'
                   }`}
                 >

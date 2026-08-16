@@ -227,7 +227,8 @@ ${devoteesText}
 വിവരങ്ങൾ ദയവായി ക്രമീകരിക്കുമല്ലോ.`;
 
     const encoded = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/${whatsappNum}?text=${encoded}`, '_blank');
+    const targetNum = (whatsappNum || '917356462150').replace(/\D/g, '');
+    window.open(`https://wa.me/${targetNum}?text=${encoded}`, '_blank');
 
     closeModal();
   };
@@ -411,7 +412,7 @@ ${devoteesText}
                 {/* Submit WhatsApp Booking */}
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm flex items-center justify-center gap-2 cursor-pointer shadow-lg transition-transform active:scale-[0.99]"
+                  className="w-full py-3.5 rounded-2xl bg-gold hover:bg-gold-dark text-black font-extrabold text-sm flex items-center justify-center gap-2 cursor-pointer shadow-lg transition-transform active:scale-[0.99] border border-gold-dark/30"
                 >
                   <MessageCircle size={18} />
                   <span>WhatsApp വഴി ബുക്കിംഗ് നൽകുക</span>

@@ -85,7 +85,7 @@ export default async function ContactPage() {
                 href={`https://wa.me/${settings.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-center py-3 rounded-lg font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-colors duration-200 block shadow-sm"
+                className="w-full text-center py-3 rounded-lg font-extrabold bg-gold hover:bg-gold-dark text-black transition-colors duration-200 block shadow-sm border border-gold-dark/30"
               >
                 💬 വാട്സ്ആപ്പിൽ ബന്ധപ്പെടുക
               </a>
