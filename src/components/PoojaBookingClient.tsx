@@ -102,12 +102,6 @@ export default function PoojaBookingClient({
 
   const [selectedPooja, setSelectedPooja] = useState<PoojaItem | null>(null);
 
-  useEffect(() => {
-    if (availablePoojas.length > 0) {
-      setSelectedPooja(availablePoojas[0]);
-    }
-  }, [cmsPoojasList]);
-
   const [bookingDate, setBookingDate] = useState<string>('');
   const [devotees, setDevotees] = useState<Devotee[]>([{ name: '', nakshathram: '' }]);
   const [bookedList, setBookedList] = useState<StoredBooking[]>([]);
