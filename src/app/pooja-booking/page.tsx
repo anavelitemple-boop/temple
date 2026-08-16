@@ -3,6 +3,7 @@ import SectionHeading from '@/components/SectionHeading';
 import PoojaBookingClient from '@/components/PoojaBookingClient';
 import { safeFetch, mockData } from '@/lib/sanity';
 import { siteSettingsQuery, poojaBookingQuery, poojasQuery } from '@/lib/queries';
+import { MessageCircle } from 'lucide-react';
 
 export const metadata = {
   title: 'പൂജ ബുക്കിംഗ് | ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
@@ -64,7 +65,10 @@ export default async function PoojaBookingPage() {
             </div>
             <div className="bg-cream/60 border border-gold/20 p-4 rounded-2xl">
               <div className="w-8 h-8 rounded-full bg-gold/20 text-gold-dark font-extrabold flex items-center justify-center mx-auto mb-2 text-sm">3</div>
-              <h4 className="font-bold text-sm text-maroon">WhatsApp സന്ദേശം അയക്കുക</h4>
+              <h4 className="font-bold text-sm text-maroon flex items-center justify-center gap-1.5">
+                <MessageCircle size={16} className="text-[#25D366] fill-[#25D366]/20" />
+                <span>WhatsApp സന്ദേശം അയക്കുക</span>
+              </h4>
               <p className="text-xs text-maroon-light/80 mt-1">നെരിട്ടൊരു ക്ലിക്കിൽ ക്ഷേത്രത്തിലേക്ക് മെസ്സേജ് അയച്ചു ബുക്കിംഗ് ഉറപ്പാക്കുക.</p>
             </div>
           </div>

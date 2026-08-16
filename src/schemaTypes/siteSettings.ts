@@ -62,5 +62,12 @@ export default defineType({
       description: 'Phone number for header call & bottom floating phone button (e.g. +91 7356462150)',
       initialValue: '+91 7356462150',
     }),
+    defineField({
+      name: 'priestPhone',
+      title: 'Priest Phone Number (ക്ഷേത്ര പൂജാരിയുടെ ഫോൺ നമ്പർ)',
+      type: 'string',
+      description: 'Phone number for "ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം" button (e.g. +91 7356462150)',
+      initialValue: '+91 7356462150',
+    }),
   ],
 })

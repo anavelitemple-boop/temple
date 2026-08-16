@@ -32,12 +32,13 @@ export default async function RootLayout({
 }>) {
   const settings = await safeFetch<any>(siteSettingsQuery, {}, mockData.siteSettings);
   const callerPhone = settings?.bottomCallerPhone || settings?.phone || '+91 7356462150';
+  const priestPhone = settings?.priestPhone || settings?.phone || '+91 7356462150';
   const cleanCallerPhone = callerPhone.replace(/\s+/g, '');
 
   return (
     <html lang="ml" className={`${baloo.className} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-cream text-charcoal">
-        <Header callerPhone={callerPhone} />
+        <Header callerPhone={callerPhone} priestPhone={priestPhone} />
         <main className="flex-grow">
           {children}
         </main>

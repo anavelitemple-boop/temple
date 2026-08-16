@@ -197,9 +197,9 @@ ${devoteesListText}
 
                 <button
                   type="submit"
-                  className="w-full mt-4 py-3 rounded-lg bg-gold hover:bg-gold-dark text-black font-extrabold text-sm flex items-center justify-center gap-2 cursor-pointer shadow-md border border-gold-dark/30"
+                  className="w-full mt-4 py-3 rounded-lg bg-maroon hover:bg-black text-gold font-extrabold text-sm flex items-center justify-center gap-2 cursor-pointer shadow-md border border-gold/30"
                 >
-                  <MessageCircle size={18} />
+                  <MessageCircle size={18} className="text-[#25D366] fill-[#25D366]/20" />
                   <span>WhatsApp വഴി ബുക്ക് ചെയ്യുക</span>
                 </button>
               </form>

@@ -18,14 +18,16 @@ export const navLinks = [
 
 interface HeaderProps {
   callerPhone?: string;
+  priestPhone?: string;
 }
 
-export default function Header({ callerPhone = '+91 7356462150' }: HeaderProps) {
+export default function Header({ callerPhone = '+91 7356462150', priestPhone }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   const cleanPhone = callerPhone.replace(/\s+/g, '');
+  const cleanPriestPhone = (priestPhone || callerPhone).replace(/\s+/g, '');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -123,7 +125,7 @@ export default function Header({ callerPhone = '+91 7356462150' }: HeaderProps) 
             })}
             <div className="pt-3 mt-2 border-t border-slate-200/80 flex justify-center">
               <a
-                href={`tel:${cleanPhone}`}
+                href={`tel:${cleanPriestPhone}`}
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center gap-2.5 bg-black hover:bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold w-full transition-colors shadow-sm"
               >
