@@ -1,10 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import SectionHeading from '@/components/SectionHeading';
 import PdfDownloadButton from '@/components/PdfDownloadButton';
 import { safeFetch, urlFor } from '@/lib/sanity';
 import { specialPoojasQuery } from '@/lib/queries';
-import { Calendar, Flame, Sparkles } from 'lucide-react';
+import { Calendar, Flame, ChevronRight } from 'lucide-react';
 
 export const revalidate = 60;
 
@@ -13,8 +14,10 @@ export const metadata = {
   description: 'ക്ഷേത്രസന്നിധിയിൽ വരാനിരിക്കുന്ന വിശേഷാൽ പൂജകളും അതിനോട് അനുബന്ധിച്ച പൂജാതി കാര്യങ്ങളും.',
 };
 
-const defaultSpecialPoojas = [
+export const defaultSpecialPoojas = [
   {
+    _id: 'kalamezhuthu-pattu',
+    slug: 'kalamezhuthu-pattu',
     title: 'കളമെഴുത്തും പാട്ടും',
     malayalamTitle: 'കളമെഴുത്തും പാട്ടും',
     date: 'വാർഷിക ഉത്സവം',
@@ -23,6 +26,8 @@ const defaultSpecialPoojas = [
     imageUrl: 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=800',
   },
   {
+    _id: 'maha-pongala',
+    slug: 'maha-pongala',
     title: 'മഹാ പൊങ്കാല സമർപ്പണം',
     malayalamTitle: 'മഹാ പൊങ്കാല സമർപ്പണം',
     date: 'ഉത്സവ തിരുനാൾ',
@@ -31,6 +36,8 @@ const defaultSpecialPoojas = [
     imageUrl: 'https://images.unsplash.com/photo-1545232979-fbf592af5fef?q=80&w=800',
   },
   {
+    _id: 'bhagavathy-seva-ayilya-pooja',
+    slug: 'bhagavathy-seva-ayilya-pooja',
     title: 'വിശേഷാൽ ഭഗവതി സേവ & ആയില്യ പൂജ',
     malayalamTitle: 'വിശേഷാൽ ഭഗവതി സേവ & ആയില്യ പൂജ',
     date: 'മാസാന്ത ചടങ്ങുകൾ',
@@ -55,10 +62,11 @@ export default async function SpecialPoojasPage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {displayItems.map((item, idx) => {
+            const slug = item.slug?.current || item.slug || item._id;
             const imgUrl = item.imageUrl || urlFor(item.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=600';
             const displayTitle = item.malayalamTitle || item.title || 'വിശേഷാൽ പൂജ';
             const displayDate = item.date || 'വരാനിരിക്കുന്ന ചടങ്ങ്';
-            const displayDesc = item.description || item.summary || '';
+            const displayDesc = item.summary || item.description || '';
 
             return (
               <div 
@@ -87,23 +95,26 @@ export default async function SpecialPoojasPage() {
                       {displayTitle}
                     </h3>
                     {displayDesc && (
-                      <p className="text-maroon-light/80 text-sm font-semibold leading-relaxed">
+                      <p className="text-maroon-light/80 text-sm font-semibold leading-relaxed line-clamp-3">
                         {displayDesc}
                       </p>
                     )}
                   </div>
 
-                  {/* PDF Download Button - Only renders if admin uploaded a PDF in CMS */}
-                  {item.pdfUrl && (
-                    <div className="pt-4 border-t border-gold/20">
-                      <PdfDownloadButton 
-                        pdfUrl={item.pdfUrl} 
-                        title="പൂജാ വിവരങ്ങളുടെ PDF"
-                        className="w-full"
-                        variant="secondary"
-                      />
-                    </div>
-                  )}
+                  {/* Actions (PDF Download + Read in Detail) */}
+                  <div className="pt-4 border-t border-gold/20 flex flex-wrap items-center justify-between gap-3">
+                    <PdfDownloadButton 
+                      pdfUrl={item.pdfUrl} 
+                      variant="compact"
+                    />
+                    <Link 
+                      href={`/special-poojas/${slug}`}
+                      className="inline-flex items-center gap-1.5 text-maroon hover:text-gold font-bold text-sm transition-colors ml-auto"
+                    >
+                      <span>വിശദമായി വായിക്കാം</span>
+                      <ChevronRight size={16} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             );

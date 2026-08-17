@@ -48,3 +48,9 @@ export const specialPoojasQuery = `*[_type == "specialPooja"]{
   "imageUrl": image.asset->url,
   "pdfUrl": pdfFile.asset->url
 } | order(_createdAt desc)`;
+
+export const specialPoojaBySlugQuery = `*[_type == "specialPooja" && (slug.current == $slug || _id == $slug)][0]{
+  ...,
+  "imageUrl": image.asset->url,
+  "pdfUrl": pdfFile.asset->url
+}`;
