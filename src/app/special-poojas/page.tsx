@@ -1,100 +1,109 @@
 import React from 'react';
+import Image from 'next/image';
 import SectionHeading from '@/components/SectionHeading';
-import { Calendar, Award, Compass, Flame } from 'lucide-react';
+import PdfDownloadButton from '@/components/PdfDownloadButton';
+import { safeFetch, urlFor } from '@/lib/sanity';
+import { specialPoojasQuery } from '@/lib/queries';
+import { Calendar, Flame, Sparkles } from 'lucide-react';
+
+export const revalidate = 60;
 
 export const metadata = {
-  title: 'വിശേഷ ചടങ്ങുകൾ | Anaveli Temple',
-  description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെപ്രത്യേക പൂജകളും ചടങ്ങുകളും.',
+  title: 'വിശേഷാൽ പൂജകൾ | Anaveli Temple',
+  description: 'ക്ഷേത്രസന്നിധിയിൽ വരാനിരിക്കുന്ന വിശേഷാൽ പൂജകളും അതിനോട് അനുബന്ധിച്ച പൂജാതി കാര്യങ്ങളും.',
 };
 
-const specialEvents = [
+const defaultSpecialPoojas = [
   {
-    title: 'ഉത്സവ ചടങ്ങുകൾ (Festival Rituals)',
-    icon: Flame,
-    items: [
-      {
-        name: 'കളമെഴുത്തും പാട്ടും',
-        desc: 'ഭദ്രകാളി ദേവിയുടെ രൂപം പ്രകൃതിദത്തമായ പഞ്ചവർണ്ണപ്പൊടികൾ കൊണ്ട് വരച്ച് ഭക്തിനിർഭരമായ പാട്ടുകളോടെയുള്ള പരമ്പരാഗത ചടങ്ങ്.',
-        time: 'വാർഷിക ഉത്സവം'
-      },
-      {
-        name: 'പൊങ്കാല സമർപ്പണം',
-        desc: 'ക്ഷേത്ര സന്നിധിയിൽ ഭക്തരായ സ്ത്രീകൾ മൺകലങ്ങളിൽ ദേവിക്ക് പ്രിയപ്പെട്ട പൊങ്കാല നിവേദ്യം തയ്യാറാക്കി സമർപ്പിക്കുന്ന പവിത്രമായ ചടങ്ങ്.',
-        time: 'ഉത്സവ ദിനം'
-      },
-      {
-        name: 'താലപ്പൊലി ഘോഷയാത്ര',
-        desc: 'മംഗളകരമായ ജീവിതത്തിനും ഐശ്വര്യത്തിനുമായി ഭക്തർ താലമേന്തി ദേവിയെ എഴുന്നള്ളിക്കുന്ന മനോഹരമായ ചടങ്ങ്.',
-        time: 'ഉത്സവ സന്ധ്യ'
-      }
-    ]
+    title: 'കളമെഴുത്തും പാട്ടും',
+    malayalamTitle: 'കളമെഴുത്തും പാട്ടും',
+    date: 'വാർഷിക ഉത്സവം',
+    summary: 'ഭദ്രകാളി ദേവിയുടെ രൂപം പഞ്ചവർണ്ണപ്പൊടികൾ കൊണ്ട് വരച്ച് ഭക്തിനിർഭരമായ പാട്ടുകളോടെയുള്ള പരമ്പരാഗത ചടങ്ങ്.',
+    description: 'ഭദ്രകാളി ദേവിയുടെ അനുഗ്രഹം തേടി പ്രകൃതിദത്തമായ പഞ്ചവർണ്ണപ്പൊടികൾ കൊണ്ട് ഭീമമായ രൂപം വരച്ച് തിരിയുഴിച്ചിലും കള പാട്ടും നടത്തി ദേവിയെ പ്രീതിപ്പെടുത്തുന്ന പ്രാചീനമായ തന്ത്രിക് അനുഷ്ഠാനം.',
+    imageUrl: 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=800',
   },
   {
-    title: 'പ്രത്യേക പ്രതിമാസ പൂജകൾ (Monthly Special Poojas)',
-    icon: Calendar,
-    items: [
-      {
-        name: 'ആയില്യ പൂജ',
-        desc: 'നാഗദൈവങ്ങൾക്കായി എല്ലാ ആയില്യം നക്ഷത്രത്തിലും വിശേഷാൽ അഭിഷേകവും പൂജകളും ചടങ്ങുകളും.',
-        time: 'എല്ലാ ആയില്യം നക്ഷത്രത്തിലും'
-      },
-      {
-        name: 'ഭഗവതി സേവ',
-        desc: 'സർവ്വ ഐശ്വര്യത്തിനും ദുരിതനിവാരണത്തിനുമായി സന്ധ്യയ്ക്ക് ദേവിക്ക് സമർപ്പിക്കുന്ന വിശേഷാൽ തന്ത്രി പൂജ.',
-        time: 'എല്ലാ കർക്കടക മാസത്തിലും'
-      },
-      {
-        name: 'വിഷുക്കണി ദർശനം',
-        desc: 'മേടമാസ ഒന്നാം തീയതി പുലർച്ചെ ഐശ്വര്യ പൂർണ്ണമായ വിഷുക്കണി ദർശനവും കൈനീട്ട വിതരണവും.',
-        time: 'വിഷു ദിനം'
-      }
-    ]
+    title: 'മഹാ പൊങ്കാല സമർപ്പണം',
+    malayalamTitle: 'മഹാ പൊങ്കാല സമർപ്പണം',
+    date: 'ഉത്സവ തിരുനാൾ',
+    summary: 'ക്ഷേത്ര സന്നിധിയിൽ ഭക്തജനങ്ങൾ മൺകലങ്ങളിൽ ദേവിക്ക് പൊങ്കാല നിവേദ്യം തയ്യാറാക്കി സമർപ്പിക്കുന്ന പവിത്ര ചടങ്ങ്.',
+    description: 'ആഗ്രഹ സാഫല്യത്തിനും കുടുംബ ഐശ്വര്യത്തിനുമായി വ്രതശുദ്ധിയോടെ നൂറുകണക്കിന് ഭക്തർ ക്ഷേത്ര മുറ്റത്ത് പൊങ്കാല അർപ്പിച്ചു പ്രാർത്ഥിക്കുന്നു.',
+    imageUrl: 'https://images.unsplash.com/photo-1545232979-fbf592af5fef?q=80&w=800',
+  },
+  {
+    title: 'വിശേഷാൽ ഭഗവതി സേവ & ആയില്യ പൂജ',
+    malayalamTitle: 'വിശേഷാൽ ഭഗവതി സേവ & ആയില്യ പൂജ',
+    date: 'മാസാന്ത ചടങ്ങുകൾ',
+    summary: 'സർവ്വ ഐശ്വര്യത്തിനും ദുരിതനിവാരണത്തിനുമായി സന്ധ്യയ്ക്ക് സമർപ്പിക്കുന്ന തന്ത്രി പൂജയും നാഗപൂജയും.',
+    description: 'എല്ലാ മാസത്തെയും വിശേഷാൽ ദിവസങ്ങളിൽ ദേവിയുടെ സന്നിധിയിൽ വിളക്കുപൂജയും നാഗതറയിൽ ആയില്യ പൂജയും സർപ്പബലിയും നടത്തപ്പെടുന്നു.',
+    imageUrl: 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=800',
   }
 ];
 
-export default function SpecialPoojasPage() {
+export default async function SpecialPoojasPage() {
+  const itemsList = await safeFetch<any[]>(specialPoojasQuery, {}, defaultSpecialPoojas);
+  const displayItems = itemsList.length > 0 ? itemsList : defaultSpecialPoojas;
+
   return (
     <div className="py-16 bg-cream min-h-screen">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <SectionHeading 
-          title="പ്രത്യേക പൂജകളും ചടങ്ങുകളും" 
-          subtitle="ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെ പ്രധാന വാർഷിക ഉത്സവ ചടങ്ങുകളും വിശേഷാൽ പ്രതിമാസ പൂജകളും" 
+          title="ക്ഷേത്രസന്നിധിയിൽ വരാനിരിക്കുന്ന വിശേഷാൽ പൂജകളും അതിനോട് അനുബന്ധിച്ച പൂജാതി കാര്യങ്ങളും" 
+          subtitle="ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെ പ്രധാന വിശേഷാൽ പൂജകളുടെയും പ്രത്യേക ചടങ്ങുകളുടെയും വിവരങ്ങൾ" 
         />
 
-        <div className="space-y-12 mt-12">
-          {specialEvents.map((section, idx) => {
-            const Icon = section.icon;
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          {displayItems.map((item, idx) => {
+            const imgUrl = item.imageUrl || urlFor(item.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=600';
+            const displayTitle = item.malayalamTitle || item.title || 'വിശേഷാൽ പൂജ';
+            const displayDate = item.date || 'വരാനിരിക്കുന്ന ചടങ്ങ്';
+            const displayDesc = item.description || item.summary || '';
+
             return (
-              <div key={idx} className="bg-cream border border-gold/30 rounded-2xl p-6 sm:p-8 shadow-sm">
-                <div className="flex items-center gap-3 border-b border-gold/20 pb-4 mb-6">
-                  <div className="p-2.5 rounded-xl bg-maroon/5 text-gold border border-gold/20">
-                    <Icon size={22} />
+              <div 
+                key={idx}
+                className="bg-cream border border-gold/25 hover:border-gold rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full"
+              >
+                {/* Image */}
+                <div className="relative h-52 w-full bg-maroon-dark/10">
+                  <Image
+                    src={imgUrl}
+                    alt={displayTitle}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute top-3 right-3 bg-maroon/90 text-gold px-3 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1">
+                    <Flame size={13} />
+                    <span>{displayDate}</span>
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-maroon">
-                    {section.title}
-                  </h2>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {section.items.map((item, itemIdx) => (
-                    <div 
-                      key={itemIdx}
-                      className="bg-cream-dark/20 border border-gold/15 rounded-xl p-5 hover:border-gold hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-                    >
-                      <div>
-                        <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-gold-dark bg-gold/10 px-2 py-0.5 rounded-full mb-3">
-                          {item.time}
-                        </span>
-                        <h3 className="text-lg font-bold text-black mb-2">
-                          {item.name}
-                        </h3>
-                        <p className="text-maroon-light/80 text-xs sm:text-sm font-medium leading-relaxed">
-                          {item.desc}
-                        </p>
-                      </div>
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
+                  <div>
+                    <h3 className="text-xl font-extrabold text-maroon mb-3 leading-snug">
+                      {displayTitle}
+                    </h3>
+                    {displayDesc && (
+                      <p className="text-maroon-light/80 text-sm font-semibold leading-relaxed">
+                        {displayDesc}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* PDF Download Button - Only renders if admin uploaded a PDF in CMS */}
+                  {item.pdfUrl && (
+                    <div className="pt-4 border-t border-gold/20">
+                      <PdfDownloadButton 
+                        pdfUrl={item.pdfUrl} 
+                        title="പൂജാ വിവരങ്ങളുടെ PDF"
+                        className="w-full"
+                        variant="secondary"
+                      />
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             );

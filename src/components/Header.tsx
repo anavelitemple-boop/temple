@@ -10,6 +10,7 @@ export const navLinks = [
   { name: 'ഹോം', href: '/' },
   { name: 'പൂജ ബുക്കിംഗ്', href: '/pooja-booking' },
   { name: 'ക്ഷേത്ര പൂജകൾ', href: '/poojakal' },
+  { name: 'വിശേഷാൽ പൂജകൾ', href: '/special-poojas' },
   { name: 'വഴിപാടുകൾ', href: '/poojakal#vazhipadu' },
   { name: 'ഗാലറി', href: '/gallery' },
   { name: 'അറിയിപ്പുകൾ', href: '/news' },

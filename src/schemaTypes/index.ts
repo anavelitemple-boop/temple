@@ -6,6 +6,7 @@ import announcement from './announcement'
 import gallery from './gallery'
 import galleryCategory from './galleryCategory'
 import festival from './festival'
+import specialPooja from './specialPooja'
 
 export const schemaTypes = [
   siteSettings,
@@ -16,4 +17,5 @@ export const schemaTypes = [
   gallery,
   galleryCategory,
   festival,
+  specialPooja,
 ]

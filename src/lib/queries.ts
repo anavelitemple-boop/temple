@@ -42,3 +42,9 @@ export const galleryQuery = `*[_type == "gallery"]{
 }`;
 
 export const historyQuery = `*[_type == "history"] | order(year asc)`;
+
+export const specialPoojasQuery = `*[_type == "specialPooja"]{
+  ...,
+  "imageUrl": image.asset->url,
+  "pdfUrl": pdfFile.asset->url
+} | order(_createdAt desc)`;
