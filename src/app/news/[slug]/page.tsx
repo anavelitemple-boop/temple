@@ -56,7 +56,7 @@ export default async function NewsDetailPage({ params }: Props) {
             <span>അറിയിപ്പുകളിലേക്ക് മടങ്ങാം</span>
           </Link>
 
-          <PdfDownloadButton pdfUrl={article?.pdfUrl} variant="compact" />
+          <PdfDownloadButton pdfUrl={article?.pdfUrl} variant="compact" className="hidden md:inline-flex" />
         </div>
 
         <article className="bg-cream border border-gold/30 rounded-2xl overflow-hidden shadow-sm p-6 md:p-10">

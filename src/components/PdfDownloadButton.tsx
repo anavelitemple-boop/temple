@@ -32,7 +32,7 @@ export default function PdfDownloadButton({
         title="PDF ഡൗൺലോഡ് ചെയ്യുക"
       >
         <FileText size={14} />
-        <span>📄 PDF ഡൗൺലോഡ്</span>
+        <span>PDF ഡൗൺലോഡ്</span>
         <Download size={14} />
       </a>
     );
