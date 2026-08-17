@@ -22,10 +22,15 @@ export default function QuickLinks() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
           {quickActions.map((item, idx) => {
             const Icon = item.icon;
+            const isLastItem = idx === quickActions.length - 1;
             return (
-              <Link key={idx} href={item.href} className="group">
+              <Link 
+                key={idx} 
+                href={item.href} 
+                className={`group ${isLastItem ? 'col-span-2 sm:col-span-1 flex justify-center' : ''}`}
+              >
                 <motion.div 
-                  className="bg-cream border border-gold/30 hover:border-gold p-4 rounded-xl shadow-sm text-center flex flex-col items-center justify-center h-full transition-all duration-300 hover:shadow-md cursor-pointer relative overflow-hidden"
+                  className={`bg-cream border border-gold/30 hover:border-gold p-4 rounded-xl shadow-sm text-center flex flex-col items-center justify-center h-full transition-all duration-300 hover:shadow-md cursor-pointer relative overflow-hidden ${isLastItem ? 'w-1/2 sm:w-full' : 'w-full'}`}
                   whileHover={{ y: -4 }}
                 >
                   {/* Icon Container */}
