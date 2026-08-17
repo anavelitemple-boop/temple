@@ -107,16 +107,18 @@ export default async function NewsDetailPage({ params }: Props) {
             )}
           </div>
 
-          {/* PDF Download Section Box */}
-          <div className="mt-10 pt-6 border-t border-gold/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-cream-dark/30 p-5 rounded-xl border border-gold/20">
-            <div>
-              <h4 className="font-bold text-maroon text-base">രേഖകൾ / മാധ്യമ ഫയലുകൾ</h4>
-              <p className="text-xs text-maroon-light font-medium mt-0.5">
-                ഈ അറിയിപ്പുമായി ബന്ധപ്പെട്ട PDF രേഖ ഇവിടെ നിന്നും ഡൗൺലോഡ് ചെയ്യാം.
-              </p>
+          {/* PDF Download Section Box (Only shown if Admin uploaded a PDF) */}
+          {article?.pdfUrl && (
+            <div className="mt-10 pt-6 border-t border-gold/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-cream-dark/30 p-5 rounded-xl border border-gold/20">
+              <div>
+                <h4 className="font-bold text-maroon text-base">രേഖകൾ / മാധ്യമ ഫയലുകൾ</h4>
+                <p className="text-xs text-maroon-light font-medium mt-0.5">
+                  ഈ അറിയിപ്പുമായി ബന്ധപ്പെട്ട PDF രേഖ ഇവിടെ നിന്നും ഡൗൺലോഡ് ചെയ്യാം.
+                </p>
+              </div>
+              <PdfDownloadButton pdfUrl={article.pdfUrl} variant="primary" />
             </div>
-            <PdfDownloadButton pdfUrl={article?.pdfUrl} variant="primary" />
-          </div>
+          )}
 
         </article>
 

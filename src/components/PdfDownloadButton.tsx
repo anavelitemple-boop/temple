@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FileText, Download, Printer } from 'lucide-react';
+import { FileText, Download } from 'lucide-react';
 
 interface PdfDownloadButtonProps {
   pdfUrl?: string | null;
@@ -12,26 +12,22 @@ interface PdfDownloadButtonProps {
 
 export default function PdfDownloadButton({
   pdfUrl,
-  title = 'ഡൗൺലോഡ് ചെയ്യുക',
+  title = '📄 PDF ഡൗൺലോഡ്',
   className = '',
   variant = 'primary',
 }: PdfDownloadButtonProps) {
-  const handlePrint = () => {
-    if (pdfUrl) {
-      window.open(pdfUrl, '_blank');
-    } else {
-      window.print();
-    }
-  };
+  // Only render button if admin has uploaded a PDF file
+  if (!pdfUrl) {
+    return null;
+  }
 
   if (variant === 'compact') {
     return (
       <a
-        href={pdfUrl || '#'}
-        onClick={!pdfUrl ? (e) => { e.preventDefault(); handlePrint(); } : undefined}
-        target={pdfUrl ? '_blank' : undefined}
-        rel={pdfUrl ? 'noopener noreferrer' : undefined}
-        download={pdfUrl ? true : undefined}
+        href={pdfUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        download
         className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold text-xs transition-colors shadow-sm cursor-pointer ${className}`}
         title="PDF ഡൗൺലോഡ് ചെയ്യുക"
       >
@@ -45,15 +41,14 @@ export default function PdfDownloadButton({
   if (variant === 'secondary') {
     return (
       <a
-        href={pdfUrl || '#'}
-        onClick={!pdfUrl ? (e) => { e.preventDefault(); handlePrint(); } : undefined}
-        target={pdfUrl ? '_blank' : undefined}
-        rel={pdfUrl ? 'noopener noreferrer' : undefined}
-        download={pdfUrl ? true : undefined}
+        href={pdfUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        download
         className={`inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm cursor-pointer ${className}`}
       >
         <FileText size={16} />
-        <span>📄 {title}</span>
+        <span>{title}</span>
         <Download size={16} />
       </a>
     );
@@ -61,16 +56,16 @@ export default function PdfDownloadButton({
 
   return (
     <a
-      href={pdfUrl || '#'}
-      onClick={!pdfUrl ? (e) => { e.preventDefault(); handlePrint(); } : undefined}
-      target={pdfUrl ? '_blank' : undefined}
-      rel={pdfUrl ? 'noopener noreferrer' : undefined}
-      download={pdfUrl ? true : undefined}
+      href={pdfUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      download
       className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-red-700 hover:bg-red-800 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer ${className}`}
     >
       <FileText size={18} />
-      <span>📄 PDF ഡൗൺലോഡ്</span>
+      <span>{title}</span>
       <Download size={16} />
     </a>
   );
 }
+
