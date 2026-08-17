@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import SectionHeading from './SectionHeading';
 import Button from './Button';
+import PdfDownloadButton from './PdfDownloadButton';
 import { urlFor } from '@/lib/sanity';
 import { Calendar } from 'lucide-react';
 
@@ -83,16 +84,11 @@ export default function AnnouncementSection({ announcements }: AnnouncementSecti
                   )}
 
                   <div className="mt-auto space-y-2">
-                    {item.pdfUrl && (
-                      <a
-                        href={item.pdfUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full py-2 px-3 rounded-xl bg-red-700 hover:bg-red-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors shadow-sm"
-                      >
-                        <span>📄 PDF കാണാം / ഡൗൺലോഡ് ചെയ്യാം</span>
-                      </a>
-                    )}
+                    <PdfDownloadButton 
+                      pdfUrl={item.pdfUrl} 
+                      title="PDF ഡൗൺലോഡ്" 
+                      className="w-full"
+                    />
                     <Button href={`/news/${item.slug?.current || item.slug || item._id}`} variant="secondary" className="w-full text-xs py-2 px-4">
                       കൂടുതൽ വായിക്കാം
                     </Button>

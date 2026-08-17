@@ -5,6 +5,7 @@ import { safeFetch, mockData, urlFor } from '@/lib/sanity';
 import { newsBySlugQuery } from '@/lib/queries';
 import { Calendar, ChevronLeft } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
+import PdfDownloadButton from '@/components/PdfDownloadButton';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -45,14 +46,18 @@ export default async function NewsDetailPage({ params }: Props) {
     <div className="py-16 bg-cream min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Back navigation */}
-        <Link 
-          href="/news" 
-          className="inline-flex items-center gap-1 text-maroon hover:text-gold font-bold text-sm mb-8 transition-colors"
-        >
-          <ChevronLeft size={18} />
-          <span>അറിയിപ്പുകളിലേക്ക് മടങ്ങാം</span>
-        </Link>
+        {/* Back navigation & PDF Download button */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+          <Link 
+            href="/news" 
+            className="inline-flex items-center gap-1 text-maroon hover:text-gold font-bold text-sm transition-colors"
+          >
+            <ChevronLeft size={18} />
+            <span>അറിയിപ്പുകളിലേക്ക് മടങ്ങാം</span>
+          </Link>
+
+          <PdfDownloadButton pdfUrl={article?.pdfUrl} variant="compact" />
+        </div>
 
         <article className="bg-cream border border-gold/30 rounded-2xl overflow-hidden shadow-sm p-6 md:p-10">
           
@@ -80,10 +85,10 @@ export default async function NewsDetailPage({ params }: Props) {
 
           {/* Body Content */}
           <div className="prose max-w-none text-maroon-light font-semibold text-sm md:text-base leading-relaxed space-y-4">
-            {article.description && (
+            {article?.description && (
               <p className="whitespace-pre-line text-base">{article.description}</p>
             )}
-            {Array.isArray(article.content) ? (
+            {Array.isArray(article?.content) ? (
               article.content.map((block: any, idx: number) => {
                 if (block._type === 'block') {
                   return (
@@ -95,11 +100,22 @@ export default async function NewsDetailPage({ params }: Props) {
                 return null;
               })
             ) : (
-              typeof article.content === 'string' && <p>{article.content}</p>
+              typeof article?.content === 'string' && <p>{article.content}</p>
             )}
-            {article.summary && !article.description && (
+            {article?.summary && !article?.description && (
               <p>{article.summary}</p>
             )}
+          </div>
+
+          {/* PDF Download Section Box */}
+          <div className="mt-10 pt-6 border-t border-gold/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-cream-dark/30 p-5 rounded-xl border border-gold/20">
+            <div>
+              <h4 className="font-bold text-maroon text-base">രേഖകൾ / മാധ്യമ ഫയലുകൾ</h4>
+              <p className="text-xs text-maroon-light font-medium mt-0.5">
+                ഈ അറിയിപ്പുമായി ബന്ധപ്പെട്ട PDF രേഖ ഇവിടെ നിന്നും ഡൗൺലോഡ് ചെയ്യാം.
+              </p>
+            </div>
+            <PdfDownloadButton pdfUrl={article?.pdfUrl} variant="primary" />
           </div>
 
         </article>
@@ -108,3 +124,4 @@ export default async function NewsDetailPage({ params }: Props) {
     </div>
   );
 }
+
