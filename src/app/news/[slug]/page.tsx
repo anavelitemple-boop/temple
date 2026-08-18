@@ -6,6 +6,7 @@ import { newsBySlugQuery } from '@/lib/queries';
 import { Calendar, ChevronLeft } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
 import PdfDownloadButton from '@/components/PdfDownloadButton';
+import NewsDetailClient from '@/components/NewsDetailClient';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -72,16 +73,8 @@ export default async function NewsDetailPage({ params }: Props) {
             {displayTitle}
           </h1>
 
-          {/* Large image */}
-          <div className="relative w-full h-[40vh] md:h-[50vh] rounded-xl overflow-hidden bg-maroon-dark/10 mb-8 border border-gold/20">
-            <Image
-              src={imageUrl}
-              alt={displayTitle}
-              fill
-              priority
-              className="object-cover"
-            />
-          </div>
+          {/* Large image with mobile view lightbox support */}
+          <NewsDetailClient imageUrl={imageUrl} displayTitle={displayTitle} />
 
           {/* Body Content */}
           <div className="prose max-w-none text-maroon-light font-semibold text-sm md:text-base leading-relaxed space-y-4">

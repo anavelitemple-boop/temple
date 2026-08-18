@@ -1,10 +1,13 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import SectionHeading from './SectionHeading';
 import Button from './Button';
 import PdfDownloadButton from './PdfDownloadButton';
+import NoticeImageModal from './NoticeImageModal';
 import { urlFor } from '@/lib/sanity';
-import { Calendar } from 'lucide-react';
+import { Calendar, ZoomIn } from 'lucide-react';
 
 interface Announcement {
   _id?: string;
@@ -24,6 +27,8 @@ interface AnnouncementSectionProps {
 }
 
 export default function AnnouncementSection({ announcements }: AnnouncementSectionProps) {
+  const [selectedImage, setSelectedImage] = useState<{ url: string; title: string } | null>(null);
+
   if (!announcements || announcements.length === 0) {
     return null;
   }
@@ -54,14 +59,27 @@ export default function AnnouncementSection({ announcements }: AnnouncementSecti
                 className="bg-cream rounded-2xl overflow-hidden shadow-sm border border-gold/20 hover:border-gold hover:shadow-md transition-all duration-300 flex flex-col h-full"
               >
                 {/* Image */}
-                <div className="relative h-48 w-full bg-maroon-dark/10">
+                <div 
+                  className="relative h-56 sm:h-48 w-full bg-maroon-dark/10 cursor-pointer group overflow-hidden"
+                  onClick={() => setSelectedImage({ url: imageUrl, title: displayTitle })}
+                >
                   <Image 
                     src={imageUrl} 
                     alt={displayTitle}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  {/* Tap/Hover Zoom Overlay */}
+                  <div className="absolute inset-0 bg-maroon-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-1.5 text-cream text-xs font-bold drop-shadow">
+                    <ZoomIn size={18} className="text-gold" />
+                    <span>ചിത്രം കാണാം</span>
+                  </div>
+                  {/* Mobile visual badge indicator */}
+                  <div className="absolute bottom-2 right-2 sm:hidden bg-black/60 backdrop-blur-sm text-gold px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1">
+                    <ZoomIn size={12} />
+                    <span>ചിത്രം കാണാം</span>
+                  </div>
                 </div>
 
                 {/* Content */}
@@ -105,6 +123,15 @@ export default function AnnouncementSection({ announcements }: AnnouncementSecti
           </Button>
         </div>
       </div>
+
+      {/* Lightbox image popup modal */}
+      <NoticeImageModal 
+        isOpen={Boolean(selectedImage)} 
+        imageUrl={selectedImage?.url || null}
+        title={selectedImage?.title}
+        onClose={() => setSelectedImage(null)}
+      />
     </section>
   );
 }
+
