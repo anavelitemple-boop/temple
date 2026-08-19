@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 const quickActions = [
   { title: 'പൂജ ബുക്കിംഗ്', desc: 'പൂജകൾ ബുക്ക് ചെയ്യാം', href: '/pooja-booking', icon: Calendar },
   { title: 'ക്ഷേത്ര പൂജകൾ', desc: 'പ്രധാന നിത്യപൂജകൾ', href: '/poojakal', icon: Scroll },
-  { title: 'വഴിപാടുകൾ', desc: 'വഴിപാട് വിവരങ്ങൾ', href: '/poojakal#vazhipadu', icon: Gift },
+  { title: 'വഴിപാടുകൾ', desc: 'വഴിപാട് വിവരങ്ങൾ', href: '/vazhipadu', icon: Gift },
   { title: 'വിശേഷാൽ പൂജകൾ', desc: 'വരാനിരിക്കുന്ന പൂജാകാര്യങ്ങൾ', href: '/special-poojas', icon: Flame },
   { title: 'ഗാലറി', desc: 'ക്ഷേത്ര ദൃശ്യങ്ങൾ', href: '/gallery', icon: Image },
   { title: 'അറിയിപ്പുകൾ', desc: 'പ്രധാന അറിയിപ്പുകൾ', href: '/news', icon: FileText },

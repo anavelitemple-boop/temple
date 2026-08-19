@@ -1,17 +1,12 @@
 import React from 'react';
 import SectionHeading from '@/components/SectionHeading';
 import { safeFetch, mockData } from '@/lib/sanity';
-import { poojasQuery, vazhipadusQuery, siteSettingsQuery } from '@/lib/queries';
-import VazhipaduList from '@/components/VazhipaduList';
+import { poojasQuery } from '@/lib/queries';
 
 export const revalidate = 60;
 
 export default async function PoojakalPage() {
   const poojas = await safeFetch<any[]>(poojasQuery, {}, mockData.poojas);
-  const vazhipadus = await safeFetch<any[]>(vazhipadusQuery, {}, mockData.vazhipadus);
-  const settings = await safeFetch<any>(siteSettingsQuery, {}, mockData.siteSettings);
-
-  const whatsappNum = settings.poojaBookingPhone || settings.whatsapp || '917356462150';
 
   return (
     <div className="py-16 bg-cream min-h-screen">
@@ -32,7 +27,7 @@ export default async function PoojakalPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-20">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-12">
           {poojas.map((pooja, index) => (
             <div 
               key={index} 
@@ -52,16 +47,6 @@ export default async function PoojakalPage() {
               </p>
             </div>
           ))}
-        </div>
-
-        {/* Vazhipadu Section */}
-        <div id="vazhipadu" className="pt-8">
-          <SectionHeading 
-            title="വഴിപാടുകൾ" 
-            subtitle="ഭക്തജനങ്ങൾക്ക് ചെയ്യാവുന്ന പ്രധാന വഴിപാടുകളും നിരക്കുകളും" 
-          />
-
-          <VazhipaduList vazhipadus={vazhipadus} whatsappNum={whatsappNum} />
         </div>
 
       </div>
