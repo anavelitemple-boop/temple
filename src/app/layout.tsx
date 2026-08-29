@@ -14,12 +14,43 @@ const baloo = Baloo_Chettan_2({
 });
 
 export const metadata: Metadata = {
-  title: 'ആനവേലി ക്ഷേത്രം | Anaveli Temple',
-  description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഔദ്യോഗിക വെബ്സൈറ്റ്. പൂജകൾ, വഴിപാടുകൾ, ഉത്സവങ്ങൾ തുടങ്ങിയ വിവരങ്ങൾ അറിയാം.',
-  keywords: ['Anaveli Temple', 'ആനവേലി ക്ഷേത്രം', 'Kerala Temples', 'Bhadrakaali Temple Pathanamthitta'],
+  metadataBase: new URL('https://www.anavelitemple.online'),
+  title: {
+    default: 'ആനവേലി ക്ഷേത്രം | Anaveli Sree Bhadrakali Temple',
+    template: '%s | Anaveli Temple'
+  },
+  description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഔദ്യോഗിക വെബ്സൈറ്റ്. പൂജകൾ, വഴിപാടുകൾ, വിശേഷാൽ പൂജകൾ, ഉത്സവങ്ങൾ തുടങ്ങിയ വിവരങ്ങൾ അറിയാം. Anaveli Sree Bhadrakali Temple official website.',
+  keywords: [
+    'Anaveli Temple', 
+    'ആനവേലി ക്ഷേത്രം', 
+    'Anaveli Sree Bhadrakali Temple',
+    'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
+    'Kerala Temples', 
+    'Bhadrakaali Temple Alappuzha',
+    'Alappuzha Temples',
+    'ആലപ്പുഴ ക്ഷേത്രങ്ങൾ',
+    'Temple Vazhipadu Booking',
+    'Pooja Timings Anaveli'
+  ],
+  alternates: {
+    canonical: './',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: 'ആനവേലി ക്ഷേത്രം | Anaveli Temple',
+    title: 'ആനവേലി ക്ഷേത്രം | Anaveli Sree Bhadrakali Temple',
     description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഔദ്യോഗിക വെബ്സൈറ്റ്.',
+    url: 'https://www.anavelitemple.online',
+    siteName: 'Anaveli Sree Bhadrakali Temple',
     locale: 'ml_IN',
     type: 'website',
   },
