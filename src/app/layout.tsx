@@ -161,6 +161,15 @@ export const metadata: Metadata = {
     locale: 'ml_IN',
     type: 'website',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/icon.png',
+  },
 };
 
 export default async function RootLayout({
