@@ -23,7 +23,7 @@ export default function PoojaSection({ poojas }: PoojaSectionProps) {
     <section className="py-[20px] bg-cream">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading 
-          title="ഇന്നത്തെ പൂജകൾ" 
+          title="ക്ഷേത്ര പൂജകൾ" 
           subtitle="നിത്യേന ക്ഷേത്രത്തിൽ നടന്നുപോരുന്ന പ്രധാന പൂജകളും സമയവിവരങ്ങളും" 
         />
 
