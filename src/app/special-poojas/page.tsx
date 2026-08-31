@@ -77,7 +77,7 @@ export default async function SpecialPoojasPage() {
                 <div className="relative h-52 w-full bg-maroon-dark/10">
                   <Image
                     src={imgUrl}
-                    alt={displayTitle}
+                    alt={`ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം - ${displayTitle}`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"

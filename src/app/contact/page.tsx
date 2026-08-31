@@ -7,6 +7,11 @@ import Button from '@/components/Button';
 
 export const revalidate = 60;
 
+export const metadata = {
+  title: 'ബന്ധപ്പെടുക | Anaveli Temple',
+  description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്ര ഭരണസമിതിയുമായി ബന്ധപ്പെടുന്നതിനുള്ള വിവരങ്ങളും വിലാസവും ഗൂഗിൾ മാപ്പ് വഴിയും.',
+};
+
 export default async function ContactPage() {
   const settings = await safeFetch<any>(siteSettingsQuery, {}, mockData.siteSettings);
   const mapsUrl = (settings?.mapsLink && settings.mapsLink !== 'https://maps.google.com' && settings.mapsLink.trim() !== '') 

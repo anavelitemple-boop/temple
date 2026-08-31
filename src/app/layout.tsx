@@ -140,7 +140,7 @@ export const metadata: Metadata = {
     'കേരളത്തിലെ ഭദ്രകാളി ക്ഷേത്രങ്ങൾ'
   ],
   alternates: {
-    canonical: './',
+    canonical: 'https://www.anavelitemple.online',
   },
   robots: {
     index: true,

@@ -5,6 +5,11 @@ import { poojasQuery } from '@/lib/queries';
 
 export const revalidate = 60;
 
+export const metadata = {
+  title: 'ക്ഷേത്ര പൂജകൾ | Anaveli Temple',
+  description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെ നിത്യപൂജകളുടെയും വിശേഷാൽ പൂജകളുടെയും സമയക്രമവും വിവരങ്ങളും.',
+};
+
 export default async function PoojakalPage() {
   const poojas = await safeFetch<any[]>(poojasQuery, {}, mockData.poojas);
 
