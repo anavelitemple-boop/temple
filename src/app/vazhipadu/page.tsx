@@ -7,7 +7,7 @@ import VazhipaduList from '@/components/VazhipaduList';
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'വഴിപാടുകൾ | Anaveli Temple',
+  title: 'വഴിപാടുകൾ',
   description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിൽ ഭക്തജനങ്ങൾക്ക് സമർപ്പിക്കാവുന്ന പ്രധാന വഴിപാടുകളും നിരക്കുകളും.',
 };
 

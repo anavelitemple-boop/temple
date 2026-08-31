@@ -6,7 +6,7 @@ import { galleryQuery } from '@/lib/queries';
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'ക്ഷേത്ര ദർശനം - ഫോട്ടോ ഗാലറി | Anaveli Temple',
+  title: 'ക്ഷേത്ര ദർശനം - ഫോട്ടോ ഗാലറി',
   description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെ പ്രധാന ചടങ്ങുകളുടെയും ദർശനത്തിന്റെയും ഫോട്ടോകൾ.',
 };
 

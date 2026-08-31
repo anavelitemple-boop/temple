@@ -6,7 +6,7 @@ import { siteSettingsQuery, poojaBookingQuery, poojasQuery } from '@/lib/queries
 import { MessageCircle } from 'lucide-react';
 
 export const metadata = {
-  title: 'പൂജ ബുക്കിംഗ് | ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
+  title: 'പൂജ ബുക്കിംഗ്',
   description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെ നിത്യപൂജകളും വെള്ളിയാഴ്ച വിശേഷാൽ പൂജകളും ഓൺലൈനായി ബുക്ക് ചെയ്യാം.'
 };
 

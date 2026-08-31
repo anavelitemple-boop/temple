@@ -8,7 +8,7 @@ import Button from '@/components/Button';
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'ബന്ധപ്പെടുക | Anaveli Temple',
+  title: 'ബന്ധപ്പെടുക',
   description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്ര ഭരണസമിതിയുമായി ബന്ധപ്പെടുന്നതിനുള്ള വിവരങ്ങളും വിലാസവും ഗൂഗിൾ മാപ്പ് വഴിയും.',
 };
 
@@ -17,6 +17,9 @@ export default async function ContactPage() {
   const mapsUrl = (settings?.mapsLink && settings.mapsLink !== 'https://maps.google.com' && settings.mapsLink.trim() !== '') 
     ? settings.mapsLink 
     : 'https://maps.app.goo.gl/WY18Ci7aZHFzmEUD8';
+
+  const cleanPhone = (settings.phone || '').replace(/\s+/g, '');
+  const cleanWhatsapp = (settings.whatsapp || '917356462150').replace(/\D/g, '');
 
   return (
     <div className="py-16 bg-cream min-h-screen">
@@ -54,7 +57,7 @@ export default async function ContactPage() {
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-maroon-light">ഫോൺ നമ്പർ</h4>
-                    <a href={`tel:${settings.phone}`} className="text-maroon text-base font-bold mt-1 inline-block hover:text-gold transition-colors">
+                    <a href={`tel:${cleanPhone}`} className="text-maroon text-base font-bold mt-1 inline-block hover:text-gold transition-colors">
                       {settings.phone}
                     </a>
                   </div>
@@ -87,7 +90,7 @@ export default async function ContactPage() {
               </Button>
 
               <a 
-                href={`https://wa.me/${settings.whatsapp}`}
+                href={`https://wa.me/${cleanWhatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3 rounded-lg font-extrabold bg-[#25D366] hover:bg-[#1ea34e] text-white transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm"

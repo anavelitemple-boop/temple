@@ -10,7 +10,7 @@ import { Calendar, Flame, ChevronRight } from 'lucide-react';
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'വിശേഷാൽ പൂജകൾ | Anaveli Temple',
+  title: 'വിശേഷാൽ പൂജകൾ',
   description: 'ക്ഷേത്രസന്നിധിയിൽ വരാനിരിക്കുന്ന വിശേഷാൽ പൂജകളും അതിനോട് അനുബന്ധിച്ച പൂജാതി കാര്യങ്ങളും.',
 };
 

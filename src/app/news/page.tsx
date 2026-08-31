@@ -7,7 +7,7 @@ import NewsListClient from '@/components/NewsListClient';
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'വാർത്തകളും അറിയിപ്പുകളും | Anaveli Temple',
+  title: 'വാർത്തകളും അറിയിപ്പുകളും',
   description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രവുമായി ബന്ധപ്പെട്ട സമഗ്ര വിവരങ്ങളും പ്രധാന അറിയിപ്പുകളും.',
 };
 

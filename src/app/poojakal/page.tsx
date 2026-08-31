@@ -6,7 +6,7 @@ import { poojasQuery } from '@/lib/queries';
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'ക്ഷേത്ര പൂജകൾ | Anaveli Temple',
+  title: 'ക്ഷേത്ര പൂജകൾ',
   description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെ നിത്യപൂജകളുടെയും വിശേഷാൽ പൂജകളുടെയും സമയക്രമവും വിവരങ്ങളും.',
 };
 
