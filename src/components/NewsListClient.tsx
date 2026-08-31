@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, ChevronRight, ZoomIn } from 'lucide-react';
+import { Calendar, ChevronRight, ZoomIn, Archive, Flame } from 'lucide-react';
 import PdfDownloadButton from '@/components/PdfDownloadButton';
 import NoticeImageModal from '@/components/NoticeImageModal';
 import { urlFor } from '@/lib/sanity';
@@ -13,6 +13,7 @@ interface NewsListClientProps {
 }
 
 export default function NewsListClient({ newsList }: NewsListClientProps) {
+  const [activeTab, setActiveTab] = useState<'recent' | 'archived'>('recent');
   const [selectedImage, setSelectedImage] = useState<{ url: string; title: string } | null>(null);
 
   if (!newsList || newsList.length === 0) {
@@ -23,80 +24,136 @@ export default function NewsListClient({ newsList }: NewsListClientProps) {
     );
   }
 
+  // Determine past cutoff date (e.g. 30 days old)
+  const now = new Date();
+  const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+
+  const recentNews = newsList.filter(item => {
+    if (!item.date) return true;
+    const d = new Date(item.date);
+    return d >= thirtyDaysAgo;
+  });
+
+  const archivedNews = newsList.filter(item => {
+    if (!item.date) return false;
+    const d = new Date(item.date);
+    return d < thirtyDaysAgo;
+  });
+
+  // Fall back to showing all news in current tab if recent count is 0
+  const displayItems = activeTab === 'recent' 
+    ? (recentNews.length > 0 ? recentNews : newsList) 
+    : archivedNews;
+
   return (
     <>
-      <div className="space-y-8 mt-10">
-        {newsList.map((item, idx) => {
-          const slug = item.slug?.current || item.slug || item._id;
-          const imgUrl = item.imageUrl || urlFor(item.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=600';
-          const displayTitle = item.malayalamTitle || item.title || 'പ്രധാന അറിയിപ്പ്';
-          const displaySummary = item.summary || item.description || '';
-          const displayDate = item.date 
-            ? new Date(item.date).toLocaleDateString('ml-IN', { dateStyle: 'medium' }) 
-            : '';
-          
-          return (
-            <div 
-              key={idx} 
-              className="bg-cream border border-gold/25 hover:border-gold rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col md:flex-row gap-6 p-4 md:p-6"
-            >
-              {/* Image Container with Mobile Lightbox Support */}
+      {/* Category Tabs: Current vs Archived */}
+      <div className="flex items-center justify-center gap-3 mt-6">
+        <button
+          onClick={() => setActiveTab('recent')}
+          className={`px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm flex items-center gap-2 border transition-all cursor-pointer ${
+            activeTab === 'recent'
+              ? 'bg-maroon text-cream border-gold shadow-md'
+              : 'bg-cream text-maroon-light border-gold/30 hover:border-gold'
+          }`}
+        >
+          <Flame size={16} className={activeTab === 'recent' ? 'text-gold' : ''} />
+          <span>ഏറ്റവും പുതിയ അറിയിപ്പുകൾ ({recentNews.length > 0 ? recentNews.length : newsList.length})</span>
+        </button>
+
+        {archivedNews.length > 0 && (
+          <button
+            onClick={() => setActiveTab('archived')}
+            className={`px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm flex items-center gap-2 border transition-all cursor-pointer ${
+              activeTab === 'archived'
+                ? 'bg-maroon text-cream border-gold shadow-md'
+                : 'bg-cream text-maroon-light border-gold/30 hover:border-gold'
+            }`}
+          >
+            <Archive size={16} className={activeTab === 'archived' ? 'text-gold' : ''} />
+            <span>മുൻകാല അറിയിപ്പുകൾ (Archive - {archivedNews.length})</span>
+          </button>
+        )}
+      </div>
+
+      <div className="space-y-8 mt-8">
+        {displayItems.length === 0 ? (
+          <div className="text-center py-10 text-maroon-light/70 font-semibold text-sm">
+            മുൻകാല അറിയിപ്പുകൾ ഒന്നുമില്ല
+          </div>
+        ) : (
+          displayItems.map((item, idx) => {
+            const slug = item.slug?.current || item.slug || item._id;
+            const imgUrl = item.imageUrl || urlFor(item.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=600';
+            const displayTitle = item.malayalamTitle || item.title || 'പ്രധാന അറിയിപ്പ്';
+            const displaySummary = item.summary || item.description || '';
+            const displayDate = item.date 
+              ? new Date(item.date).toLocaleDateString('ml-IN', { dateStyle: 'medium' }) 
+              : '';
+            
+            return (
               <div 
-                className="relative w-full md:w-64 h-56 sm:h-48 md:h-auto min-h-[200px] shrink-0 bg-maroon-dark/10 rounded-xl overflow-hidden cursor-pointer group"
-                onClick={() => setSelectedImage({ url: imgUrl, title: displayTitle })}
+                key={idx} 
+                className="bg-cream border border-gold/25 hover:border-gold rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col md:flex-row gap-6 p-4 md:p-6"
               >
-                <Image
-                  src={imgUrl}
-                  alt={displayTitle}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 250px"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-maroon-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-1.5 text-cream text-xs font-bold drop-shadow">
-                  <ZoomIn size={18} className="text-gold" />
-                  <span>ചിത്രം കാണാം</span>
+                {/* Image Container with Mobile Lightbox Support */}
+                <div 
+                  className="relative w-full md:w-64 h-56 sm:h-48 md:h-auto min-h-[200px] shrink-0 bg-maroon-dark/10 rounded-xl overflow-hidden cursor-pointer group"
+                  onClick={() => setSelectedImage({ url: imgUrl, title: displayTitle })}
+                >
+                  <Image
+                    src={imgUrl}
+                    alt={displayTitle}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 250px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-maroon-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-1.5 text-cream text-xs font-bold drop-shadow">
+                    <ZoomIn size={18} className="text-gold" />
+                    <span>ചിത്രം കാണാം</span>
+                  </div>
+                  <div className="absolute bottom-2 right-2 sm:hidden bg-black/60 backdrop-blur-sm text-gold px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1">
+                    <ZoomIn size={12} />
+                    <span>ചിത്രം കാണാം</span>
+                  </div>
                 </div>
-                <div className="absolute bottom-2 right-2 sm:hidden bg-black/60 backdrop-blur-sm text-gold px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1">
-                  <ZoomIn size={12} />
-                  <span>ചിത്രം കാണാം</span>
+
+                {/* Content */}
+                <div className="flex flex-col justify-between flex-grow">
+                  <div>
+                    {displayDate && (
+                      <div className="flex items-center gap-1.5 text-gold-dark text-xs font-bold mb-3">
+                        <Calendar size={14} />
+                        <span>{displayDate}</span>
+                      </div>
+                    )}
+
+                    <h3 className="text-xl font-bold text-maroon mb-3">
+                      {displayTitle}
+                    </h3>
+
+                    {displaySummary && (
+                      <p className="text-maroon-light/80 text-sm font-semibold line-clamp-3 leading-relaxed mb-4">
+                        {displaySummary}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3 mt-4">
+                    <PdfDownloadButton pdfUrl={item.pdfUrl} variant="compact" />
+                    <Link 
+                      href={`/news/${slug}`}
+                      className="inline-flex items-center gap-1.5 text-maroon hover:text-gold font-bold text-sm transition-colors"
+                    >
+                      <span>വിശദമായി വായിക്കാം</span>
+                      <ChevronRight size={16} />
+                    </Link>
+                  </div>
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="flex flex-col justify-between flex-grow">
-                <div>
-                  {displayDate && (
-                    <div className="flex items-center gap-1.5 text-gold-dark text-xs font-bold mb-3">
-                      <Calendar size={14} />
-                      <span>{displayDate}</span>
-                    </div>
-                  )}
-
-                  <h3 className="text-xl font-bold text-maroon mb-3">
-                    {displayTitle}
-                  </h3>
-
-                  {displaySummary && (
-                    <p className="text-maroon-light/80 text-sm font-semibold line-clamp-3 leading-relaxed mb-4">
-                      {displaySummary}
-                    </p>
-                  )}
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3 mt-4">
-                  <PdfDownloadButton pdfUrl={item.pdfUrl} variant="compact" />
-                  <Link 
-                    href={`/news/${slug}`}
-                    className="inline-flex items-center gap-1.5 text-maroon hover:text-gold font-bold text-sm transition-colors"
-                  >
-                    <span>വിശദമായി വായിക്കാം</span>
-                    <ChevronRight size={16} />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
 
       <NoticeImageModal 
