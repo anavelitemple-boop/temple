@@ -36,20 +36,30 @@ export default async function PoojakalPage() {
           {poojas.map((pooja, index) => (
             <div 
               key={index} 
-              className="bg-cream border border-gold/30 rounded-xl p-3.5 sm:p-5 shadow-sm hover:border-gold transition-colors duration-300"
+              className="bg-cream border border-gold/30 rounded-xl p-3.5 sm:p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-start gap-2.5 hover:border-gold h-full"
             >
-              <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
-                <div>
-                  <h3 className="text-sm sm:text-lg font-bold text-maroon">{pooja.malayalamName}</h3>
-                  <p className="text-[10px] sm:text-xs text-maroon-light/60 font-bold mt-0.5">{pooja.name}</p>
-                </div>
-                <span className="bg-maroon text-[#25D366] text-[10px] sm:text-xs font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full whitespace-nowrap">
-                  {pooja.time}
-                </span>
+              {/* Lamp Icon Wrapper */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-emerald-100/60 border border-emerald-300 flex items-center justify-center text-sm sm:text-lg shrink-0">
+                🪔
               </div>
-              <p className="text-maroon-light/80 text-xs sm:text-sm mt-2 sm:mt-3 font-semibold leading-relaxed">
-                {pooja.description}
-              </p>
+
+              <div className="flex-grow w-full flex flex-col justify-between">
+                <div>
+                  <h3 className="text-sm sm:text-lg font-bold text-maroon leading-tight">
+                    {pooja.malayalamName}
+                  </h3>
+                  <div className="mt-1">
+                    <span className="bg-black text-amber-400 text-[10px] sm:text-xs font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md whitespace-nowrap inline-block">
+                      {pooja.time}
+                    </span>
+                  </div>
+                  {pooja.description && (
+                    <p className="text-maroon-light/80 text-xs sm:text-sm mt-2 font-medium leading-relaxed">
+                      {pooja.description}
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>
