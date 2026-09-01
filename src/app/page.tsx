@@ -4,8 +4,9 @@ import QuickLinks from '@/components/QuickLinks';
 import PoojaSection from '@/components/PoojaSection';
 import AnnouncementSection from '@/components/AnnouncementSection';
 import Gallery from '@/components/Gallery';
+import ContactSection from '@/components/ContactSection';
 import { safeFetch, mockData, urlFor } from '@/lib/sanity';
-import { homepageQuery, poojasQuery, announcementsQuery, galleryQuery } from '@/lib/queries';
+import { homepageQuery, poojasQuery, announcementsQuery, galleryQuery, siteSettingsQuery } from '@/lib/queries';
 
 export const revalidate = 0; // Disable caching to reflect Sanity CMS edits instantly
 
@@ -13,6 +14,9 @@ export default async function Home() {
   // Fetch homepage configurations
   const homepageContent = await safeFetch<any>(homepageQuery, {}, mockData.homepage);
   
+  // Fetch site settings
+  const siteSettings = await safeFetch<any>(siteSettingsQuery, {}, mockData.siteSettings);
+
   // Fetch active poojas
   const poojas = await safeFetch<any[]>(poojasQuery, {}, mockData.poojas);
   
@@ -61,6 +65,9 @@ export default async function Home() {
 
       {/* Announcements (പ്രധാന അറിയിപ്പുകൾ) */}
       <AnnouncementSection announcements={announcements} />
+
+      {/* Contact Details (ബന്ധപ്പെടുക) */}
+      <ContactSection settings={siteSettings} />
     </div>
   );
 }
