@@ -48,9 +48,9 @@ export const mockData = {
     secondaryCTA: 'പരിപാടികൾ കാണാം',
   },
   poojas: [
-    { name: 'Nirmalya Darshanam', malayalamName: 'നിർമ്മാല്യ ദർശനം', time: '05:30 AM', price: 0, description: 'പള്ളിയുണർവിനു ശേഷമുള്ള ഭഗവാന്റെ ആദ്യ ദർശനം.', active: true },
-    { name: 'Ganapathy Homam', malayalamName: 'ഗണപതി ഹോമം', time: '06:00 AM', price: 150, description: 'വിഘ്നനിവാരണത്തിനായി വിഘ്നേശ്വരന് സമർപ്പിക്കുന്ന ഹോമം.', active: true },
+    { name: 'Nirmalya Darshanam', malayalamName: 'നിർമ്മാല്യ ദർശനം', time: '06:00 AM', price: 0, description: 'പള്ളിയുണർവിനു ശേഷമുള്ള ദേവിയുടെ ആദ്യ ദർശനം.', active: true },
     { name: 'Deeparadhana', malayalamName: 'ദീപാരാധന', time: '06:30 PM', price: 0, description: 'സന്ധ്യാസമയത്തെ കർപ്പൂര ദീപ ദർശനം.', active: true },
+    { name: 'Ganapathy Homam', malayalamName: 'ഗണപതി ഹോമം', time: '07:00 AM', price: 150, description: 'വിഘ്നനിവാരണത്തിനായി വിഘ്നേശ്വരന് സമർപ്പിക്കുന്ന ഹോമം.', active: true },
     { name: 'Athazha Pooja', malayalamName: 'അത്താഴപൂജ', time: '07:30 PM', price: 150, description: 'രാത്രി നടയടയ്ക്കുന്നതിന് മുൻപുള്ള അവസാന പൂജ.', active: true },
   ],
   vazhipadus: [

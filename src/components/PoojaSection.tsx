@@ -16,8 +16,21 @@ interface PoojaSectionProps {
 }
 
 export default function PoojaSection({ poojas }: PoojaSectionProps) {
-  // Take first 4 active poojas for preview
-  const activePoojas = poojas.filter(p => p.active !== false).slice(0, 4);
+  // Default fixed 4 poojas order as requested
+  const defaultFixedPoojas: Pooja[] = [
+    { name: 'Nirmalya Darshanam', malayalamName: 'നിർമ്മാല്യ ദർശനം', time: '06:00 AM', description: 'പള്ളിയുണർവിനു ശേഷമുള്ള ദേവിയുടെ ആദ്യ ദർശനം.' },
+    { name: 'Deeparadhana', malayalamName: 'ദീപാരാധന', time: '06:30 PM', description: 'സന്ധ്യാസമയത്തെ കർപ്പൂര ദീപ ദർശനം.' },
+    { name: 'Ganapathy Homam', malayalamName: 'ഗണപതി ഹോമം', time: '07:00 AM', description: 'വിഘ്നനിവാരണത്തിനായി വിഘ്നേശ്വരന് സമർപ്പിക്കുന്ന ഹോമം.' },
+    { name: 'Athazha Pooja', malayalamName: 'അത്താഴപൂജ', time: '07:30 PM', description: 'രാത്രി നടയടയ്ക്കുന്നതിന് മുൻപുള്ള അവസാന പൂജ.' },
+  ];
+
+  // If poojas prop comes from Sanity CMS, prioritize matching CMS items or fallback to fixed items
+  const displayPoojas = defaultFixedPoojas.map((fixedItem) => {
+    const matched = poojas.find(
+      (p) => p.malayalamName?.trim() === fixedItem.malayalamName || p.name?.toLowerCase() === fixedItem.name.toLowerCase()
+    );
+    return matched || fixedItem;
+  });
 
   return (
     <section className="py-[20px] bg-cream">
@@ -28,27 +41,27 @@ export default function PoojaSection({ poojas }: PoojaSectionProps) {
         />
 
         <div className="grid grid-cols-2 gap-3 sm:gap-6 mt-8">
-          {activePoojas.map((pooja, index) => (
+          {displayPoojas.map((pooja, index) => (
             <div 
               key={index} 
-              className="bg-cream border border-gold/30 rounded-xl p-3.5 sm:p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 hover:border-gold"
+              className="bg-cream border border-gold/30 rounded-xl p-3.5 sm:p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-start gap-2.5 hover:border-gold"
             >
               {/* Lamp Icon Wrapper */}
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center text-sm sm:text-lg shrink-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-emerald-100/60 border border-emerald-300 flex items-center justify-center text-sm sm:text-lg shrink-0">
                 🪔
               </div>
               
               <div className="flex-grow w-full">
-                <div className="flex flex-col sm:flex-row justify-between items-start gap-1 sm:gap-2">
-                  <h3 className="text-sm sm:text-lg font-bold text-maroon">
-                    {pooja.malayalamName}
-                  </h3>
-                  <span className="bg-maroon-dark text-amber-300 text-[10px] sm:text-xs font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full whitespace-nowrap">
+                <h3 className="text-sm sm:text-lg font-bold text-maroon">
+                  {pooja.malayalamName}
+                </h3>
+                <div className="mt-1">
+                  <span className="bg-black text-amber-400 text-[10px] sm:text-xs font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md whitespace-nowrap inline-block">
                     {pooja.time}
                   </span>
                 </div>
                 {pooja.description && (
-                  <p className="text-maroon-light/80 text-xs sm:text-sm mt-1.5 font-medium leading-relaxed">
+                  <p className="text-maroon-light/80 text-xs sm:text-sm mt-2 font-medium leading-relaxed">
                     {pooja.description}
                   </p>
                 )}
@@ -57,9 +70,9 @@ export default function PoojaSection({ poojas }: PoojaSectionProps) {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-8">
           <Button href="/poojakal" variant="primary">
-            എല്ലാ പൂജകളും കാണാം
+            ക്ഷേത്ര പൂജകൾ കാണാം
           </Button>
         </div>
       </div>
