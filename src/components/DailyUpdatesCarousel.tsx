@@ -81,12 +81,12 @@ export default function DailyUpdatesCarousel({ slides: customSlides }: DailyUpda
   return (
     <div 
       onClick={handleNext}
-      className="bg-transparent backdrop-blur-sm hover:bg-white/5 border border-white/20 hover:border-gold/40 p-4 sm:p-6 rounded-2xl max-w-md w-full min-h-[170px] sm:min-h-[220px] flex flex-col justify-between text-cream relative overflow-hidden cursor-pointer group transition-all duration-300"
+      className="bg-transparent border border-white/20 hover:border-gold/40 p-4 sm:p-6 rounded-2xl max-w-md w-full min-h-[170px] sm:min-h-[220px] flex flex-col justify-between text-cream relative overflow-hidden cursor-pointer group transition-all duration-300"
     >
       {/* Navigation Arrows */}
       <button
         onClick={handlePrev}
-        className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-30 p-1 sm:p-2 rounded-full bg-white/10 hover:bg-gold hover:text-black text-cream border border-white/10 hover:border-gold transition-all duration-200 opacity-80 group-hover:opacity-100 cursor-pointer shadow-lg"
+        className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-30 p-1 sm:p-2 rounded-full bg-black/40 hover:bg-gold hover:text-black text-cream border border-white/20 hover:border-gold transition-all duration-200 opacity-80 group-hover:opacity-100 cursor-pointer shadow-lg"
         aria-label="Previous Slide"
       >
         <ChevronLeft size={16} className="sm:w-[18px] sm:h-[18px]" />
@@ -94,7 +94,7 @@ export default function DailyUpdatesCarousel({ slides: customSlides }: DailyUpda
 
       <button
         onClick={handleNext}
-        className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-30 p-1 sm:p-2 rounded-full bg-white/10 hover:bg-gold hover:text-black text-cream border border-white/10 hover:border-gold transition-all duration-200 opacity-80 group-hover:opacity-100 cursor-pointer shadow-lg"
+        className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-30 p-1 sm:p-2 rounded-full bg-black/40 hover:bg-gold hover:text-black text-cream border border-white/20 hover:border-gold transition-all duration-200 opacity-80 group-hover:opacity-100 cursor-pointer shadow-lg"
         aria-label="Next Slide"
       >
         <ChevronRight size={16} className="sm:w-[18px] sm:h-[18px]" />
