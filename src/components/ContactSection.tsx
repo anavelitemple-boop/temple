@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
-import { MapPin, Phone, Mail, Compass, MessageCircle, Sparkles } from 'lucide-react';
+import SectionHeading from './SectionHeading';
+import Button from './Button';
+import { MapPin, Phone, Mail, Compass, MessageCircle } from 'lucide-react';
 
 interface ContactSectionProps {
   settings?: any;
@@ -20,95 +22,86 @@ export default function ContactSection({ settings }: ContactSectionProps) {
   const cleanWhatsapp = (whatsapp || '917356462150').replace(/\D/g, '');
 
   return (
-    <section className="py-10 relative overflow-hidden bg-gradient-to-b from-maroon-dark via-charcoal to-maroon-dark text-cream border-y-2 border-gold/30">
-      {/* Subtle Background Glow Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.15)_0%,transparent_60%)] pointer-events-none" />
-      
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header Badge & Title */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-bold tracking-widest uppercase mb-2">
-            <Sparkles size={14} />
-            <span>ക്ഷേത്ര ബന്ധപ്പെടൽ</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gold tracking-wide drop-shadow-md">
-            ബന്ധപ്പെടുക
-          </h2>
-          <p className="text-cream/80 text-xs sm:text-sm mt-1 max-w-lg mx-auto">
-            ക്ഷേത്ര ഭരണസമിതിയുമായി ബന്ധപ്പെടുന്നതിനും വിവരങ്ങൾ അറിയുന്നതിനും
-          </p>
-        </div>
+    <section className="py-[20px] bg-cream-dark/25 border-t border-gold/15">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading 
+          title="ബന്ധപ്പെടുക" 
+          subtitle="ക്ഷേത്ര ഭരണസമിതിയുമായി ബന്ധപ്പെടുന്നതിനും വിവരങ്ങൾ അറിയുന്നതിനും" 
+        />
 
-        {/* Info Grid - 3 Horizontal Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8">
+        {/* 3 Clean Matching Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-8">
           {/* Card 1: Address */}
-          <div className="bg-black/30 backdrop-blur-sm border border-gold/30 hover:border-gold p-5 rounded-2xl flex items-start gap-4 transition-all duration-300 hover:-translate-y-1 shadow-lg group">
-            <div className="w-12 h-12 rounded-xl bg-gold/15 group-hover:bg-gold group-hover:text-black text-gold flex items-center justify-center shrink-0 border border-gold/30 transition-all duration-300 shadow-inner">
-              <MapPin size={22} />
-            </div>
-            <div>
-              <h3 className="text-gold font-bold text-xs uppercase tracking-wider mb-1">മേൽവിലാസം</h3>
-              <p className="text-cream text-xs sm:text-sm font-medium leading-relaxed">
+          <div className="bg-cream border border-gold/30 hover:border-gold p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center justify-between h-full group">
+            <div className="flex flex-col items-center text-center w-full">
+              <div className="w-12 h-12 rounded-full bg-maroon-dark/5 text-maroon group-hover:bg-maroon group-hover:text-cream flex items-center justify-center transition-colors duration-300 mb-3 shrink-0">
+                <MapPin size={22} />
+              </div>
+              <h3 className="text-maroon font-bold text-sm tracking-wide mb-1">മേൽവിലാസം</h3>
+              <p className="text-maroon-light/80 text-xs sm:text-sm font-semibold leading-relaxed">
                 {address}
               </p>
             </div>
+            <div className="w-0 h-[2px] bg-gold group-hover:w-1/2 transition-all duration-300 mt-4" />
           </div>
 
           {/* Card 2: Phone */}
-          <div className="bg-black/30 backdrop-blur-sm border border-gold/30 hover:border-gold p-5 rounded-2xl flex items-start gap-4 transition-all duration-300 hover:-translate-y-1 shadow-lg group">
-            <div className="w-12 h-12 rounded-xl bg-gold/15 group-hover:bg-gold group-hover:text-black text-gold flex items-center justify-center shrink-0 border border-gold/30 transition-all duration-300 shadow-inner">
-              <Phone size={22} />
-            </div>
-            <div>
-              <h3 className="text-gold font-bold text-xs uppercase tracking-wider mb-1">ഫോൺ നമ്പർ</h3>
+          <div className="bg-cream border border-gold/30 hover:border-gold p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center justify-between h-full group">
+            <div className="flex flex-col items-center text-center w-full">
+              <div className="w-12 h-12 rounded-full bg-maroon-dark/5 text-maroon group-hover:bg-maroon group-hover:text-cream flex items-center justify-center transition-colors duration-300 mb-3 shrink-0">
+                <Phone size={22} />
+              </div>
+              <h3 className="text-maroon font-bold text-sm tracking-wide mb-1">ഫോൺ നമ്പർ</h3>
               <a 
                 href={`tel:${cleanPhone}`} 
-                className="text-cream group-hover:text-gold text-sm sm:text-base font-bold transition-colors block mt-0.5"
+                className="text-maroon font-bold text-base hover:text-gold transition-colors inline-block mt-1"
               >
                 {phone}
               </a>
-              <span className="text-[10px] text-cream/60 block mt-1">പ്രവൃത്തി സമയം: 5:00 AM - 7:30 PM</span>
+              <span className="text-[11px] text-maroon-light/70 font-medium mt-1">പ്രവൃത്തി സമയം: 5:00 AM - 7:30 PM</span>
             </div>
+            <div className="w-0 h-[2px] bg-gold group-hover:w-1/2 transition-all duration-300 mt-4" />
           </div>
 
           {/* Card 3: Email */}
-          <div className="bg-black/30 backdrop-blur-sm border border-gold/30 hover:border-gold p-5 rounded-2xl flex items-start gap-4 transition-all duration-300 hover:-translate-y-1 shadow-lg group">
-            <div className="w-12 h-12 rounded-xl bg-gold/15 group-hover:bg-gold group-hover:text-black text-gold flex items-center justify-center shrink-0 border border-gold/30 transition-all duration-300 shadow-inner">
-              <Mail size={22} />
-            </div>
-            <div className="overflow-hidden">
-              <h3 className="text-gold font-bold text-xs uppercase tracking-wider mb-1">ഇമെയിൽ</h3>
+          <div className="bg-cream border border-gold/30 hover:border-gold p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center justify-between h-full group">
+            <div className="flex flex-col items-center text-center w-full">
+              <div className="w-12 h-12 rounded-full bg-maroon-dark/5 text-maroon group-hover:bg-maroon group-hover:text-cream flex items-center justify-center transition-colors duration-300 mb-3 shrink-0">
+                <Mail size={22} />
+              </div>
+              <h3 className="text-maroon font-bold text-sm tracking-wide mb-1">ഇമെയിൽ</h3>
               <a 
                 href={`mailto:${email}`} 
-                className="text-cream group-hover:text-gold text-xs sm:text-sm font-bold transition-colors block break-all mt-0.5"
+                className="text-maroon font-bold text-xs sm:text-sm hover:text-gold transition-colors break-all inline-block mt-1"
               >
                 {email}
               </a>
-              <span className="text-[10px] text-cream/60 block mt-1">അന്വേഷണങ്ങൾ അയക്കാം</span>
+              <span className="text-[11px] text-maroon-light/70 font-medium mt-1">അന്വേഷണങ്ങൾ അയക്കാം</span>
             </div>
+            <div className="w-0 h-[2px] bg-gold group-hover:w-1/2 transition-all duration-300 mt-4" />
           </div>
         </div>
 
-        {/* Bottom CTA Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto pt-2">
-          <a
+        {/* Bottom CTA Action Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8 max-w-lg mx-auto">
+          <Button 
             href={mapsUrl}
             target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto flex-1 py-3 px-6 rounded-xl font-bold bg-gold hover:bg-gold-light text-black transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm shadow-md hover:shadow-gold/20"
+            variant="gold"
+            className="w-full sm:w-auto flex-1 text-center py-2.5 px-5 flex items-center justify-center gap-2 text-xs sm:text-sm font-bold"
           >
             <Compass size={18} />
-            <span>ഗൂഗിൾ മാപ്പിൽ വഴി കാണാം</span>
-          </a>
+            <span>ഗൂഗിൾ മാപ്പ് (Google Maps)</span>
+          </Button>
 
-          <a
+          <a 
             href={`https://wa.me/${cleanWhatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto flex-1 py-3 px-6 rounded-xl font-bold bg-[#25D366] hover:bg-[#20bd5a] text-white transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm shadow-md"
+            className="w-full sm:w-auto flex-1 py-2.5 px-5 rounded-lg font-extrabold bg-[#25D366] hover:bg-[#1ea34e] text-white transition-colors duration-200 flex items-center justify-center gap-2 text-xs sm:text-sm shadow-sm"
           >
-            <MessageCircle size={18} />
-            <span>വാട്സ്ആപ്പ് വഴി സന്ദേശം അയക്കാം</span>
+            <MessageCircle size={18} className="text-white" />
+            <span>വാട്സ്ആപ്പ് ചാനൽ</span>
           </a>
         </div>
       </div>
