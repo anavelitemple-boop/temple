@@ -34,7 +34,7 @@ export default function Hero({
   const description = heroDescription || 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഡിജിറ്റൽ സന്നിധിയിലേക്ക് സ്വാഗതം. ശതവർഷങ്ങളുടെ പാരമ്പര്യവും ഗ്രാമത്തിന്റെ തനിമയും വിളിച്ചോതുന്ന പുണ്യ സങ്കേതം.';
 
   return (
-    <section className="relative min-h-[65vh] md:h-[75vh] w-full flex flex-col justify-center overflow-hidden bg-charcoal py-8">
+    <section className="relative min-h-[55vh] md:h-[65vh] w-full flex flex-col justify-center overflow-hidden bg-charcoal py-4 sm:py-6">
       {/* Background Video (if provided) */}
       {activeVideoUrl ? (
         <video
@@ -66,10 +66,10 @@ export default function Hero({
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(30,94,58,0.15)_0%,transparent_70%)] pointer-events-none z-1" />
 
       {/* Top spacing to offset main navbar */}
-      <div className="h-28 z-10 shrink-0" />
+      <div className="h-20 sm:h-24 z-10 shrink-0" />
 
       {/* Main Content Area */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 flex-grow self-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 flex-grow self-center">
         {/* Hero Text */}
         <motion.div 
           className="text-center md:text-left flex-1 max-w-xl animate-fade-in"
@@ -90,7 +90,7 @@ export default function Hero({
 
         {/* Daily Updates Carousel - Visible on all screens */}
         <motion.div 
-          className="flex-1 flex justify-center md:justify-end w-full mt-4 md:mt-0"
+          className="flex-1 flex justify-center md:justify-end w-full"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
