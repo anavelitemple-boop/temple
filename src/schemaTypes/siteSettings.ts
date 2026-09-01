@@ -40,7 +40,7 @@ export default defineType({
       name: 'address',
       title: 'Address (മേൽവിലാസം)',
       type: 'text',
-      initialValue: 'കൊപ്പര ആനവേലിൽ ശ്രീ ദേവി ക്ഷേത്രം, അമ്പലപ്പുഴ, ആലപ്പുഴ, കേരളം - 688005',
+      initialValue: 'കൊപ്പാറ ആനവേലിൽ ശ്രീ ഭദ്രകാളി ദേവീ ക്ഷേത്രം അമ്പലപ്പുഴ, ആലപ്പുഴ കേരളം – 688005 ഇന്ത്യ',
     }),
     defineField({
       name: 'mapsLink',

@@ -14,7 +14,7 @@ const seedData = async () => {
     priestButtonText: 'ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം',
     whatsapp: '919895873935',
     email: 'info@anavelitemple.org',
-    address: 'കൊപ്പര ആനവേലിൽ ശ്രീ ദേവി ക്ഷേത്രം, അമ്പലപ്പുഴ, ആലപ്പുഴ, കേരളം - 688005',
+    address: 'കൊപ്പാറ ആനവേലിൽ ശ്രീ ഭദ്രകാളി ദേവീ ക്ഷേത്രം അമ്പലപ്പുഴ, ആലപ്പുഴ കേരളം – 688005 ഇന്ത്യ',
     mapsLink: 'https://maps.app.goo.gl/WY18Ci7aZHFzmEUD8',
   });
   console.log('✔ Site Settings created');

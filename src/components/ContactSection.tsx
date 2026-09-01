@@ -10,7 +10,7 @@ interface ContactSectionProps {
 }
 
 export default function ContactSection({ settings }: ContactSectionProps) {
-  const address = settings?.address || 'കൊപ്പര ആനവേലിൽ ശ്രീ ദേവി ക്ഷേത്രം, അമ്പലപ്പുഴ, ആലപ്പുഴ, കേരളം - 688005';
+  const address = settings?.address || 'കൊപ്പാറ ആനവേലിൽ ശ്രീ ഭദ്രകാളി ദേവീ ക്ഷേത്രം അമ്പലപ്പുഴ, ആലപ്പുഴ കേരളം – 688005 ഇന്ത്യ';
   const phone = settings?.phone || '+91 7356462150';
   const email = settings?.email || 'anavelitemple@gmail.com';
   const whatsapp = settings?.whatsapp || '917356462150';

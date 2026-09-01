@@ -37,7 +37,7 @@ export const mockData = {
     poojaBookingPhone: '917356462150',
     bottomCallerPhone: '+91 7356462150',
     email: 'anavelitemple@gmail.com',
-    address: 'കൊപ്പര ആനവേലിൽ ശ്രീ ദേവി ക്ഷേത്രം, അമ്പലപ്പുഴ, ആലപ്പുഴ, കേരളം - 688005',
+    address: 'കൊപ്പാറ ആനവേലിൽ ശ്രീ ഭദ്രകാളി ദേവീ ക്ഷേത്രം അമ്പലപ്പുഴ, ആലപ്പുഴ കേരളം – 688005 ഇന്ത്യ',
     mapsLink: 'https://maps.app.goo.gl/WY18Ci7aZHFzmEUD8',
   },
   homepage: {
