@@ -60,7 +60,8 @@ export default defineType({
       name: 'carouselSlides',
       title: 'Hero Carousel Slides (ഹീറോ സ്ലൈഡറുകൾ / അറിയിപ്പ് കാർഡുകൾ)',
       type: 'array',
-      description: 'Add, edit, or remove slides in the Hero Live Updates Carousel.',
+      description: 'Fixed 2 slides (ദർശന സമയം & ഇന്നത്തെ പൂജ). Cannot add or delete items.',
+      validation: (Rule) => Rule.length(2),
       of: [
         {
           type: 'object',
@@ -70,24 +71,22 @@ export default defineType({
               name: 'title',
               title: 'Slide Title (തലക്കെട്ട്)',
               type: 'string',
+              readOnly: true,
             }),
             defineField({
               name: 'type',
               title: 'Badge Type (വിഭാഗം / ടാഗ്)',
               type: 'string',
-              description: 'e.g. നട തുറക്കുന്ന സമയം, ഇന്നത്തെ വിശേഷാൽ പൂജ, പ്രധാന അറിയിപ്പ്',
             }),
             defineField({
               name: 'icon',
               title: 'Emoji Icon (ഐക്കൺ)',
               type: 'string',
-              description: 'e.g. 🪔, 👤, 📢',
             }),
             defineField({
               name: 'date',
-              title: 'Optional Date / Time (തീയതി / സമയം - Optional)',
+              title: 'Optional Date / Time (തീയതി / സമയം)',
               type: 'string',
-              description: 'e.g. 2026-08-14 or 05:00 AM',
             }),
             defineField({
               name: 'description',
