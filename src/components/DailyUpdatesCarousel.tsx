@@ -81,27 +81,27 @@ export default function DailyUpdatesCarousel({ slides: customSlides }: DailyUpda
   return (
     <div 
       onClick={handleNext}
-      className="bg-black/20 hover:bg-black/30 border border-white/20 hover:border-gold/40 p-6 rounded-2xl max-w-md w-full h-[230px] flex flex-col justify-between text-cream relative overflow-hidden cursor-pointer group transition-all duration-300"
+      className="bg-black/20 hover:bg-black/30 border border-white/20 hover:border-gold/40 p-4 sm:p-6 rounded-2xl max-w-md w-full min-h-[170px] sm:min-h-[220px] flex flex-col justify-between text-cream relative overflow-hidden cursor-pointer group transition-all duration-300"
     >
       {/* Navigation Arrows */}
       <button
         onClick={handlePrev}
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 hover:bg-gold hover:text-black text-cream border border-white/10 hover:border-gold transition-all duration-200 opacity-80 group-hover:opacity-100 cursor-pointer shadow-lg"
+        className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-30 p-1 sm:p-2 rounded-full bg-black/60 hover:bg-gold hover:text-black text-cream border border-white/10 hover:border-gold transition-all duration-200 opacity-80 group-hover:opacity-100 cursor-pointer shadow-lg"
         aria-label="Previous Slide"
       >
-        <ChevronLeft size={18} />
+        <ChevronLeft size={16} className="sm:w-[18px] sm:h-[18px]" />
       </button>
 
       <button
         onClick={handleNext}
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/60 hover:bg-gold hover:text-black text-cream border border-white/10 hover:border-gold transition-all duration-200 opacity-80 group-hover:opacity-100 cursor-pointer shadow-lg"
+        className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-30 p-1 sm:p-2 rounded-full bg-black/60 hover:bg-gold hover:text-black text-cream border border-white/10 hover:border-gold transition-all duration-200 opacity-80 group-hover:opacity-100 cursor-pointer shadow-lg"
         aria-label="Next Slide"
       >
-        <ChevronRight size={18} />
+        <ChevronRight size={16} className="sm:w-[18px] sm:h-[18px]" />
       </button>
 
       {/* Indicator Dots */}
-      <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
+      <div className="absolute bottom-2 sm:bottom-3 left-0 right-0 flex justify-center gap-1.5 sm:gap-2 z-20">
         {activeSlides.map((_, idx) => (
           <button
             key={idx}
@@ -109,8 +109,8 @@ export default function DailyUpdatesCarousel({ slides: customSlides }: DailyUpda
               e.stopPropagation();
               setCurrentIndex(idx);
             }}
-            className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === currentIndex ? 'bg-gold w-6' : 'bg-white/30 hover:bg-white/60 w-2'
+            className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 cursor-pointer ${
+              idx === currentIndex ? 'bg-gold w-5 sm:w-6' : 'bg-white/30 hover:bg-white/60 w-1.5 sm:w-2'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />
@@ -124,24 +124,24 @@ export default function DailyUpdatesCarousel({ slides: customSlides }: DailyUpda
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -15 }}
           transition={{ duration: 0.3 }}
-          className="flex-grow flex flex-col justify-between pb-4 px-5"
+          className="flex-grow flex flex-col justify-between pb-2 sm:pb-4 px-2 sm:px-4"
         >
           {/* Header & Title */}
           <div>
-            <div className="flex items-center justify-between border-b border-gold/20 pb-2">
-              <h3 className="text-gold font-bold text-lg tracking-wide text-left drop-shadow-sm">
+            <div className="flex items-center justify-between border-b border-gold/20 pb-1 sm:pb-2">
+              <h3 className="text-gold font-bold text-base sm:text-lg tracking-wide text-left drop-shadow-sm">
                 {currentSlide.title || 'വിശേഷങ്ങൾ'}
               </h3>
-              <span className="text-xl filter drop-shadow">{currentSlide.icon || '🪔'}</span>
+              <span className="text-lg sm:text-xl filter drop-shadow">{currentSlide.icon || '🪔'}</span>
             </div>
 
             {/* Badge Type & Optional Date below Title */}
-            <div className="mt-2.5 text-left flex items-center justify-between gap-2">
-              <span className="inline-block text-[11px] sm:text-xs tracking-wider text-gold font-semibold bg-gold/10 px-2.5 py-0.5 rounded-full border border-gold/30">
+            <div className="mt-1.5 sm:mt-2.5 text-left flex items-center justify-between gap-2">
+              <span className="inline-block text-[10px] sm:text-xs tracking-wider text-gold font-semibold bg-gold/10 px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full border border-gold/30">
                 {currentSlide.type || 'അറിയിപ്പ്'}
               </span>
               {currentSlide.date && (
-                <span className="text-[11px] text-gold/90 font-medium bg-black/50 px-2.5 py-0.5 rounded-full border border-gold/20">
+                <span className="text-[10px] sm:text-[11px] text-gold/90 font-medium bg-black/50 px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full border border-gold/20">
                   📅 {currentSlide.date}
                 </span>
               )}
@@ -149,7 +149,7 @@ export default function DailyUpdatesCarousel({ slides: customSlides }: DailyUpda
           </div>
 
           {/* Description Content at Bottom */}
-          <div className="mt-3 text-left">
+          <div className="mt-2 sm:mt-3 text-left">
             {currentSlide.content ? (
               currentSlide.content
             ) : (
