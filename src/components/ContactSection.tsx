@@ -58,7 +58,6 @@ export default function ContactSection({ settings }: ContactSectionProps) {
               >
                 {phone}
               </a>
-              <span className="text-[11px] text-maroon-light/70 font-medium mt-1">പ്രവൃത്തി സമയം: 5:00 AM - 7:30 PM</span>
             </div>
             <div className="w-0 h-[2px] bg-gold group-hover:w-1/2 transition-all duration-300 mt-4" />
           </div>
@@ -76,7 +75,6 @@ export default function ContactSection({ settings }: ContactSectionProps) {
               >
                 {email}
               </a>
-              <span className="text-[11px] text-maroon-light/70 font-medium mt-1">അന്വേഷണങ്ങൾ അയക്കാം</span>
             </div>
             <div className="w-0 h-[2px] bg-gold group-hover:w-1/2 transition-all duration-300 mt-4" />
           </div>
