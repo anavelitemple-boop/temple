@@ -81,7 +81,7 @@ export default function DailyUpdatesCarousel({ slides: customSlides }: DailyUpda
   return (
     <div 
       onClick={handleNext}
-      className="bg-black/40 backdrop-blur-md border border-gold/30 p-6 rounded-2xl max-w-md w-full h-[230px] flex flex-col justify-between text-cream relative overflow-hidden cursor-pointer group shadow-2xl hover:border-gold/50 transition-all duration-300"
+      className="bg-black/20 hover:bg-black/30 border border-white/20 hover:border-gold/40 p-6 rounded-2xl max-w-md w-full h-[230px] flex flex-col justify-between text-cream relative overflow-hidden cursor-pointer group transition-all duration-300"
     >
       {/* Navigation Arrows */}
       <button
