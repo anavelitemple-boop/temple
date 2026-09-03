@@ -82,23 +82,23 @@ ${devoteesListText}
         {vazhipadus.map((v, idx) => (
           <div 
             key={idx} 
-            className="bg-cream border border-gold/30 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gold flex flex-col justify-between"
+            className="bg-cream border border-gold/30 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gold flex flex-col justify-between h-full"
           >
-            <div>
-              <div className="w-10 h-10 rounded-full bg-maroon/5 flex items-center justify-center text-lg mb-4 text-gold border border-gold/30">
+            <div className="flex flex-col flex-grow">
+              <div className="w-10 h-10 rounded-full bg-maroon/5 flex items-center justify-center text-lg mb-3 text-gold border border-gold/30 shrink-0">
                 🔱
               </div>
-              <h3 className="text-lg font-bold text-maroon mb-2">
+              <h3 className="text-base sm:text-lg font-bold text-maroon mb-2 leading-snug break-words">
                 {v.malayalamName}
               </h3>
-              <div className="text-xl font-extrabold text-gold-dark mt-2">
+              <div className="text-lg sm:text-xl font-extrabold text-gold-dark mt-auto pt-2">
                 ₹{v.price}
               </div>
             </div>
 
             <button
               onClick={() => openBookingModal(v)}
-              className="mt-6 w-full py-2.5 rounded-lg bg-maroon text-cream hover:bg-maroon-light transition-colors font-bold text-sm border border-gold/30 cursor-pointer"
+              className="mt-4 w-full py-2.5 px-2 rounded-lg bg-maroon text-cream hover:bg-maroon-light transition-colors font-bold text-xs sm:text-sm border border-gold/30 cursor-pointer whitespace-nowrap text-center"
             >
               ബുക്ക് ചെയ്യുക
             </button>

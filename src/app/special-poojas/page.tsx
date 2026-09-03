@@ -48,8 +48,8 @@ export const defaultSpecialPoojas = [
 ];
 
 export default async function SpecialPoojasPage() {
-  const itemsList = await safeFetch<any[]>(specialPoojasQuery, {}, defaultSpecialPoojas);
-  const displayItems = itemsList.length > 0 ? itemsList : defaultSpecialPoojas;
+  const itemsList = await safeFetch<any[]>(specialPoojasQuery, {}, []);
+  const displayItems = itemsList && itemsList.length > 0 ? itemsList : defaultSpecialPoojas;
 
   return (
     <div className="py-16 bg-cream min-h-screen">
