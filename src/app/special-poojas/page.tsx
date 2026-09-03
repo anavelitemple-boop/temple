@@ -48,8 +48,7 @@ export const defaultSpecialPoojas = [
 ];
 
 export default async function SpecialPoojasPage() {
-  const itemsList = await safeFetch<any[]>(specialPoojasQuery, {}, []);
-  const displayItems = itemsList && itemsList.length > 0 ? itemsList : defaultSpecialPoojas;
+  const displayItems = await safeFetch<any[]>(specialPoojasQuery, {}, []);
 
   return (
     <div className="py-16 bg-cream min-h-screen">
@@ -60,66 +59,80 @@ export default async function SpecialPoojasPage() {
           subtitle="ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെ പ്രധാന വിശേഷാൽ പൂജകളുടെയും പ്രത്യേക ചടങ്ങുകളുടെയും വിവരങ്ങൾ" 
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {displayItems.map((item, idx) => {
-            const slug = item.slug?.current || item.slug || item._id;
-            const imgUrl = item.imageUrl || urlFor(item.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=600';
-            const displayTitle = item.malayalamTitle || item.title || 'വിശേഷാൽ പൂജ';
-            const displayDate = item.date || 'വരാനിരിക്കുന്ന ചടങ്ങ്';
-            const displayDesc = item.summary || item.description || '';
+        {displayItems && displayItems.length > 0 ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            {displayItems.map((item, idx) => {
+              const slug = item.slug?.current || item.slug || item._id;
+              const imgUrl = item.imageUrl || urlFor(item.image) || 'https://images.unsplash.com/photo-1609137144814-118804c8f5d1?q=80&w=600';
+              const displayTitle = item.malayalamTitle || item.title || 'വിശേഷാൽ പൂജ';
+              const displayDate = item.date || 'വരാനിരിക്കുന്ന ചടങ്ങ്';
+              const displayDesc = item.summary || item.description || '';
 
-            return (
-              <div 
-                key={idx}
-                className="bg-cream border border-gold/25 hover:border-gold rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full"
-              >
-                {/* Image */}
-                <div className="relative h-52 w-full bg-maroon-dark/10">
-                  <Image
-                    src={imgUrl}
-                    alt={`ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം - ${displayTitle}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute top-3 right-3 bg-maroon/90 text-gold px-3 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1">
-                    <Flame size={13} />
-                    <span>{displayDate}</span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
-                  <div>
-                    <h3 className="text-xl font-extrabold text-maroon mb-3 leading-snug">
-                      {displayTitle}
-                    </h3>
-                    {displayDesc && (
-                      <p className="text-maroon-light/80 text-sm font-semibold leading-relaxed line-clamp-3">
-                        {displayDesc}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Actions (PDF Download + Read in Detail) */}
-                  <div className="pt-4 border-t border-gold/20 flex flex-wrap items-center justify-between gap-3">
-                    <PdfDownloadButton 
-                      pdfUrl={item.pdfUrl} 
-                      variant="compact"
+              return (
+                <div 
+                  key={idx}
+                  className="bg-cream border border-gold/25 hover:border-gold rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full"
+                >
+                  {/* Image */}
+                  <div className="relative h-52 w-full bg-maroon-dark/10">
+                    <Image
+                      src={imgUrl}
+                      alt={`ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം - ${displayTitle}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover"
                     />
-                    <Link 
-                      href={`/special-poojas/${slug}`}
-                      className="inline-flex items-center gap-1.5 text-maroon hover:text-gold font-bold text-sm transition-colors ml-auto"
-                    >
-                      <span>വിശദമായി വായിക്കാം</span>
-                      <ChevronRight size={16} />
-                    </Link>
+                    <div className="absolute top-3 right-3 bg-maroon/90 text-gold px-3 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1">
+                      <Flame size={13} />
+                      <span>{displayDate}</span>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
+                    <div>
+                      <h3 className="text-xl font-extrabold text-maroon mb-3 leading-snug">
+                        {displayTitle}
+                      </h3>
+                      {displayDesc && (
+                        <p className="text-maroon-light/80 text-sm font-semibold leading-relaxed line-clamp-3">
+                          {displayDesc}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Actions (PDF Download + Read in Detail) */}
+                    <div className="pt-4 border-t border-gold/20 flex flex-wrap items-center justify-between gap-3">
+                      <PdfDownloadButton 
+                        pdfUrl={item.pdfUrl} 
+                        variant="compact"
+                      />
+                      <Link 
+                        href={`/special-poojas/${slug}`}
+                        className="inline-flex items-center gap-1.5 text-maroon hover:text-gold font-bold text-sm transition-colors ml-auto"
+                      >
+                        <span>വിശദമായി വായിക്കാം</span>
+                        <ChevronRight size={16} />
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="mt-12 text-center bg-cream border border-gold/30 rounded-2xl p-12 shadow-sm max-w-2xl mx-auto">
+            <div className="w-16 h-16 bg-gold/10 text-gold-dark rounded-full flex items-center justify-center mx-auto mb-4 border border-gold/20 text-2xl">
+              🪔
+            </div>
+            <h3 className="text-xl font-extrabold text-maroon mb-2">
+              വിശേഷാൽ പൂജകൾ ലഭ്യമായിട്ടില്ല
+            </h3>
+            <p className="text-maroon-light font-bold text-sm">
+              നിലവിൽ വിവരങ്ങളൊന്നും ചേർത്തിട്ടില്ല. വരാനിരിക്കുന്ന വിശേഷാൽ പൂജകളുടെ വിവരങ്ങൾ ഉടൻ തന്നെ ഇവിടെ പങ്കുവെക്കുന്നതാണ്.
+            </p>
+          </div>
+        )}
 
       </div>
     </div>
