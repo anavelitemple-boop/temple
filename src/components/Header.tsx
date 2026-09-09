@@ -56,7 +56,7 @@ export default function Header({ callerPhone = '+91 7356462150', priestPhone }: 
         {/* Brand Title */}
         <Link href="/" className="flex flex-col text-left">
           <h1 className="text-sm sm:text-base font-bold tracking-wide text-black">
-            ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം
+            കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം
           </h1>
         </Link>
 

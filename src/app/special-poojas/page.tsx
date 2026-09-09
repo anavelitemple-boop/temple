@@ -56,7 +56,7 @@ export default async function SpecialPoojasPage() {
         
         <SectionHeading 
           title="ക്ഷേത്രസന്നിധിയിൽ വരാനിരിക്കുന്ന വിശേഷാൽ പൂജകളും അതിനോട് അനുബന്ധിച്ച പൂജാതി കാര്യങ്ങളും" 
-          subtitle="ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെ പ്രധാന വിശേഷാൽ പൂജകളുടെയും പ്രത്യേക ചടങ്ങുകളുടെയും വിവരങ്ങൾ" 
+          subtitle="കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെ പ്രധാന വിശേഷാൽ പൂജകളുടെയും പ്രത്യേക ചടങ്ങുകളുടെയും വിവരങ്ങൾ" 
         />
 
         {displayItems && displayItems.length > 0 ? (
@@ -77,7 +77,7 @@ export default async function SpecialPoojasPage() {
                   <div className="relative h-52 w-full bg-maroon-dark/10">
                     <Image
                       src={imgUrl}
-                      alt={`ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം - ${displayTitle}`}
+                      alt={`കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം - ${displayTitle}`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover"

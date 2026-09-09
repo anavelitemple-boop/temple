@@ -9,7 +9,7 @@ export default defineType({
       name: 'name',
       title: 'Festival Name (ഉത്സവത്തിന്റെ പേര്)',
       type: 'string',
-      initialValue: 'ആനവേലി ക്ഷേത്ര പെരുന്നാൾ',
+      initialValue: 'കൊപ്പാറ ആനവേലി ക്ഷേത്ര പെരുന്നാൾ',
     }),
     defineField({
       name: 'startDate',

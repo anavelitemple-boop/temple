@@ -44,7 +44,7 @@ export default function Gallery({ items, isHomePreview = false }: GalleryProps) 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading 
           title="ക്ഷേത്ര ദർശനം" 
-          subtitle="ആനവേലി ക്ഷേത്രത്തിലെ പ്രധാന ഫോട്ടോകൾ ഇവിടെ കാണാം" 
+          subtitle="കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിലെ പ്രധാന ഫോട്ടോകൾ ഇവിടെ കാണാം" 
         />
 
         {/* Gallery Grid */}
@@ -71,7 +71,7 @@ export default function Gallery({ items, isHomePreview = false }: GalleryProps) 
                 >
                   <Image
                     src={imgUrl}
-                    alt={item.title ? `ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം - ${item.title}` : 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്ര ദൃശ്യം'}
+                    alt={item.title ? `കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം - ${item.title}` : 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്ര ദൃശ്യം'}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -136,7 +136,7 @@ export default function Gallery({ items, isHomePreview = false }: GalleryProps) 
                   return (
                     <Image
                       src={activeUrl}
-                      alt={currentItem.title ? `ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം - ${currentItem.title}` : 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം'}
+                      alt={currentItem.title ? `കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം - ${currentItem.title}` : 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം'}
                       fill
                       priority
                       className="object-contain"

@@ -208,7 +208,7 @@ export default function PoojaBookingClient({
       .map((d, i) => `${i + 1}. പേര്: ${d.name}, നക്ഷത്രം: ${d.nakshathram}`)
       .join('\n');
 
-    const whatsappMessage = `ഹലോ ആനവേലി ക്ഷേത്രം ഭരണസമിതി,
+    const whatsappMessage = `ഹലോ കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം ഭരണസമിതി,
 
 ഞാൻ പൂജ ബുക്ക് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു:
 • പൂജ / വഴിപാട്: ${selectedPooja.malayalamName}

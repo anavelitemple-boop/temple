@@ -16,12 +16,18 @@ const baloo = Baloo_Chettan_2({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.anavelitemple.online'),
   title: {
-    default: 'ആനവേലി ക്ഷേത്രം | Anaveli Sree Bhadrakali Temple',
-    template: '%s | Anaveli Temple'
+    default: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം | Koppara Anaveli Sree Bhadrakali Temple',
+    template: '%s | Koppara Anaveli Temple'
   },
-  description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഔദ്യോഗിക വെബ്സൈറ്റ്. പൂജകൾ, വഴിപാടുകൾ, വിശേഷാൽ പൂജകൾ, ഉത്സവങ്ങൾ തുടങ്ങിയ വിവരങ്ങൾ അറിയാം. Anaveli Sree Bhadrakali Temple official website.',
+  description: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഔദ്യോഗിക വെബ്സൈറ്റ്. പൂജകൾ, വഴിപാടുകൾ, വിശേഷാൽ പൂജകൾ, ഉത്സവങ്ങൾ തുടങ്ങിയ വിവരങ്ങൾ അറിയാം. Koppara Anaveli Sree Bhadrakali Temple official website.',
   keywords: [
     // Main English Keywords
+    'Koppara Anaveli Temple',
+    'Koppara Anaveli Sree Bhadrakali Temple',
+    'Koppara Anaveli Bhagavathi Temple',
+    'Koppara Anaveli Temple Kerala',
+    'Koppara Anaveli Sree Bhadrakali Temple Kerala',
+    'Koppara Anaveli Temple Alappuzha',
     'Anaveli Temple',
     'Anaveli Sree Bhadrakali Temple',
     'Anaveli Bhagavathi Temple',
@@ -44,6 +50,8 @@ export const metadata: Metadata = {
     'Kerala Temple',
     'Hindu Temple Alappuzha',
     // Pooja & Vazhipadu Keywords
+    'Koppara Anaveli Temple Pooja',
+    'Koppara Anaveli Temple Vazhipadu',
     'Anaveli Temple Pooja',
     'Anaveli Temple Vazhipadu',
     'Anaveli Temple Pooja Timings',
@@ -64,6 +72,8 @@ export const metadata: Metadata = {
     'Temple Ulsavam Kerala',
     'Temple Ulsavam Alappuzha',
     // Location Keywords
+    'Koppara Anaveli Temple Location',
+    'Koppara Anaveli Temple Address',
     'Anaveli Temple Location',
     'Anaveli Temple Address',
     'Anaveli Temple Route',
@@ -75,6 +85,9 @@ export const metadata: Metadata = {
     'Anaveli Temple Directions',
     'Bhadrakali Temple Alappuzha Kerala',
     // Malayalam Keywords (പ്രധാന മലയാളം Keywords)
+    'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
+    'കൊപ്പാറ ആനവേലി ക്ഷേത്രം',
+    'കൊപ്പാറ ആനവേലി ഭദ്രകാളി ക്ഷേത്രം',
     'ആനവേലി ക്ഷേത്രം',
     'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
     'ആനവേലി ഭദ്രകാളി ക്ഷേത്രം',
@@ -94,6 +107,8 @@ export const metadata: Metadata = {
     'പ്രസിദ്ധമായ ക്ഷേത്രങ്ങൾ കേരളം',
     'പുരാതന ക്ഷേത്രം കേരളം',
     // പൂജ / വഴിപാട് Keywords
+    'കൊപ്പാറ ആനവേലി ക്ഷേത്രത്തിലെ പൂജ',
+    'കൊപ്പാറ ആനവേലി ക്ഷേത്രത്തിലെ വഴിപാട്',
     'ആനവേലി ക്ഷേത്രത്തിലെ പൂജ',
     'ആനവേലി ക്ഷേത്രത്തിലെ വഴിപാട്',
     'ആനവേലി ക്ഷേത്ര പൂജ സമയം',
@@ -115,6 +130,7 @@ export const metadata: Metadata = {
     'ഇന്നത്തെ വഴിപാട്',
     'പ്രത്യേക വഴിപാട്',
     // ഉത്സവ Keywords
+    'കൊപ്പാറ ആനവേലി ക്ഷേത്ര ഉത്സവം',
     'ആനവേലി ക്ഷേത്ര ഉത്സവം',
     'ആനവേലി ക്ഷേത്ര ഉത്സവം കേരളം',
     'ആനവേലി ഭദ്രകാളി ഉത്സവം',
@@ -128,6 +144,8 @@ export const metadata: Metadata = {
     'ഉത്സവ പൂജ',
     'ക്ഷേത്ര ചടങ്ങുകൾ',
     // Location Malayalam Keywords
+    'കൊപ്പാറ ആനവേലി ക്ഷേത്രം എവിടെ',
+    'കൊപ്പാറ ആനവേലി ക്ഷേത്ര വിലാസം',
     'ആനവേലി ക്ഷേത്രം എവിടെ',
     'ആനവേലി ക്ഷേത്ര വിലാസം',
     'ആനവേലി ക്ഷേത്രം എങ്ങനെ എത്താം',
@@ -154,10 +172,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'ആനവേലി ക്ഷേത്രം | Anaveli Sree Bhadrakali Temple',
-    description: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഔദ്യോഗിക വെബ്സൈറ്റ്.',
+    title: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം | Koppara Anaveli Sree Bhadrakali Temple',
+    description: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഔദ്യോഗിക വെബ്സൈറ്റ്.',
     url: 'https://www.anavelitemple.online',
-    siteName: 'Anaveli Sree Bhadrakali Temple',
+    siteName: 'Koppara Anaveli Sree Bhadrakali Temple',
     locale: 'ml_IN',
     type: 'website',
   },

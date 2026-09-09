@@ -7,11 +7,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row justify-between items-center gap-2">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-xl">🪔</span>
-          <h2 className="text-lg font-bold text-gold tracking-wide">ആനവേലി ക്ഷേത്രം</h2>
+          <h2 className="text-lg font-bold text-gold tracking-wide">കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം</h2>
         </Link>
         
         <p className="text-[10px] sm:text-xs text-cream/60">
-          © 2026 ആനവേലി ക്ഷേത്രം.
+          © 2026 കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം.
         </p>
 
         <div className="flex gap-3 text-[10px] sm:text-xs text-cream/70 font-semibold">

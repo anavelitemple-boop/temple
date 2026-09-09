@@ -9,7 +9,7 @@ export default defineType({
       name: 'title',
       title: 'Site Title (സൈറ്റ് നാമം)',
       type: 'string',
-      initialValue: 'ആനവേലി ക്ഷേത്രം',
+      initialValue: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
     }),
     defineField({
       name: 'description',

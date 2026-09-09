@@ -52,7 +52,7 @@ export default function VazhipaduList({ vazhipadus, whatsappNum }: VazhipaduList
     const totalAmount = selectedVazhipadu.price * devotees.length;
     const devoteesListText = devotees.map((d, idx) => `${idx + 1}. പേര്: ${d.name}, നക്ഷത്രം: ${d.nakshathram}`).join('\n');
 
-    const messageText = `ഹലോ ആനവേലി ക്ഷേത്രം ഭരണസമിതി,
+    const messageText = `ഹലോ കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം ഭരണസമിതി,
 
 ഞാൻ വഴിപാട് ബുക്ക് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു:
 • വഴിപാട്: ${selectedVazhipadu.malayalamName}

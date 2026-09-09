@@ -7,14 +7,14 @@ const seedData = async () => {
   await client.createOrReplace({
     _id: 'siteSettings',
     _type: 'siteSettings',
-    title: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
+    title: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
     description: 'നമ്മുടെ ഗ്രാമത്തിന്റെ ആത്മീയ പൈതൃകം',
     phone: '+91 9895873935',
     priestPhone: '+91 96561 13825',
     priestButtonText: 'ക്ഷേത്ര പൂജാരിയെ വിളിക്കാം',
     whatsapp: '919895873935',
     email: 'info@anavelitemple.org',
-    address: 'കൊപ്പാറ ആനവേലിൽ ശ്രീ ഭദ്രകാളി ദേവീ ക്ഷേത്രം അമ്പലപ്പുഴ, ആലപ്പുഴ കേരളം – 688005 ഇന്ത്യ',
+    address: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം അമ്പലപ്പുഴ, ആലപ്പുഴ കേരളം – 688005 ഇന്ത്യ',
     mapsLink: 'https://maps.app.goo.gl/WY18Ci7aZHFzmEUD8',
   });
   console.log('✔ Site Settings created');
@@ -23,7 +23,7 @@ const seedData = async () => {
   const mainFestival = await client.createOrReplace({
     _id: 'festival-2026',
     _type: 'festival',
-    name: 'ആനവേലി ക്ഷേത്ര പെരുന്നാൾ 2026',
+    name: 'കൊപ്പാറ ആനവേലി ക്ഷേത്ര പെരുന്നാൾ 2026',
     startDate: '2026-02-15T08:00:00.000Z',
     endDate: '2026-02-22T22:00:00.000Z',
     description: 'എട്ടു ദിവസങ്ങളിലായി കൊണ്ടാടുന്ന ഈ വർഷത്തെ ഉത്സവ ചടങ്ങുകൾ തന്ത്രിയുടെയും മേൽശാന്തിയുടെയും നേതൃത്വത്തിൽ നടക്കും.',
@@ -35,9 +35,9 @@ const seedData = async () => {
   await client.createOrReplace({
     _id: 'homepage',
     _type: 'homepage',
-    heroTitle: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
+    heroTitle: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
     heroSubtitle: 'നമ്മുടെ ഗ്രാമത്തിന്റെ ആത്മീയ പൈതൃകം',
-    heroDescription: 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഡിജിറ്റൽ സന്നിധിയിലേക്ക് സ്വാഗതം. ശതവർഷങ്ങളുടെ പാരമ്പര്യവും ഗ്രാമത്തിന്റെ തനിമയും വിളിച്ചോതുന്ന പുണ്യ സങ്കേതം.',
+    heroDescription: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ ഡിജിറ്റൽ സന്നിധിയിലേക്ക് സ്വാഗതം. ശതവർഷങ്ങളുടെ പാരമ്പര്യവും ഗ്രാമത്തിന്റെ തനിമയും വിളിച്ചോതുന്ന പുണ്യ സങ്കേതം.',
     primaryCTA: 'ക്ഷേത്രത്തെ അറിയാം',
     secondaryCTA: 'വഴിപാടുകൾ',
     festivalRef: {

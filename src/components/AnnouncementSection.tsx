@@ -65,7 +65,7 @@ export default function AnnouncementSection({ announcements }: AnnouncementSecti
                 >
                   <Image 
                     src={imageUrl} 
-                    alt={`ആനവേലി ക്ഷേത്ര വാർത്ത: ${displayTitle}`}
+                    alt={`കൊപ്പാറ ആനവേലി ക്ഷേത്ര വാർത്ത: ${displayTitle}`}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

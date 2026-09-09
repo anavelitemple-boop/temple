@@ -17,7 +17,7 @@ interface FestivalCountdownProps {
 
 export default function FestivalCountdown({ 
   targetDate = '2026-02-15T08:00:00.000Z', 
-  festivalName = 'ആനവേലി ക്ഷേത്ര പെരുന്നാൾ' 
+  festivalName = 'കൊപ്പാറ ആനവേലി ക്ഷേത്ര പെരുന്നാൾ' 
 }: FestivalCountdownProps) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 

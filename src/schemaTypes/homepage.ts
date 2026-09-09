@@ -9,7 +9,7 @@ export default defineType({
       name: 'heroTitle',
       title: 'Hero Title (ഹീറോ തലക്കെട്ട്)',
       type: 'string',
-      initialValue: 'ആനവേലി ക്ഷേത്രം',
+      initialValue: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
     }),
     defineField({
       name: 'heroSubtitle',
@@ -21,7 +21,7 @@ export default defineType({
       name: 'heroDescription',
       title: 'Hero Description (ഹീറോ വിവരണം)',
       type: 'text',
-      initialValue: 'ആനവേലി ശ്രീ മഹാദേവ ക്ഷേത്രത്തിന്റെ വെബ്സൈറ്റിലേക്ക് ഹൃദയം നിറഞ്ഞ സ്വാഗതം. ഭഗവാന്റെ കാരുണ്യവും അനുഗ്രഹവും എന്നും നിങ്ങളോടൊപ്പം ഉണ്ടാകട്ടെ.',
+      initialValue: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രത്തിന്റെ വെബ്സൈറ്റിലേക്ക് ഹൃദയം നിറഞ്ഞ സ്വാഗതം. ഭഗവതിയുടെ കാരുണ്യവും അനുഗ്രഹവും എന്നും നിങ്ങളോടൊപ്പം ഉണ്ടാകട്ടെ.',
     }),
     defineField({
       name: 'heroVideoFile',

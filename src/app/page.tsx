@@ -35,14 +35,14 @@ export default async function Home() {
   })) : mockData.gallery;
 
   const targetCountdownDate = homepageContent.festivalRef?.startDate || '2026-02-15T08:00:00.000Z';
-  const targetCountdownName = homepageContent.festivalRef?.name || 'ആനവേലി ക്ഷേത്ര പെരുന്നാൾ';
+  const targetCountdownName = homepageContent.festivalRef?.name || 'കൊപ്പാറ ആനവേലി ക്ഷേത്ര പെരുന്നാൾ';
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'HinduTemple',
-    'name': 'Anaveli Sree Bhadrakali Temple',
-    'alternateName': 'ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
-    'description': 'Official Website of Anaveli Sree Bhadrakali Temple, Ambalappuzha, Alappuzha, Kerala.',
+    'name': 'Koppara Anaveli Sree Bhadrakali Temple',
+    'alternateName': 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
+    'description': 'Official Website of Koppara Anaveli Sree Bhadrakali Temple, Ambalappuzha, Alappuzha, Kerala.',
     'url': 'https://www.anavelitemple.online',
     'telephone': '+917356462150',
     'address': {

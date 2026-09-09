@@ -9,20 +9,20 @@ export default defineType({
       name: 'name',
       title: 'Temple Name (ക്ഷേത്രത്തിന്റെ പേര്)',
       type: 'string',
-      initialValue: 'ആനവേലി ക്ഷേത്രം',
+      initialValue: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം',
     }),
     defineField({
       name: 'mainDeity',
       title: 'Main Deity (പ്രധാന പ്രതിഷ്ഠ)',
       type: 'string',
-      initialValue: 'ശ്രീ മഹാദേവൻ',
+      initialValue: 'ശ്രീ ഭദ്രകാളി ദേവി',
     }),
     defineField({
       name: 'subDeities',
       title: 'Sub Deities (ഉപദേവതകൾ)',
       type: 'array',
       of: [{type: 'string'}],
-      initialValue: ['ഗണപതി', 'അയ്യപ്പൻ', 'ദേവി', 'നാഗരാജാവ്'],
+      initialValue: ['ഗണപതി', 'അയ്യപ്പൻ', 'മഹാദേവൻ', 'നാഗരാജാവ്'],
     }),
     defineField({
       name: 'darshanTimings',
@@ -34,7 +34,7 @@ export default defineType({
       name: 'historyOverview',
       title: 'History Overview (ചരിത്ര വിവരണം)',
       type: 'text',
-      initialValue: 'ശതവർഷങ്ങൾ പഴക്കമുള്ള ആനവേലി ക്ഷേത്രം ഗ്രാമത്തിന്റെ ആത്മീയതയുടെയും സംസ്കാരത്തിന്റെയും കേന്ദ്രമാണ്...',
+      initialValue: 'ശതവർഷങ്ങൾ പഴക്കമുള്ള കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം ഗ്രാമത്തിന്റെ ആത്മീയതയുടെയും സംസ്കാരത്തിന്റെയും കേന്ദ്രമാണ്...',
     }),
   ],
 })

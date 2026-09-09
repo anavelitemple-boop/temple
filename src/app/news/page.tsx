@@ -20,7 +20,7 @@ export default async function NewsPage() {
         
         <SectionHeading 
           title="വാർത്തകളും അറിയിപ്പുകളും" 
-          subtitle="ആനവേലി ക്ഷേത്രവുമായി ബന്ധപ്പെട്ട സമഗ്ര വിവരങ്ങളും പ്രധാന തീരുമാനങ്ങളും" 
+          subtitle="കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രവുമായി ബന്ധപ്പെട്ട സമഗ്ര വിവരങ്ങളും പ്രധാന തീരുമാനങ്ങളും" 
         />
 
         <NewsListClient newsList={newsList} />

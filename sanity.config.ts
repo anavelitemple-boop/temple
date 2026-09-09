@@ -9,7 +9,7 @@ export default defineConfig({
   basePath: '/admin',
   projectId,
   dataset,
-  title: 'ആനവേലി ക്ഷേത്രം (Anaveli Temple Admin)',
+  title: 'കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം (Koppara Anaveli Temple Admin)',
   plugins: [
     structureTool({
       structure: (S) =>
