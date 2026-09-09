@@ -69,7 +69,7 @@ export default async function PoojaBookingPage() {
                 <MessageCircle size={16} className="text-[#25D366] fill-[#25D366]/20" />
                 <span>WhatsApp സന്ദേശം അയക്കുക</span>
               </h4>
-              <p className="text-xs text-maroon-light/80 mt-1">നെരിട്ടൊരു ക്ലിക്കിൽ ക്ഷേത്രത്തിലേക്ക് മെസ്സേജ് അയച്ചു ബുക്കിംഗ് ഉറപ്പാക്കുക.</p>
+              <p className="text-xs text-maroon-light/80 mt-1">നേരിട്ടൊരു ക്ലിക്കിൽ ക്ഷേത്രത്തിലേക്ക് മെസ്സേജ് അയച്ചു ബുക്കിംഗ് ഉറപ്പാക്കുക.</p>
             </div>
           </div>
         </div>
