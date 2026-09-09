@@ -43,10 +43,10 @@ export default function Header({ callerPhone = '+91 7356462150', priestPhone }: 
   const showTransparentTheme = isHomepage && !isScrolled;
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 flex flex-col items-center px-4 w-full pointer-events-none">
+    <header className="fixed top-3 sm:top-4 left-0 right-0 z-50 flex flex-col items-center px-2 sm:px-4 w-full pointer-events-none">
       {/* Centered Floating Pill Navbar */}
       <div 
-        className={`w-full max-w-5xl border rounded-full px-6 py-2.5 flex items-center justify-between pointer-events-auto transition-all duration-500 ${
+        className={`w-full max-w-5xl border rounded-full px-3.5 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-2 pointer-events-auto transition-all duration-500 ${
           showTransparentTheme
             ? 'bg-white/60 backdrop-blur-lg border-white/20 shadow-none text-black'
             : 'bg-white/90 backdrop-blur-md border-gold/20 shadow-md text-black'
@@ -54,8 +54,8 @@ export default function Header({ callerPhone = '+91 7356462150', priestPhone }: 
       >
         
         {/* Brand Title */}
-        <Link href="/" className="flex flex-col text-left">
-          <h1 className="text-sm sm:text-base font-bold tracking-wide text-black">
+        <Link href="/" className="flex flex-col text-left min-w-0 shrink">
+          <h1 className="text-[11px] min-[360px]:text-xs min-[400px]:text-sm sm:text-base font-bold tracking-tight sm:tracking-wide text-black whitespace-nowrap">
             കൊപ്പാറ ആനവേലി ശ്രീ ഭദ്രകാളി ക്ഷേത്രം
           </h1>
         </Link>
