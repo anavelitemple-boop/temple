@@ -16,17 +16,14 @@ export default function NewsDetailClient({ imageUrl, displayTitle }: NewsDetailC
   return (
     <>
       <div 
-        className="relative w-full h-[300px] sm:h-[420px] md:h-[480px] rounded-2xl overflow-hidden mb-8 border border-gold/30 cursor-pointer group shadow-md"
+        className="relative w-full rounded-2xl overflow-hidden mb-8 border border-gold/30 cursor-pointer group shadow-md bg-maroon-dark/5 flex items-center justify-center"
         onClick={() => setIsModalOpen(true)}
       >
-        {/* Main Image filling container */}
-        <Image
+        {/* Full Uncropped Responsive Image */}
+        <img
           src={imageUrl}
           alt={displayTitle}
-          fill
-          priority
-          sizes="(max-width: 768px) 100vw, 800px"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-auto max-h-[650px] object-contain rounded-2xl transition-transform duration-500 group-hover:scale-[1.01]"
         />
 
         {/* Overlay Hint */}
