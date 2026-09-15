@@ -203,21 +203,31 @@ export default async function RootLayout({
   return (
     <html lang="ml" className={`${baloo.className} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-cream text-charcoal">
-        <Header callerPhone={callerPhone} priestPhone={priestPhone} />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
-        
-        {/* Floating Mobile Sticky CTAs */}
-        <div className="fixed bottom-4 right-4 z-40 flex flex-col gap-2 lg:hidden">
-          <a 
-            href={`tel:${cleanCallerPhone}`} 
-            className="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg border border-white/40 transition-transform hover:scale-110 active:scale-95"
-            aria-label="Call Temple"
-          >
-            <span className="text-xl">📞</span>
-          </a>
+        {/* Laptop / Desktop View Warning Screen */}
+        <div className="hidden md:flex fixed inset-0 z-50 bg-white items-center justify-center p-6 text-center select-none">
+          <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-black tracking-tight">
+            This website is only available in mobile screens
+          </p>
+        </div>
+
+        {/* Mobile View Content */}
+        <div className="md:hidden min-h-full flex flex-col bg-cream text-charcoal">
+          <Header callerPhone={callerPhone} priestPhone={priestPhone} />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+          
+          {/* Floating Mobile Sticky CTAs */}
+          <div className="fixed bottom-4 right-4 z-40 flex flex-col gap-2">
+            <a 
+              href={`tel:${cleanCallerPhone}`} 
+              className="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg border border-white/40 transition-transform hover:scale-110 active:scale-95"
+              aria-label="Call Temple"
+            >
+              <span className="text-xl">📞</span>
+            </a>
+          </div>
         </div>
       </body>
     </html>
